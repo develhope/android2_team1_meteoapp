@@ -1,4 +1,4 @@
-# Meteo App master project
+# Forecast App project
 show the meteo info for a specific location
 
 We will follow [figma](https://www.figma.com/file/GPQcB8SKX8XqOfWA3T0o0r/UX%26Devs?node-id=6%3A2) design.
@@ -15,3 +15,15 @@ This means to create all the screens, all data classes needed to fill ui and an 
 - A second step is to use info from network using dto and connect the objects with ui related object.
 - A third step is to save and retrieve informations from local storage and use them as place holder.
 - A fourth step could be to create a screen with all the supported location and have weather for the location selected by the user.
+
+DeadLines
+A deadlines is a point where a live demo of the project will be shown to some guests.
+Each deadline is not fixed but is better to be prepared to show the project
+Here a simple list with the general achivements for the deadline
+(P.s. in each deadline the most important bug fixes should be done)
+
+- 17/10 Ui Layer (Acticy, fragment ui data object etcetc)
+- 7/11 Network calls and DTO
+- 5/12 Architectural Pattern 
+- 19/12 Persistence
+- 9/01 TBD
