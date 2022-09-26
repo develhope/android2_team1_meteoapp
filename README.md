@@ -16,7 +16,8 @@ This means to create all the screens, all data classes needed to fill ui and an 
 - A third step is to save and retrieve informations from local storage and use them as place holder.
 - A fourth step could be to create a screen with all the supported location and have weather for the location selected by the user.
 
-DeadLines
+###DeadLines
+
 A deadlines is a point where a live demo of the project will be shown to some guests.
 Each deadline is not fixed but is better to be prepared to show the project
 Here a simple list with the general achivements for the deadline
