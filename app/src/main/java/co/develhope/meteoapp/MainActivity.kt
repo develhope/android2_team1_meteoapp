@@ -2,10 +2,46 @@ package co.develhope.meteoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import co.develhope.meteoapp.databinding.ActivityMainBinding
+
+/*TODO
+Add icons to bottom navigation bar
+ */
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.bottomNavigationView.setOnItemSelectedListener {
+
+            when(it.itemId){
+
+                R.id.home -> replaceFragment(HomeScreen())
+                R.id.today -> replaceFragment(TodayScreen())
+                R.id.tomorrow -> replaceFragment(TomorrowScreen())
+
+                else ->{
+
+                }
+
+            }
+            true
+        }
+
+    }
+
+    private fun replaceFragment(fragment: Fragment){
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+
     }
 }
