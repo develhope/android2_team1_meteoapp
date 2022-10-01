@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_margin_layout">24dp</dimen>
+    <dimen name="margin_title_table_home_screen">19dp</dimen>
     <dimen name="padding_inside_table">18dp</dimen>
     <dimen name="top_margin_second_third_screen">61dp</dimen>
     <dimen name="distance_between_table">10dp</dimen>
