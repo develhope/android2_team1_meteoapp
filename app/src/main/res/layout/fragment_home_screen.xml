@@ -11,14 +11,15 @@
         android:id="@+id/tvHomeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tvHomeTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/top_margin_home_screen"
         android:layout_marginStart="@dimen/padding_margin_layout"
+        android:layout_marginTop="@dimen/top_margin_home_screen"
+        android:text="@string/tvHomeTitle"
         android:textColor="@color/white"
-        android:textSize="@dimen/title_size"/>
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvHomeScreenToday"
