@@ -7,5 +7,6 @@
     <string name="today_title">Today</string>
     <string name="tomorrow_title">Tomorrow</string>
     <string name="tvHomeTitle">Palermo, Sicilia</string>
+    <string name="tvNextDays">Next 5 days</string>
 
 </resources>

@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="padding_margin_layout">24dp</dimen>
+    <dimen name="distance_cv_tv_home_screen">45dp</dimen>
+    <dimen name="margin_title_table_home_screen">19dp</dimen>
+    <dimen name="padding_inside_table">18dp</dimen>
+    <dimen name="top_margin_second_third_screen">61dp</dimen>
+    <dimen name="distance_between_table">10dp</dimen>
+    <dimen name="top_margin_home_screen">42dp</dimen>
+    <dimen name="distance_between_text_second_third_screen">30dp</dimen>
+    <dimen name="distance_between_hour_second_third_screen">36dp</dimen>
+    <dimen name="first_table_to_text_distance">36dp</dimen>
+    <dimen name="title_size">32sp</dimen>
+    <dimen name="first_day_home_screen_text_size">24sp</dimen>
+    <dimen name="list_day_home_screen_text_size">20sp</dimen>
+    <dimen name="description_second_third_screen_text_size">16sp</dimen>
+    <dimen name="temperature_humidity_text_size">20sp</dimen>
+    <dimen name="hour_second_third_screen_text_size">15sp</dimen>
+    <dimen name="bottom_menu_text_size">8sp</dimen>
     <dimen name="corner_cardview">9dp</dimen>
 </resources>
