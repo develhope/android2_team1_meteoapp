@@ -5,10 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import co.develhope.meteoapp.databinding.ActivityMainBinding
 
-/*TODO
-Add icons to bottom navigation bar
- */
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

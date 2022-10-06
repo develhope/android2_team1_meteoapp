@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">Develhope Meteo App</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="home_screen_content">This will be the HomeScreen</string>
     <string name="today_screen_content">This will be the Today Screen</string>
     <string name="tomorrow_screen_content">This will be the Tomorrow Screen</string>
