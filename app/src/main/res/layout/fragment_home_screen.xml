@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreen">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeScreen"
+    android:background="@drawable/gradient_background">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tvHomeTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/home_screen_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/tvHomeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/top_margin_home_screen"
+        android:layout_marginStart="@dimen/padding_margin_layout"
+        android:textColor="@color/white"
+        android:textSize="@dimen/title_size"/>
 
-</FrameLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvHomeScreenToday"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="@dimen/margin_title_table_home_screen"
+        android:layout_marginHorizontal="@dimen/padding_margin_layout"
+        app:cardCornerRadius="@dimen/corner_cardview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle">
+
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
