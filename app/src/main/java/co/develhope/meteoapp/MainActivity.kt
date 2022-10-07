@@ -16,23 +16,23 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
 
-            when(it.itemId){
+            when (it.itemId) {
 
                 R.id.home -> replaceFragment(HomeScreen())
                 R.id.today -> replaceFragment(TodayScreen())
                 R.id.tomorrow -> replaceFragment(TomorrowScreen())
 
-                else ->{
+                else -> {
 
                 }
 
             }
             true
         }
-
+        replaceFragment(HomeScreen())
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment) {
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
