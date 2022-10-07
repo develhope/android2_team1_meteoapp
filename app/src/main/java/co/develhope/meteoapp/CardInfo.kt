@@ -1,9 +1,10 @@
 package co.develhope.meteoapp
 
-import java.util.Date
+
+import org.threeten.bp.OffsetDateTime
 
 data class CardInfo(
-    val date: Date,
+    val date: OffsetDateTime,
     val minTemperature: Int,
     val maxTemperature: Int,
     val rainfall: Int,
