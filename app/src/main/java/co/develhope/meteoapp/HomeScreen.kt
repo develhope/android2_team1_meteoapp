@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 
 class HomeScreen : Fragment() {
@@ -28,6 +29,8 @@ class HomeScreen : Fragment() {
         CardInfo(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY)
     )
 
+    val todayHomeScreenDO = CardInfo(OffsetDateTime.now(), 18, 22, 10, 20, Weather.CLOUDY)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +38,6 @@ class HomeScreen : Fragment() {
     ): View {
         bindingHomeScreen = FragmentHomeScreenBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,6 +45,13 @@ class HomeScreen : Fragment() {
         val adapter = WeatherAdapter(weatherList)
         binding.weatherHomeScreenList.adapter = adapter
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
+
+        binding.dayCard.text = todayHomeScreenDO.date.dayOfWeek.toString()
+        binding.minTempCard.text = todayHomeScreenDO.minTemperature.toString()
+        binding.maxTempCard.text = todayHomeScreenDO.maxTemperature.toString()
+        binding.dateHomeScreen.text = todayHomeScreenDO.date.format(DateTimeFormatter.ISO_LOCAL_DATE)
+        binding.precipitationHomeScreenRecyclerView.text = todayHomeScreenDO.rainfall.toString()
+        binding.windHomeScreenRecyclerView.text = todayHomeScreenDO.wind.toString()
 
     }
 
