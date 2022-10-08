@@ -8,7 +8,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_margin_layout"
         android:layout_marginTop="@dimen/margin_cardview_recycler_view"
         app:cardCornerRadius="@dimen/corner_cardview">
 
@@ -31,7 +30,7 @@
                 android:id="@+id/minTempCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23°"
+                android:text="@string/minTempCard"
                 android:layout_centerHorizontal="true"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"/>
