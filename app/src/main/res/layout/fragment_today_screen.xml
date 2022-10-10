@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodayScreen"
-    android:background="#F0EFFF">
+    android:layout_marginHorizontal="@dimen/padding_margin_layout"
+    android:background="@color/white"
+    tools:context=".TodayScreen">
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/today_screen_content"
-        />
+        android:id="@+id/TodayLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin_second_third_screen"
+        android:text="@string/tvHomeTitle"
+        android:textSize="@dimen/hour_second_third_screen_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/blue"/>
 
-</FrameLayout>
+    <TextView
+        android:textColor="@color/blue"
+        android:id="@+id/TodayDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/today"
+        android:textSize="@dimen/list_day_home_screen_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TodayLocation" />
+
+    <TextView
+        android:id="@+id/TodayFullDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday, 10 October"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/list_day_home_screen_text_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/TodayDate"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/todayRecyclerViewItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/TodayFullDate"
+    android:layout_marginTop="@dimen/padding_margin_layout"
+    tools:listitem="@layout/today_recycler_view_item"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
