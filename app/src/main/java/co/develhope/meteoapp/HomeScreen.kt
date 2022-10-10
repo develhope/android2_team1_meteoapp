@@ -21,14 +21,6 @@ class HomeScreen : Fragment() {
     //resources.getString(R.string.tomorrow_date, dayOfMonth.toString(), month.toString()
 
 
-    val weatherList: List<CardInfo> = listOf(
-        CardInfo(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
-        CardInfo(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
-        CardInfo(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN),
-        CardInfo(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY),
-        CardInfo(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY)
-    )
-
     val todayHomeScreenDO = CardInfo(OffsetDateTime.now(), 18, 22, 10, 20, Weather.CLOUDY)
 
 
@@ -42,7 +34,7 @@ class HomeScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = WeatherAdapter(weatherList)
+        val adapter = WeatherAdapter(ForecastInfoObject.getWeatherList())
         binding.weatherHomeScreenList.adapter = adapter
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
 

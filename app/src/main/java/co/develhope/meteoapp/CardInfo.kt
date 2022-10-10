@@ -10,9 +10,9 @@ data class CardInfo(
     val rainfall: Int,
     val wind: Int,
     val weather: Weather
-) {
+)
 
-}
+
 
 enum class Weather {
 
