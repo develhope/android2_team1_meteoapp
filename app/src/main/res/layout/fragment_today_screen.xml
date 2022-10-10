@@ -50,6 +50,8 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@id/TodayFullDate"
     android:layout_marginTop="@dimen/padding_margin_layout"
-    tools:listitem="@layout/today_recycler_view_item"/>
+    tools:listitem="@layout/today_recycler_view_item"
+    android:clipToPadding="false"
+    android:paddingBottom="160dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

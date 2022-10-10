@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import co.develhope.meteoapp.ForecastInfoObject.setIcon
 
 class TodayScreenViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -36,10 +37,10 @@ class TodayScreenAdapter(val todayList: List<TodayCardInfo>) :
 
     override fun onBindViewHolder(holder: TodayScreenViewHolder, position: Int) {
 
-        holder.todayHour.text = todayList[position].date.hour.toString()
+        holder.todayHour.text = holder.itemView.context.getString(R.string.hour, todayList[position].date.hour)
         holder.todayTemperature.text = todayList[position].temperature.toString()
         holder.todayPercentage.text = todayList[position].rainfall.toString()
-
+        holder.todayIcon.setImageResource(ForecastInfoObject.setIcon(todayList[position].weather))
     }
 
     override fun getItemCount(): Int {

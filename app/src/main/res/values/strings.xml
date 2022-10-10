@@ -12,5 +12,9 @@
     <string name="calendarDate">6</string>
     <string name="minTempCard">%d°</string>
     <string name="today">Today,</string>
+    <string name="maxTempCard">%d°</string>
+    <string name="dateHomeScreen">%d/%d</string>
+    <string name="precipitationHomeScreenTextView">%d %</string>
+    <string name="hour">%d:00</string>
 
 </resources>
