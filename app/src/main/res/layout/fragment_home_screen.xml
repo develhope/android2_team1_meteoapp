@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="23°"
+                android:text="@string/precipitationPercentage"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="31°"
+                android:text="@string/maxTempCard"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/dayCard"
                 android:layout_alignParentStart="true"
-                android:text="7/10"
+                android:text="@string/dateHomeScreen"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hour_second_third_screen_text_size" />
 
@@ -126,7 +126,7 @@
                 android:layout_below="@id/maxCard"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="6 Km/h"
+                android:text="@string/kmhWind"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />

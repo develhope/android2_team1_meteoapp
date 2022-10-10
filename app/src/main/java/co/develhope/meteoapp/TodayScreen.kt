@@ -18,7 +18,7 @@ class TodayScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        bindingTodayScreen = FragmentTodayScreenBinding.inflate(inflater,container,false)
+        bindingTodayScreen = FragmentTodayScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 

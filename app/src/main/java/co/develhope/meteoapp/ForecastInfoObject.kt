@@ -32,12 +32,12 @@ object ForecastInfoObject {
         return weatherList
     }
 
-    fun getTodayWeatherList(): List<TodayCardInfo>{
+    fun getTodayWeatherList(): List<TodayCardInfo> {
         return todayWeatherList
     }
 
-    fun setIcon (weather: Weather): Int{
-        return when (weather){
+    fun setIcon(weather: Weather): Int {
+        return when (weather) {
             Weather.SUNNY -> R.drawable.sun
             Weather.FOGGY -> R.drawable.sun
             Weather.TEMPEST -> R.drawable.rain_cloud_sun
@@ -47,8 +47,6 @@ object ForecastInfoObject {
             Weather.CLOUDY -> R.drawable.sun_cloud
         }
     }
-
-
 
 
 }
