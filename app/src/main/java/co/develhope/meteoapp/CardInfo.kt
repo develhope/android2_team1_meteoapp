@@ -12,6 +12,12 @@ data class CardInfo(
     val weather: Weather
 )
 
+data class TodayCardInfo(
+    val date: OffsetDateTime,
+    val weather: Weather,
+    val temperature: Int,
+    val rainfall: Int
+)
 
 
 enum class Weather {
