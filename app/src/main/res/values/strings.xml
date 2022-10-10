@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name" translatable="false">Develhope Meteo App</string>
     <string name="home_screen_content">This will be the HomeScreen</string>
-    <string name="today_screen_content">This will be the Today Screen</string>
+    <string name="today_screen_date">This will be the Today Screen</string>
     <string name="tomorrow_screen_content">This will be the Tomorrow Screen</string>
     <string name="home_title">Home</string>
     <string name="today_title">Today</string>
     <string name="tomorrow_title">Tomorrow</string>
-    <string name="tvHomeTitle">Palermo, Sicilia</string>
+    <string name="tvHomeTitle">Palermo, Sicily</string>
     <string name="tvNextDays">Next 5 days</string>
     <string name="tomorrow_date">%s/%s</string>
     <string name="calendarDate">6</string>
     <string name="minTempCard">%d°</string>
+    <string name="today">Today,</string>
 
 </resources>
