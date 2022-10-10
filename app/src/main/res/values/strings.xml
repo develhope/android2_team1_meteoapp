@@ -10,6 +10,6 @@
     <string name="tvNextDays">Next 5 days</string>
     <string name="tomorrow_date">%s/%s</string>
     <string name="calendarDate">6</string>
-    <string name="minTempCard">%s°</string>
+    <string name="minTempCard">%d°</string>
 
 </resources>

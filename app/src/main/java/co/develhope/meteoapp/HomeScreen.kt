@@ -39,7 +39,7 @@ class HomeScreen : Fragment() {
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
 
         binding.dayCard.text = todayHomeScreenDO.date.dayOfWeek.toString()
-        binding.minTempCard.text = todayHomeScreenDO.minTemperature.toString()
+        binding.minTempCard.text = getString(R.string.minTempCard, todayHomeScreenDO.minTemperature)
         binding.maxTempCard.text = todayHomeScreenDO.maxTemperature.toString()
         binding.dateHomeScreen.text = todayHomeScreenDO.date.format(DateTimeFormatter.ISO_LOCAL_DATE)
         binding.precipitationHomeScreenRecyclerView.text = todayHomeScreenDO.rainfall.toString()
