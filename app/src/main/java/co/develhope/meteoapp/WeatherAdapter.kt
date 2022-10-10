@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import co.develhope.meteoapp.ForecastInfoObject.setIcon
 import org.threeten.bp.format.DateTimeFormatter
 
 class WeatherViewHolder (view : View): RecyclerView.ViewHolder (view){
@@ -36,11 +38,12 @@ class WeatherAdapter(val weather: List<CardInfo>): RecyclerView.Adapter<WeatherV
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.dayCard.text = weather[position].date.dayOfWeek.toString()
-        holder.minTempCard.text = weather[position].minTemperature.toString()
-        holder.maxTempCard.text = weather[position].maxTemperature.toString()
-        holder.dateHomeScreen.text = weather[position].date.format(DateTimeFormatter.ISO_LOCAL_DATE)
+        holder.minTempCard.text = holder.itemView.context.getString(R.string.minTempCard, weather[position].minTemperature)
+        holder.maxTempCard.text = holder.itemView.context.getString(R.string.maxTempCard, weather[position].maxTemperature)
+        holder.dateHomeScreen.text = holder.itemView.context.getString(R.string.dateHomeScreen, weather[position].date.dayOfMonth, weather[position].date.monthValue)
         holder.precipitationHomeScreenRecyclerView.text = weather[position].rainfall.toString()
         holder.windHomeScreenRecyclerView.text = weather[position].wind.toString()
+        holder.iconHomeScreenRecyclerView.setImageResource(ForecastInfoObject.setIcon(weather[position].weather))
     }
 
     override fun getItemCount(): Int {

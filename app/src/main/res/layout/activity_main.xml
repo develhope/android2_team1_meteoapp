@@ -24,7 +24,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="0dp"

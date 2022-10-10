@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.home -> replaceFragment(HomeScreen())
                 R.id.today -> replaceFragment(TodayScreen())
-                R.id.tomorrow -> replaceFragment(TomorrowScreen())
+                R.id.tomorrow -> replaceFragment(TodayScreen())
+                //Attenzione, per usare il terzo fragment rimpiazzare quest'ultima stringa con:
+                //R.id.tomorrow -> replaceFragment(TomorrowScreen())
 
                 else -> {
 
