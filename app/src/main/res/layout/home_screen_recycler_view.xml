@@ -107,7 +107,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/maxCard"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="6 Km/h"
+                android:text="@string/kmhWind"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>

@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.develhope.meteoapp.ForecastInfoObject.setIcon
+//import co.develhope.meteoapp.ForecastInfoObject.setIcon
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import org.threeten.bp.OffsetDateTime
-import org.threeten.bp.format.DateTimeFormatter
+//import org.threeten.bp.format.DateTimeFormatter
 
 
 class HomeScreen : Fragment() {
@@ -42,10 +42,18 @@ class HomeScreen : Fragment() {
         binding.dayCard.text = todayHomeScreenDO.date.dayOfWeek.toString()
         binding.minTempCard.text = getString(R.string.minTempCard, todayHomeScreenDO.minTemperature)
         binding.maxTempCard.text = getString(R.string.maxTempCard, todayHomeScreenDO.maxTemperature)
-        binding.dateHomeScreen.text = getString(R.string.dateHomeScreen, todayHomeScreenDO.date.dayOfMonth, todayHomeScreenDO.date.monthValue)
-        binding.precipitationHomeScreenRecyclerView.text = todayHomeScreenDO.rainfall.toString()
-        binding.windHomeScreenRecyclerView.text = todayHomeScreenDO.wind.toString()
-        binding.iconHomeScreenRecyclerView.setImageResource(ForecastInfoObject.setIcon(todayHomeScreenDO.weather))
+        binding.dateHomeScreen.text = getString(
+            R.string.dateHomeScreen,
+            todayHomeScreenDO.date.dayOfMonth,
+            todayHomeScreenDO.date.monthValue
+        )
+        binding.precipitationHomeScreenRecyclerView.text = getString(R.string.precipitationPercentage,todayHomeScreenDO.rainfall)
+        binding.windHomeScreenRecyclerView.text = getString(R.string.kmhWind,todayHomeScreenDO.wind)
+        binding.iconHomeScreenRecyclerView.setImageResource(
+            ForecastInfoObject.setIcon(
+                todayHomeScreenDO.weather
+            )
+        )
     }
 
     override fun onDestroy() {
