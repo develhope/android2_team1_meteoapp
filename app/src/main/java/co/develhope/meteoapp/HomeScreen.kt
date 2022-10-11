@@ -47,8 +47,8 @@ class HomeScreen : Fragment() {
             todayHomeScreenDO.date.dayOfMonth,
             todayHomeScreenDO.date.monthValue
         )
-        binding.precipitationHomeScreenRecyclerView.text = todayHomeScreenDO.rainfall.toString()
-        binding.windHomeScreenRecyclerView.text = todayHomeScreenDO.wind.toString()
+        binding.precipitationHomeScreenRecyclerView.text = getString(R.string.precipitationPercentage,todayHomeScreenDO.rainfall)
+        binding.windHomeScreenRecyclerView.text = getString(R.string.kmhWind,todayHomeScreenDO.wind)
         binding.iconHomeScreenRecyclerView.setImageResource(
             ForecastInfoObject.setIcon(
                 todayHomeScreenDO.weather
