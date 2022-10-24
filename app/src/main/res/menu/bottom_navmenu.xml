@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/home_title"
+    <item android:title="@string/navbar_home"
         android:id="@+id/home"
         android:icon="@drawable/home"/>
-    <item android:title="@string/today_title"
+    <item android:title="@string/navbar_today"
         android:id="@+id/today"
         android:icon="@drawable/calendar"/>
-    <item android:title="@string/tomorrow_title"
+    <item android:title="@string/navbar_tomorrow"
         android:id="@+id/tomorrow"
         android:icon="@drawable/calendar"/>
 </menu>

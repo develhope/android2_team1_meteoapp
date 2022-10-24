@@ -4,12 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0EFFF"
-    tools:context=".TomorrowScreen">
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/tomorrow_screen_content" />
-
-</FrameLayout>
+    tools:context=".TomorrowScreen"/>

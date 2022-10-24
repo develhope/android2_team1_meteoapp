@@ -36,26 +36,26 @@ class WeatherAdapter(val weather: List<CardInfo>) : RecyclerView.Adapter<Weather
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        holder.dayCard.text = weather[position].date.dayOfWeek.toString()
+        holder.dayCard.text = ForecastInfoObject.setDayOfWeek(weather[position].date.dayOfWeek.name)
         holder.minTempCard.text = holder.itemView.context.getString(
-            R.string.minTempCard,
+            R.string.rv_tv_min_temp_card,
             weather[position].minTemperature
         )
         holder.maxTempCard.text = holder.itemView.context.getString(
-            R.string.maxTempCard,
+            R.string.rv_tv_max_temp_card,
             weather[position].maxTemperature
         )
         holder.dateHomeScreen.text = holder.itemView.context.getString(
-            R.string.dateHomeScreen,
+            R.string.rv_tv_date,
             weather[position].date.dayOfMonth,
             weather[position].date.monthValue
         )
         holder.precipitationHomeScreenRecyclerView.text = holder.itemView.context.getString(
-            R.string.precipitationPercentage,
+            R.string.rv_tv_precip_percentage,
             weather[position].rainfall
         )
         holder.windHomeScreenRecyclerView.text =
-            holder.itemView.context.getString(R.string.kmhWind, weather[position].wind)
+            holder.itemView.context.getString(R.string.rv_tv_wind, weather[position].wind)
         holder.iconHomeScreenRecyclerView.setImageResource(ForecastInfoObject.setIcon(weather[position].weather))
     }
 

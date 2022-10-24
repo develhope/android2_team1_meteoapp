@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_margin_layout"
         android:layout_marginTop="@dimen/top_margin_home_screen"
-        android:text="@string/tvHomeTitle"
+        android:text="@string/tv_home_title"
         android:textColor="@color/white"
         android:textSize="@dimen/title_size"
         android:textStyle="bold"
@@ -31,7 +31,8 @@
         app:cardCornerRadius="@dimen/corner_cardview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle">
+        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle"
+        app:cardElevation="@dimen/cv_elevation">
 
         <RelativeLayout
             android:id="@+id/relativeLayoutHomeScreen"
@@ -44,7 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Tomorrow"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/precipitationPercentage"
+                android:text="@string/rv_tv_max_temp_card"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="@string/maxTempCard"
+                android:text="@string/rv_tv_max_temp_card"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/dayCard"
                 android:layout_alignParentStart="true"
-                android:text="@string/dateHomeScreen"
+                android:text="@string/rv_tv_date"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hour_second_third_screen_text_size" />
 
@@ -114,7 +114,7 @@
                 android:layout_below="@id/minCard"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="@string/precipitationHomeScreenTextView"
+                android:text="@string/rv_tv_precip_percentage"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -126,7 +126,7 @@
                 android:layout_below="@id/maxCard"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="@string/kmhWind"
+                android:text="@string/rv_tv_wind"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold" />
@@ -162,7 +162,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/padding_margin_layout"
         android:layout_marginTop="@dimen/distance_cv_tv_home_screen"
-        android:text="@string/tvNextDays"
+        android:text="@string/tv_next_five_days"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/description_second_third_screen_text_size"
