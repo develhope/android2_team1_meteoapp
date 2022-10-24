@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:firstBaselineToTopHeight="2dp"
-            android:text="@string/hour"
+            android:text="@string/rv_tv_hour"
             android:textSize="@dimen/hour_second_third_screen_text_size" />
 
         <ImageView

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.databinding.FragmentTodayScreenBinding
+import org.threeten.bp.OffsetDateTime
 
 
 class TodayScreen : Fragment() {
@@ -27,6 +28,13 @@ class TodayScreen : Fragment() {
         val adapter = TodayScreenAdapter(ForecastInfoObject.getTodayWeatherList())
         binding.todayRecyclerViewItem.adapter = adapter
         binding.todayRecyclerViewItem.layoutManager = LinearLayoutManager(context)
+
+        binding.TodayFullDate.text = getString(
+            R.string.rv_tv_day_month_date,
+            ForecastInfoObject.setDayOfWeek(OffsetDateTime.now().dayOfWeek.name),
+            OffsetDateTime.now().dayOfMonth,
+            ForecastInfoObject.setMonthName(OffsetDateTime.now().month.name)
+        )
 
 
     }

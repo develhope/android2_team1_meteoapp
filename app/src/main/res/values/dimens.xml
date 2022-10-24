@@ -19,4 +19,5 @@
     <dimen name="hour_second_third_screen_text_size">15sp</dimen>
     <dimen name="bottom_menu_text_size">8sp</dimen>
     <dimen name="corner_cardview">9dp</dimen>
+    <dimen name="cv_elevation">20dp</dimen>
 </resources>

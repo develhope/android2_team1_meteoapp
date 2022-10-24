@@ -48,5 +48,36 @@ object ForecastInfoObject {
         }
     }
 
+    fun setDayOfWeek (dayOfWeek: String): String {
+        return when (dayOfWeek) {
+            "MONDAY" -> "Monday"
+            "TUESDAY" -> "Tuesday"
+            "WEDNESDAY" -> "Wednesday"
+            "THURSDAY" -> "Thursday"
+            "FRIDAY" -> "Friday"
+            "SATURDAY" -> "Saturday"
+            "SUNDAY" -> "Sunday"
+            else -> "error"
+        }
+    }
+
+    fun setMonthName (month : String): String {
+        return when (month){
+            "JANUARY" -> "January"
+            "FEBRUARY" -> "February"
+            "MARCH" -> "March"
+            "APRIL" -> "April"
+            "MAY" -> "MAY"
+            "JUNE" -> "June"
+            "JULY" -> "July"
+            "AUGUST" -> "August"
+            "SEPTEMBER" -> "September"
+            "OCTOBER" -> "October"
+            "NOVEMBER" -> "November"
+            "DECEMBER" -> "December"
+            else -> "error"
+        }
+    }
+
 
 }

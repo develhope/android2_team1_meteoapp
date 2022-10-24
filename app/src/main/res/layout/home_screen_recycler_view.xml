@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_cardview_recycler_view"
         app:cardCornerRadius="@dimen/corner_cardview"
-        app:cardBackgroundColor="@color/cardview_color">
+        app:cardBackgroundColor="@color/cardview_color"
+        app:cardElevation="@dimen/cv_elevation">
 
         <RelativeLayout
             android:id="@+id/relativeLayoutHomeScreen"
@@ -32,7 +33,7 @@
                 android:id="@+id/minTempCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/minTempCard"
+                android:text="@string/rv_tv_min_temp_card"
                 android:layout_centerHorizontal="true"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
@@ -42,7 +43,7 @@
                 android:id="@+id/maxTempCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/maxTempCard"
+                android:text="@string/rv_tv_max_temp_card"
                 android:layout_alignParentEnd="true"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
@@ -52,7 +53,7 @@
                 android:id="@+id/dateHomeScreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dateHomeScreen"
+                android:text="@string/rv_tv_date"
                 android:layout_below="@id/dayCard"
                 android:layout_alignParentStart="true"
                 android:textSize="@dimen/hour_second_third_screen_text_size"
@@ -95,7 +96,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/minCard"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="@string/precipitationHomeScreenTextView"
+                android:text="@string/rv_tv_precip_percentage"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
@@ -107,7 +108,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/maxCard"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="@string/kmhWind"
+                android:text="@string/rv_tv_wind"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>

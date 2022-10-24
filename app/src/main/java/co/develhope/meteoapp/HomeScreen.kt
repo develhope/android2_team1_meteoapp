@@ -39,16 +39,16 @@ class HomeScreen : Fragment() {
         binding.weatherHomeScreenList.adapter = adapter
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
 
-        binding.dayCard.text = todayHomeScreenDO.date.dayOfWeek.toString()
-        binding.minTempCard.text = getString(R.string.minTempCard, todayHomeScreenDO.minTemperature)
-        binding.maxTempCard.text = getString(R.string.maxTempCard, todayHomeScreenDO.maxTemperature)
+        binding.dayCard.text = getString(R.string.cv_tv_today)
+        binding.minTempCard.text = getString(R.string.rv_tv_min_temp_card, todayHomeScreenDO.minTemperature)
+        binding.maxTempCard.text = getString(R.string.rv_tv_max_temp_card, todayHomeScreenDO.maxTemperature)
         binding.dateHomeScreen.text = getString(
-            R.string.dateHomeScreen,
+            R.string.rv_tv_date,
             todayHomeScreenDO.date.dayOfMonth,
             todayHomeScreenDO.date.monthValue
         )
-        binding.precipitationHomeScreenRecyclerView.text = getString(R.string.precipitationPercentage,todayHomeScreenDO.rainfall)
-        binding.windHomeScreenRecyclerView.text = getString(R.string.kmhWind,todayHomeScreenDO.wind)
+        binding.precipitationHomeScreenRecyclerView.text = getString(R.string.rv_tv_precip_percentage,todayHomeScreenDO.rainfall)
+        binding.windHomeScreenRecyclerView.text = getString(R.string.rv_tv_wind,todayHomeScreenDO.wind)
         binding.iconHomeScreenRecyclerView.setImageResource(
             ForecastInfoObject.setIcon(
                 todayHomeScreenDO.weather
