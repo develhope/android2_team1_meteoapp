@@ -1,61 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/src"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/todayHour"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/cv_elevation"
+        android:text="@string/rv_tv_hour"
+        android:textSize="@dimen/hour_second_third_screen_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/todayIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintBottom_toBottomOf="@id/todayHour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/todayHour"
+        tools:srcCompat="@drawable/sun" />
 
-        <TextView
-            android:id="@+id/todayHour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:firstBaselineToTopHeight="2dp"
-            android:text="@string/rv_tv_hour"
-            android:textSize="@dimen/hour_second_third_screen_text_size" />
+    <TextView
+        android:id="@+id/todayTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="29"
+        android:textSize="@dimen/temperature_humidity_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/todayIcon"
+        app:layout_constraintStart_toEndOf="@id/todayIcon"
+        app:layout_constraintTop_toTopOf="@id/todayIcon" />
+    <!--
+    <ImageView
+        android:id="@+id/dropIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/humidity_drop"
+        app:layout_constraintEnd_toStartOf="@id/todayPercentage"
+        app:layout_constraintTop_toTopOf="@id/todayIcon"
+        app:layout_constraintBottom_toBottomOf="@id/todayIcon"
+        android:layout_marginEnd="10dp"/>
+        -->
 
-        <ImageView
-            android:id="@+id/todayIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            tools:srcCompat="@drawable/sun" />
+    <TextView
+        android:id="@+id/todayPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="230dp"
+        android:drawablePadding="10dp"
+        android:text="0%"
+        android:textSize="@dimen/temperature_humidity_text_size"
+        app:drawableStartCompat="@drawable/humidity_drop"
+        app:layout_constraintBottom_toBottomOf="@id/todayIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/todayIcon" />
 
-        <TextView
-            android:id="@+id/todayTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="29"
-            android:textSize="@dimen/temperature_humidity_text_size"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/dropIcon"
-            android:layout_width="12dp"
-            android:layout_height="17dp"
-            android:layout_weight="1"
-            android:baselineAlignBottom="true"
-            app:srcCompat="@drawable/humidity_drop" />
-
-        <TextView
-            android:id="@+id/todayPercentage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="0%"
-            android:textSize="@dimen/temperature_humidity_text_size" />
-
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/lane"
@@ -63,7 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/todayIcon"
         app:srcCompat="@drawable/lane" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
