@@ -11,7 +11,7 @@ import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import org.threeten.bp.OffsetDateTime
 //import org.threeten.bp.format.DateTimeFormatter
 
-
+//TODO clean unused import
 class HomeScreen : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
     private val binding get() = bindingHomeScreen!!
@@ -21,7 +21,7 @@ class HomeScreen : Fragment() {
     //val month = Calendar.MONTH
     //resources.getString(R.string.tomorrow_date, dayOfMonth.toString(), month.toString()
 
-
+//TODO Removed unused and commented code
     val todayHomeScreenDO = CardInfo(OffsetDateTime.now(), 18, 22, 10, 20, Weather.CLOUDY)
 
 
@@ -35,10 +35,13 @@ class HomeScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //TODO this should be a function
         val adapter = WeatherAdapter(ForecastInfoObject.getWeatherList())
         binding.weatherHomeScreenList.adapter = adapter
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
 
+        //TODO this should be in the adapter
         binding.dayCard.text = getString(R.string.cv_tv_today)
         binding.minTempCard.text = getString(R.string.rv_tv_min_temp_card, todayHomeScreenDO.minTemperature)
         binding.maxTempCard.text = getString(R.string.rv_tv_max_temp_card, todayHomeScreenDO.maxTemperature)
@@ -56,6 +59,7 @@ class HomeScreen : Fragment() {
         )
     }
 
+    //TODO is needed?
     override fun onDestroy() {
         super.onDestroy()
     }
