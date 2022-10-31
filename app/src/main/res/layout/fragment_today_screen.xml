@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/padding_margin_layout"
     android:background="@color/white"
     tools:context=".TodayScreen">
 
@@ -17,6 +16,7 @@
         android:text="@string/tv_home_title"
         android:textColor="@color/blue"
         android:textSize="@dimen/hour_second_third_screen_text_size"
+        android:layout_marginStart="@dimen/padding_margin_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_today"
+        android:layout_marginStart="@dimen/padding_margin_layout"
         android:textColor="@color/blue"
         android:textSize="@dimen/list_day_home_screen_text_size"
         android:textStyle="bold"
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         tools:text="20 - 10 - 2022"
         android:textColor="@color/blue"
+        android:layout_marginStart="@dimen/padding_margin_layout"
         android:textSize="@dimen/list_day_home_screen_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_margin_layout"
+        android:layout_marginStart="@dimen/padding_margin_layout"
+        android:layout_marginEnd="@dimen/padding_margin_layout"
         android:clipToPadding="false"
         android:paddingBottom="160dp"
         app:layout_constraintEnd_toEndOf="parent"
