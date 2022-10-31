@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.time.OffsetDateTime
 
 class TodayScreenViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+    //TODO use binding instead of findviewbyid
     val todayHour: TextView
     val todayIcon: ImageView
     val todayTemperature: TextView

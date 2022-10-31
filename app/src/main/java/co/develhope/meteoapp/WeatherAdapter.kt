@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class WeatherViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    //TODO use binding instead of findviewbyId
     val dayCard: TextView
     val minTempCard: TextView
     val maxTempCard: TextView

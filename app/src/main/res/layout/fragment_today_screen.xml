@@ -35,7 +35,7 @@
         android:id="@+id/TodayFullDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/rv_tv_day_month_date"
+        tools:text="20 - 10 - 2022"
         android:textColor="@color/blue"
         android:textSize="@dimen/list_day_home_screen_text_size"
         android:textStyle="bold"

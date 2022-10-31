@@ -25,6 +25,7 @@ class TodayScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //TODO should be a separate function
         val adapter = TodayScreenAdapter(ForecastInfoObject.getTodayWeatherList())
         binding.todayRecyclerViewItem.adapter = adapter
         binding.todayRecyclerViewItem.layoutManager = LinearLayoutManager(context)

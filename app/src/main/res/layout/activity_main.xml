@@ -18,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navmenu">
 
+        <!-- Why a constraintLayout in the bottom navigation?-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"></androidx.constraintlayout.widget.ConstraintLayout>
