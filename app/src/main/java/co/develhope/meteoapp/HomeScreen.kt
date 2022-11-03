@@ -53,7 +53,7 @@ class HomeScreen : Fragment() {
     }
 
     fun adapterInstanceHomeScreen(){
-        val adapter = WeatherAdapter(ForecastInfoObject.getWeatherList())
+        val adapter = HomeScreenAdapter(ForecastInfoObject.getWeatherList())
         binding.weatherHomeScreenList.adapter = adapter
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
     }
