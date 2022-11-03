@@ -17,18 +17,14 @@ class TodayScreen : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         bindingTodayScreen = FragmentTodayScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO should be a separate function
-        val adapter = TodayScreenAdapter(ForecastInfoObject.getTodayWeatherList())
-        binding.todayRecyclerViewItem.adapter = adapter
-        binding.todayRecyclerViewItem.layoutManager = LinearLayoutManager(context)
+        adapterInstanceTodayScreen()
 
         binding.TodayFullDate.text = getString(
             R.string.rv_tv_day_month_date,
@@ -40,7 +36,9 @@ class TodayScreen : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    fun adapterInstanceTodayScreen(){
+        val adapter = TodayScreenAdapter(ForecastInfoObject.getTodayWeatherList())
+        binding.todayRecyclerViewItem.adapter = adapter
+        binding.todayRecyclerViewItem.layoutManager = LinearLayoutManager(context)
     }
 }
