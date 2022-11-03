@@ -15,19 +15,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.bottomNavigationView.setOnItemSelectedListener {
-
             when (it.itemId) {
-
                 R.id.home -> replaceFragment(HomeScreen())
                 R.id.today -> replaceFragment(TodayScreen())
                 R.id.tomorrow -> replaceFragment(TodayScreen())
                 //Attenzione, per usare il terzo fragment rimpiazzare quest'ultima stringa con:
                 //R.id.tomorrow -> replaceFragment(TomorrowScreen())
-
-                else -> {
-                    //TODO is needed?
-                }
-
             }
             true
         }
@@ -35,11 +28,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
-
     }
 }
