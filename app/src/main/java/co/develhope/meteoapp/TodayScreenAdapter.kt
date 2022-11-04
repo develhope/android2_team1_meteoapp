@@ -16,8 +16,8 @@ class TodayScreenAdapter(private val todayList: List<TodayCardInfo>) :
         with(holder){
             binding.todayHour.text = holder.itemView.context.getString(R.string.rv_tv_hour, todayList[position].date.hour)
             binding.todayIcon.setImageResource(ForecastInfoObject.setIcon(todayList[position].weather))
-            binding.todayTemperature.text = todayList[position].temperature.toString()
-            binding.todayPercentage.text = todayList[position].rainfall.toString()
+            binding.todayTemperature.text = holder.itemView.context.getString(R.string.rv_tv_max_temp_card,todayList[position].temperature)
+            binding.todayPercentage.text = holder.itemView.context.getString(R.string.rv_tv_precip_percentage,todayList[position].rainfall)
         }
     }
 
