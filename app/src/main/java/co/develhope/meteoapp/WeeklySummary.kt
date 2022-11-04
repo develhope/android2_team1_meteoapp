@@ -26,19 +26,6 @@ data class WeeklySummary(
     val utcOffsetSeconds: Int
 )
 
-data class CurrentWeather(
-    @SerializedName("temperature")
-    val temperature: Double,
-    @SerializedName("time")
-    val time: String,
-    @SerializedName("weathercode")
-    val weathercode: Int,
-    @SerializedName("winddirection")
-    val winddirection: Double,
-    @SerializedName("windspeed")
-    val windspeed: Double
-)
-
 data class Daily(
     @SerializedName("precipitation_sum")
     val precipitationSum: List<Double>,
