@@ -2,8 +2,11 @@ package co.develhope.meteoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import co.develhope.meteoapp.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,12 +22,22 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeScreen())
                 R.id.today -> replaceFragment(TodayScreen())
                 R.id.tomorrow -> replaceFragment(TodayScreen())
-                //Attenzione, per usare il terzo fragment rimpiazzare quest'ultima stringa con:
-                //R.id.tomorrow -> replaceFragment(TomorrowScreen())
             }
             true
         }
         replaceFragment(HomeScreen())
+
+        lifecycleScope.launch{
+            try {
+                Log.d("ForecastLog", "hourly: ${
+                    ForecastInfoObject.service.getHourlyForecastForASpecificDay()}")
+
+                Log.d("ForecastLog", "weekly: ${ForecastInfoObject.service.getWeeklyForecastForAWeek()}")
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+
     }
 
     private fun replaceFragment(fragment: Fragment) {

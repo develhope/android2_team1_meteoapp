@@ -1,6 +1,10 @@
 package co.develhope.meteoapp
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.threeten.bp.OffsetDateTime
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 object ForecastInfoObject {
 
@@ -79,5 +83,17 @@ object ForecastInfoObject {
         }
     }
 
+    val logging = HttpLoggingInterceptor()
+    val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
+
+    val retrofit = Retrofit.Builder()
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl("https://api.open-meteo.com")
+        .build()
+
+    val service = retrofit.create(HourlyForecastApiService::class.java)
 
 }
