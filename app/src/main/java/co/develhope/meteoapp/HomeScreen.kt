@@ -31,31 +31,35 @@ class HomeScreen : Fragment() {
         adapterInstanceHomeScreen()
 
         //TODO this should be in the adapter
-        binding.dayCard.text = getString(R.string.cv_tv_today)
-        binding.minTempCard.text =
-            getString(R.string.rv_tv_min_temp_card, todayHomeScreenDO.minTemperature)
-        binding.maxTempCard.text =
-            getString(R.string.rv_tv_max_temp_card, todayHomeScreenDO.maxTemperature)
-        binding.dateHomeScreen.text = getString(
-            R.string.rv_tv_date,
-            todayHomeScreenDO.date.dayOfMonth,
-            todayHomeScreenDO.date.monthValue
-        )
-        binding.precipitationHomeScreenRecyclerView.text =
-            getString(R.string.rv_tv_precip_percentage, todayHomeScreenDO.rainfall)
-        binding.windHomeScreenRecyclerView.text =
-            getString(R.string.rv_tv_wind, todayHomeScreenDO.wind)
-        binding.iconHomeScreenRecyclerView.setImageResource(
-            ForecastInfoObject.setIcon(
-                todayHomeScreenDO.weather
-            )
-        )
+        setTodayCardDetails()
     }
 
     fun adapterInstanceHomeScreen(){
         val adapter = HomeScreenAdapter(ForecastInfoObject.getWeatherList())
         binding.weatherHomeScreenList.adapter = adapter
         binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun setTodayCardDetails(){
+        binding.includeItem.dayCard.text = getString(R.string.cv_tv_today)
+        binding.includeItem.minTempCard.text =
+            getString(R.string.rv_tv_min_temp_card, todayHomeScreenDO.minTemperature)
+        binding.includeItem.maxTempCard.text =
+            getString(R.string.rv_tv_max_temp_card, todayHomeScreenDO.maxTemperature)
+        binding.includeItem.dateHomeScreen.text = getString(
+            R.string.rv_tv_date,
+            todayHomeScreenDO.date.dayOfMonth,
+            todayHomeScreenDO.date.monthValue
+        )
+        binding.includeItem.precipitationHomeScreenRecyclerView.text =
+            getString(R.string.rv_tv_precip_percentage, todayHomeScreenDO.rainfall)
+        binding.includeItem.windHomeScreenRecyclerView.text =
+            getString(R.string.rv_tv_wind, todayHomeScreenDO.wind)
+        binding.includeItem.iconHomeScreenRecyclerView.setImageResource(
+            ForecastInfoObject.setIcon(
+                todayHomeScreenDO.weather
+            )
+        )
     }
 }
 
