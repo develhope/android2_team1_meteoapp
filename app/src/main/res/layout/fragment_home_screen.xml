@@ -21,140 +21,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvHomeScreenToday"
+    <include
+        android:id="@+id/include_item"
+        layout="@layout/home_screen_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_margin_layout"
-        android:layout_marginTop="@dimen/margin_title_table_home_screen"
-        app:cardBackgroundColor="@color/cardview_color"
-        app:cardCornerRadius="@dimen/corner_cardview"
+        android:layout_marginStart="@dimen/padding_margin_layout"
+        android:layout_marginEnd="@dimen/padding_margin_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle"
-        app:cardElevation="@dimen/cv_elevation">
-
-        <RelativeLayout
-            android:id="@+id/relativeLayoutHomeScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_margin_layout">
-
-            <TextView
-                android:id="@+id/dayCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/minTempCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="@string/rv_tv_max_temp_card"
-                android:textColor="@color/white"
-                android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/maxTempCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/rv_tv_max_temp_card"
-                android:textColor="@color/white"
-                android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/dateHomeScreen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dayCard"
-                android:layout_alignParentStart="true"
-                android:text="@string/rv_tv_date"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hour_second_third_screen_text_size" />
-
-            <TextView
-                android:id="@+id/minCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/minTempCard"
-                android:layout_centerHorizontal="true"
-                android:text="min"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hour_second_third_screen_text_size" />
-
-            <TextView
-                android:id="@+id/maxCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/maxTempCard"
-                android:layout_alignParentEnd="true"
-                android:text="max"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hour_second_third_screen_text_size" />
-
-            <ImageView
-                android:id="@+id/iconHomeScreenRecyclerView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/dateHomeScreen"
-                android:layout_marginTop="@dimen/padding_margin_layout"
-                tools:srcCompat="@drawable/sun_cloud" />
-
-            <TextView
-                android:id="@+id/precipitationHomeScreenRecyclerView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/minCard"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="@string/rv_tv_precip_percentage"
-                android:textColor="@color/white"
-                android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/windHomeScreenRecyclerView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/maxCard"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/padding_margin_layout"
-                android:text="@string/rv_tv_wind"
-                android:textColor="@color/white"
-                android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/precipitationTextHomeScreenRecyclerView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/precipitationHomeScreenRecyclerView"
-                android:layout_centerHorizontal="true"
-                android:text="precip."
-                android:textColor="@color/white"
-                android:textSize="@dimen/hour_second_third_screen_text_size" />
-
-            <TextView
-                android:id="@+id/windTextHomeScreenRecyclerView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/windHomeScreenRecyclerView"
-                android:layout_alignParentEnd="true"
-                android:text="wind"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hour_second_third_screen_text_size" />
-
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle" />
 
     <TextView
         android:id="@+id/tvNextDays"
@@ -168,7 +44,7 @@
         android:textSize="@dimen/description_second_third_screen_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvHomeScreenToday" />
+        app:layout_constraintTop_toBottomOf="@id/include_item" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weatherHomeScreenList"
@@ -181,4 +57,6 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvNextDays"
         tools:listitem="@layout/home_screen_recycler_view" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
