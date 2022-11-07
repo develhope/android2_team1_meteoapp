@@ -3,9 +3,6 @@ package co.develhope.meteoapp
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.develhope.meteoapp.ForecastInfoObject.TYPE_NEXT_5_DAYS
-import co.develhope.meteoapp.ForecastInfoObject.TYPE_TITLE_HOME_SCREEN
-import co.develhope.meteoapp.ForecastInfoObject.TYPE_WEEKLY_FORECAST_CARDVIEW
 import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.WeeklyForecastItemBinding
@@ -13,9 +10,59 @@ import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
 class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private val TYPE_TITLE_HOME_SCREEN = 0
+    private val TYPE_WEEKLY_FORECAST_CARDVIEW = 1
+    private val TYPE_NEXT_5_DAYS = 2
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            TYPE_TITLE_HOME_SCREEN -> TitleViewHolder(
+                TitleHomeScreenItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            TYPE_WEEKLY_FORECAST_CARDVIEW -> WeeklyForecastViewHolder(
+                WeeklyForecastItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            TYPE_NEXT_5_DAYS -> Next5DaysViewHolder(
+                Next5daysHomeScreenItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            else -> throw java.lang.IllegalArgumentException("Invalid View Type")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is TitleViewHolder -> holder.bind(list[position] as HomeScreenItem.Title)
+            is WeeklyForecastViewHolder -> holder.bind(list[position] as HomeScreenItem.ForecastDetails)
+            is Next5DaysViewHolder -> holder.bind(list[position] as HomeScreenItem.SubTitle)
+
+        }
+    }
+
+    override fun getItemCount(): Int = list.size
+
+    override fun getItemViewType(position: Int): Int {
+        return when (list[position]) {
+            is HomeScreenItem.Title -> TYPE_TITLE_HOME_SCREEN
+            is HomeScreenItem.ForecastDetails -> TYPE_WEEKLY_FORECAST_CARDVIEW
+            is HomeScreenItem.SubTitle -> TYPE_NEXT_5_DAYS
+        }
+    }
+
     class TitleViewHolder(val titleBinding: TitleHomeScreenItemBinding) :
         RecyclerView.ViewHolder(titleBinding.root) {
-        fun bind(title: HomeScreenItem.TitleHomeScreen) {
+        fun bind(title: HomeScreenItem.Title) {
             titleBinding.tvHomeTitle.text =
                 itemView.context.getString(R.string.rv_title, title.city, title.region)
         }
@@ -23,7 +70,7 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.A
 
     class WeeklyForecastViewHolder(val weeklyBinding: WeeklyForecastItemBinding) :
         RecyclerView.ViewHolder(weeklyBinding.root) {
-        fun bind(weeklyForecast: HomeScreenItem.CardInfo) {
+        fun bind(weeklyForecast: HomeScreenItem.ForecastDetails) {
             weeklyBinding.dateHomeScreen.text = itemView.context.getString(
                 R.string.rv_tv_date,
                 weeklyForecast.date.dayOfMonth,
@@ -56,65 +103,9 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.A
 
     class Next5DaysViewHolder(val next5DaysBinding: Next5daysHomeScreenItemBinding) :
         RecyclerView.ViewHolder(next5DaysBinding.root) {
-        fun bind(next5Days: HomeScreenItem.Next5DaysHomeScreen) {
+        fun bind(next5Days: HomeScreenItem.SubTitle) {
             next5DaysBinding.tvNextDays.text =
                 itemView.context.getString(R.string.rv_next_5_days, next5Days.next5Days)
         }
-    }
-
-    private val itemList = arrayListOf<Any>()
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when (viewType) {
-            TYPE_TITLE_HOME_SCREEN -> TitleViewHolder(
-                TitleHomeScreenItemBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            )
-            TYPE_WEEKLY_FORECAST_CARDVIEW -> WeeklyForecastViewHolder(
-                WeeklyForecastItemBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            )
-            TYPE_NEXT_5_DAYS -> Next5DaysViewHolder(
-                Next5daysHomeScreenItemBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            )
-            else -> throw java.lang.IllegalArgumentException("Invalid View Type")
-        }
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder) {
-            is TitleViewHolder -> holder.bind(itemList[position] as HomeScreenItem.TitleHomeScreen)
-            is WeeklyForecastViewHolder -> holder.bind(itemList[position] as HomeScreenItem.CardInfo)
-            is Next5DaysViewHolder -> holder.bind(itemList[position] as HomeScreenItem.Next5DaysHomeScreen)
-
-        }
-    }
-
-    override fun getItemCount(): Int = itemList.size
-
-    override fun getItemViewType(position: Int): Int {
-        return when (itemList[position]) {
-            is HomeScreenItem.TitleHomeScreen -> TYPE_TITLE_HOME_SCREEN
-            is HomeScreenItem.CardInfo -> TYPE_WEEKLY_FORECAST_CARDVIEW
-            is HomeScreenItem.Next5DaysHomeScreen -> TYPE_NEXT_5_DAYS
-            else -> throw java.lang.IllegalArgumentException("Invalid Item")
-        }
-    }
-
-    fun updateList(updateList: List<Any>) {
-        itemList.clear()
-        itemList.addAll(updateList)
-        notifyDataSetChanged()
     }
 }

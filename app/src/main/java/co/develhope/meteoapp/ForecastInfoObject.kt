@@ -11,9 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ForecastInfoObject {
 
-    const val TYPE_TITLE_HOME_SCREEN = 0
-    const val TYPE_WEEKLY_FORECAST_CARDVIEW = 1
-    const val TYPE_NEXT_5_DAYS = 2
+
 
 
 
