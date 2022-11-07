@@ -12,23 +12,23 @@ object ForecastInfoObject {
     const val TYPE_WEEKLY_FORECAST_CARDVIEW = 1
     const val TYPE_NEXT_5_DAYS = 2
 
-    fun getHomeScreenItem(): ArrayList<Any>{
-        val homeScreenList = arrayListOf<Any>()
+//    fun getHomeScreenItem(): List<Any>{
+//        val homeScreenList = arrayListOf<Any>()
+//
+//        homeScreenList.add(HomeScreenRecyclerView.TitleHomeScreen("Rome", "Lazio"))
+//        homeScreenList.add(HomeScreenRecyclerView.CardInfo(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
+//        homeScreenList.add(HomeScreenRecyclerView.Next5DaysHomeScreen("Next 5 Days"))
+//        homeScreenList.add(getWeatherList())
+//
+//        return homeScreenList
+//    }
 
-        homeScreenList.add(HomeScreenRecyclerView.TitleHomeScreen("Rome", "Lazio"))
-        homeScreenList.add(HomeScreenRecyclerView.CardInfo(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
-        homeScreenList.add(HomeScreenRecyclerView.Next5DaysHomeScreen("Next 5 Days"))
-        homeScreenList.add(getWeatherList())
-
-        return homeScreenList
-    }
-
-    private val weatherList: List<Any> = listOf(
-        HomeScreenRecyclerView.CardInfo(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
-        HomeScreenRecyclerView.CardInfo(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
-        HomeScreenRecyclerView.CardInfo(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN),
-        HomeScreenRecyclerView.CardInfo(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY),
-        HomeScreenRecyclerView.CardInfo(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY)
+    private val weatherList: List<CardInfo> = listOf(
+        HomeScreenItem.CardInfo(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
+        HomeScreenItem.CardInfo(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
+        HomeScreenItem.CardInfo(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN),
+        HomeScreenItem.CardInfo(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY),
+        HomeScreenItem.CardInfo(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY)
     )
 
     private val todayWeatherList: List<TodayCardInfo> = listOf(
@@ -47,7 +47,7 @@ object ForecastInfoObject {
         TodayCardInfo(OffsetDateTime.now().plusHours(12), Weather.FOGGY, 26, 98)
     )
 
-    fun getWeatherList(): List<Any> {
+    fun getWeatherList(): List<CardInfo> {
         return weatherList
     }
 

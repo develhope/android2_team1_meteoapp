@@ -14,7 +14,7 @@ class HomeScreenAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class TitleViewHolder(val titleBinding: TitleHomeScreenItemBinding) :
         RecyclerView.ViewHolder(titleBinding.root) {
-        fun bind(title: HomeScreenRecyclerView.TitleHomeScreen) {
+        fun bind(title: HomeScreenItem.TitleHomeScreen) {
             titleBinding.tvHomeTitle.text =
                 itemView.context.getString(R.string.rv_title, title.city, title.region)
         }
@@ -22,7 +22,7 @@ class HomeScreenAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class WeeklyForecastViewHolder(val weeklyBinding: WeeklyForecastItemBinding) :
         RecyclerView.ViewHolder(weeklyBinding.root) {
-        fun bind(weeklyForecast: HomeScreenRecyclerView.CardInfo) {
+        fun bind(weeklyForecast: HomeScreenItem.CardInfo) {
             weeklyBinding.dateHomeScreen.text = itemView.context.getString(
                 R.string.rv_tv_date,
                 weeklyForecast.date.dayOfMonth,
@@ -55,7 +55,7 @@ class HomeScreenAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class Next5DaysViewHolder(val next5DaysBinding: Next5daysHomeScreenItemBinding) :
         RecyclerView.ViewHolder(next5DaysBinding.root) {
-        fun bind(next5Days: HomeScreenRecyclerView.Next5DaysHomeScreen) {
+        fun bind(next5Days: HomeScreenItem.Next5DaysHomeScreen) {
             next5DaysBinding.tvNextDays.text =
                 itemView.context.getString(R.string.rv_next_5_days, next5Days.next5Days)
         }
@@ -93,9 +93,9 @@ class HomeScreenAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is TitleViewHolder -> holder.bind(itemList[position] as HomeScreenRecyclerView.TitleHomeScreen)
-            is WeeklyForecastViewHolder -> holder.bind(itemList[position] as HomeScreenRecyclerView.CardInfo)
-            is Next5DaysViewHolder -> holder.bind(itemList[position] as HomeScreenRecyclerView.Next5DaysHomeScreen)
+            is TitleViewHolder -> holder.bind(itemList[position] as HomeScreenItem.TitleHomeScreen)
+            is WeeklyForecastViewHolder -> holder.bind(itemList[position] as HomeScreenItem.CardInfo)
+            is Next5DaysViewHolder -> holder.bind(itemList[position] as HomeScreenItem.Next5DaysHomeScreen)
 
         }
     }
@@ -104,9 +104,9 @@ class HomeScreenAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return when (itemList[position]) {
-            is HomeScreenRecyclerView.TitleHomeScreen -> TYPE_TITLE_HOME_SCREEN
-            is HomeScreenRecyclerView.CardInfo -> TYPE_WEEKLY_FORECAST_CARDVIEW
-            is HomeScreenRecyclerView.Next5DaysHomeScreen -> TYPE_NEXT_5_DAYS
+            is HomeScreenItem.TitleHomeScreen -> TYPE_TITLE_HOME_SCREEN
+            is HomeScreenItem.CardInfo -> TYPE_WEEKLY_FORECAST_CARDVIEW
+            is HomeScreenItem.Next5DaysHomeScreen -> TYPE_NEXT_5_DAYS
             else -> throw java.lang.IllegalArgumentException("Invalid Item")
         }
     }
