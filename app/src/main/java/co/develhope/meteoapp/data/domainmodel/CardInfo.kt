@@ -1,6 +1,5 @@
 package co.develhope.meteoapp.data.domainmodel
 
-import co.develhope.meteoapp.Weather
 import org.threeten.bp.OffsetDateTime
 
 data class CardInfo(

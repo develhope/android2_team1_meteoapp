@@ -3,6 +3,7 @@ package co.develhope.meteoapp
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.databinding.TodayRecyclerViewItemBinding
 
 class TodayScreenAdapter(private val todayList: List<TodayCardInfo>) :
