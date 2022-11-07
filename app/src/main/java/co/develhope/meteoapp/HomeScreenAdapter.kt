@@ -9,8 +9,9 @@ import co.develhope.meteoapp.ForecastInfoObject.TYPE_WEEKLY_FORECAST_CARDVIEW
 import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.WeeklyForecastItemBinding
+import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
-class HomeScreenAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class TitleViewHolder(val titleBinding: TitleHomeScreenItemBinding) :
         RecyclerView.ViewHolder(titleBinding.root) {
