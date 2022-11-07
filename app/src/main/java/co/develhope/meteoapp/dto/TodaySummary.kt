@@ -1,4 +1,5 @@
 package co.develhope.meteoapp
+import co.develhope.meteoapp.dto.CurrentWeather
 import com.google.gson.annotations.SerializedName
 
 

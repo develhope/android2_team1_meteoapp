@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("ForecastLog", "hourly: ${
                     ForecastInfoObject.service.getHourlyForecastForASpecificDay()}")
 
-                Log.d("ForecastLog", "weekly: ${ForecastInfoObject.service.getWeeklyForecastForAWeek()}")
+                Log.d("ForecastLog", "weekly: ${ForecastInfoObject.getWeeklySummary()}")
             } catch (e: Exception){
                 e.printStackTrace()
             }

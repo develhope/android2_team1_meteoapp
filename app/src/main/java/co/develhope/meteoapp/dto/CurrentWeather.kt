@@ -1,4 +1,4 @@
-package co.develhope.meteoapp
+package co.develhope.meteoapp.dto
 
 import com.google.gson.annotations.SerializedName
 
@@ -13,4 +13,8 @@ data class CurrentWeather(
     val winddirection: Double,
     @SerializedName("windspeed")
     val windspeed: Double
-)
+) {
+    fun toDomain(){
+
+    }
+}

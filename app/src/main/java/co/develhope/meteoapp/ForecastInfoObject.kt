@@ -94,6 +94,10 @@ object ForecastInfoObject {
         .baseUrl("https://api.open-meteo.com")
         .build()
 
-    val service = retrofit.create(HourlyForecastApiService::class.java)
+    val service = retrofit.create(ForecastApiService::class.java)
+
+    suspend fun getWeeklySummary(): CardInfo? {
+        return service.getWeeklyForecast().body()?.daily?.toDomain()
+    }
 
 }
