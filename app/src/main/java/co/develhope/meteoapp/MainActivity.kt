@@ -30,11 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch{
             try {
-                Log.d("ForecastLog", "hourly: ${
-                    NetworkObject.getHourlyForecastForASpecificDay()}")
-
                 Log.d("ForecastLog", "weekly: ${NetworkObject.getWeeklySummary()}")
-            } catch (e: Exception){
+                Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
+           } catch (e: Exception){
                 e.printStackTrace()
                 Log.d("ForecastLog", e.toString())
             }
