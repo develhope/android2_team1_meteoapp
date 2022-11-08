@@ -42,13 +42,13 @@ data class WeeklySummary(
         @SerializedName("temperature_2m_min")
         val temperature2mMin: List<Double>,
         @SerializedName("time")
-        val time: List<String>,
+        val time: List<OffsetDateTime>,
         @SerializedName("weathercode")
         val weathercode: List<Int>
     ) {
         fun toDomain(): CardInfo {
             return CardInfo(
-                date = OffsetDateTime.now(), //time.first(),
+                date = time.first(),
                 minTemperature = temperature2mMin.first().toInt(),
                 maxTemperature = temperature2mMax.first().toInt(),
                 rainfall = rainSum.first().toInt(),

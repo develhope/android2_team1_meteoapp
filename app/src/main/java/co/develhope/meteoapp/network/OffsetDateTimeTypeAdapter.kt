@@ -9,6 +9,7 @@ import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.format.DateTimeFormatterBuilder
 import java.lang.reflect.Type
 
 
@@ -19,16 +20,22 @@ class OffsetDateTimeTypeAdapter : JsonSerializer<OffsetDateTime>, JsonDeserializ
         src: OffsetDateTime,
         typeOfSrc: Type,
         context: JsonSerializationContext
-    ): JsonElement = JsonPrimitive(FORMATTER.format(src))
+    ): JsonElement = JsonPrimitive(singleFormatter.format(src))
 
     @Throws(JsonParseException::class)
     override fun deserialize(
         json: JsonElement,
         typeOfT: Type,
         context: JsonDeserializationContext
-    ): OffsetDateTime = FORMATTER.parse(json.asString, OffsetDateTime.FROM)
+    ): OffsetDateTime = singleFormatter.parse(json.asString, OffsetDateTime.FROM)
 
     companion object {
-        private val FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+        private val FORMATTER = DateTimeFormatter.ISO_DATE
+
+        private val singleFormatter: DateTimeFormatter = DateTimeFormatterBuilder()
+            .append(DateTimeFormatter.ofPattern("YYYY-MM-ddHHmm"))
+            .append(DateTimeFormatter.ISO_DATE)
+            .toFormatter()
+
     }
 }

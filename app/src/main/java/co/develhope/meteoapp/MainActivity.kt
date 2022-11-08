@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
 
                 Log.d("ForecastLog", "weekly: ${NetworkObject.getWeeklySummary()}")
             } catch (e: Exception){
-                //TODO inserire un log leggibile mas oprattuto ricercabile facilmente in logcatn
                 e.printStackTrace()
+                Log.d("ForecastLog", e.toString())
             }
         }
 
