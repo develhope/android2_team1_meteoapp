@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import co.develhope.meteoapp.databinding.ActivityMainBinding
+import co.develhope.meteoapp.network.NetworkObject
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -30,10 +31,11 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch{
             try {
                 Log.d("ForecastLog", "hourly: ${
-                    ForecastInfoObject.service.getHourlyForecastForASpecificDay()}")
+                    NetworkObject.getHourlyForecastForASpecificDay()}")
 
-                Log.d("ForecastLog", "weekly: ${ForecastInfoObject.getWeeklySummary()}")
+                Log.d("ForecastLog", "weekly: ${NetworkObject.getWeeklySummary()}")
             } catch (e: Exception){
+                //TODO inserire un log leggibile mas oprattuto ricercabile facilmente in logcatn
                 e.printStackTrace()
             }
         }

@@ -1,5 +1,6 @@
-package co.develhope.meteoapp
+package co.develhope.meteoapp.network
 
+import co.develhope.meteoapp.TodaySummary
 import co.develhope.meteoapp.dto.WeeklySummary
 import retrofit2.Response
 import retrofit2.http.GET
