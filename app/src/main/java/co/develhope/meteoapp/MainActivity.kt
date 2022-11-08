@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
