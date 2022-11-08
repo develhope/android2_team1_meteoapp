@@ -42,13 +42,12 @@ class OffsetDateTimeTypeAdapter : JsonSerializer<OffsetDateTime>, JsonDeserializ
             val date = LocalDate.parse(string)
                 .atStartOfDay(ZoneOffset.UTC)
 
-
             Log.d("TypeAdapter without time", "$date")
             date.toOffsetDateTime()
         }
     }
 
     companion object {
-        private val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+        private val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
     }
 }
