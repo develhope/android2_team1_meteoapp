@@ -2,33 +2,110 @@ package co.develhope.meteoapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
 import androidx.recyclerview.widget.RecyclerView
-import co.develhope.meteoapp.databinding.HomeScreenRecyclerViewBinding
+import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
+import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
+import co.develhope.meteoapp.databinding.WeeklyForecastItemBinding
+import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
-class HomeScreenAdapter(private val weather: List<CardInfo>) : RecyclerView.Adapter<HomeScreenAdapter.HomeScreenAdapterViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeScreenAdapterViewHolder {
-        val binding = HomeScreenRecyclerViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HomeScreenAdapterViewHolder(binding)
-    }
+class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onBindViewHolder(holder: HomeScreenAdapterViewHolder, position: Int) {
-        with(holder){
-            binding.dayCard.text = ForecastInfoObject.setDayOfWeek(weather[position].date.dayOfWeek.name)
-            binding.minTempCard.text = holder.itemView.context.getString(R.string.rv_tv_min_temp_card, weather[position].minTemperature)
-            binding.maxTempCard.text = holder.itemView.context.getString(R.string.rv_tv_max_temp_card, weather[position].maxTemperature)
-            binding.dateHomeScreen.text = holder.itemView.context.getString(R.string.rv_tv_date, weather[position].date.dayOfMonth, weather[position].date.monthValue)
-            binding.precipitationHomeScreenRecyclerView.text = holder.itemView.context.getString(R.string.rv_tv_precip_percentage, weather[position].rainfall)
-            binding.windHomeScreenRecyclerView.text = holder.itemView.context.getString(R.string.rv_tv_wind, weather[position].wind)
-            binding.iconHomeScreenRecyclerView.setImageResource(ForecastInfoObject.setIcon(weather[position].weather))
+    private val TYPE_TITLE_HOME_SCREEN = 0
+    private val TYPE_WEEKLY_FORECAST_CARDVIEW = 1
+    private val TYPE_NEXT_5_DAYS = 2
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            TYPE_TITLE_HOME_SCREEN -> TitleViewHolder(
+                TitleHomeScreenItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            TYPE_WEEKLY_FORECAST_CARDVIEW -> WeeklyForecastViewHolder(
+                WeeklyForecastItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            TYPE_NEXT_5_DAYS -> Next5DaysViewHolder(
+                Next5daysHomeScreenItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            else -> throw java.lang.IllegalArgumentException("Invalid View Type")
         }
     }
 
-    override fun getItemCount(): Int {
-        return weather.size
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is TitleViewHolder -> holder.bind(list[position] as HomeScreenItem.Title)
+            is WeeklyForecastViewHolder -> holder.bind(list[position] as HomeScreenItem.ForecastDetails)
+            is Next5DaysViewHolder -> holder.bind(list[position] as HomeScreenItem.SubTitle)
+
+        }
     }
 
-    inner class HomeScreenAdapterViewHolder(val binding: HomeScreenRecyclerViewBinding)
-        :RecyclerView.ViewHolder(binding.root)
+    override fun getItemCount(): Int = list.size
 
+    override fun getItemViewType(position: Int): Int {
+        return when (list[position]) {
+            is HomeScreenItem.Title -> TYPE_TITLE_HOME_SCREEN
+            is HomeScreenItem.ForecastDetails -> TYPE_WEEKLY_FORECAST_CARDVIEW
+            is HomeScreenItem.SubTitle -> TYPE_NEXT_5_DAYS
+        }
+    }
+
+    class TitleViewHolder(val titleBinding: TitleHomeScreenItemBinding) :
+        RecyclerView.ViewHolder(titleBinding.root) {
+        fun bind(title: HomeScreenItem.Title) {
+            titleBinding.tvHomeTitle.text =
+                itemView.context.getString(R.string.rv_title, title.city, title.region)
+        }
+    }
+
+    class WeeklyForecastViewHolder(val weeklyBinding: WeeklyForecastItemBinding) :
+        RecyclerView.ViewHolder(weeklyBinding.root) {
+        fun bind(weeklyForecast: HomeScreenItem.ForecastDetails) {
+            weeklyBinding.dateHomeScreen.text = itemView.context.getString(
+                R.string.rv_tv_date,
+                weeklyForecast.date.dayOfMonth,
+                weeklyForecast.date.monthValue
+            )
+            weeklyBinding.dayCard.text =
+                ForecastInfoObject.setDayOfWeek(weeklyForecast.date.dayOfWeek.name)
+            weeklyBinding.iconHomeScreenRecyclerView.setImageResource(
+                ForecastInfoObject.setIcon(
+                    weeklyForecast.weather
+                )
+            )
+            weeklyBinding.maxTempCard.text = itemView.context.getString(
+                R.string.rv_tv_max_temp_card,
+                weeklyForecast.maxTemperature
+            )
+            weeklyBinding.minTempCard.text = itemView.context.getString(
+                R.string.rv_tv_min_temp_card,
+                weeklyForecast.minTemperature
+            )
+            weeklyBinding.precipitationHomeScreenRecyclerView.text = itemView.context.getString(
+                R.string.rv_tv_precip_percentage,
+                weeklyForecast.rainfall
+            )
+            weeklyBinding.windHomeScreenRecyclerView.text =
+                itemView.context.getString(R.string.rv_tv_wind, weeklyForecast.wind)
+
+        }
+    }
+
+    class Next5DaysViewHolder(val next5DaysBinding: Next5daysHomeScreenItemBinding) :
+        RecyclerView.ViewHolder(next5DaysBinding.root) {
+        fun bind(next5Days: HomeScreenItem.SubTitle) {
+            next5DaysBinding.tvNextDays.text =
+                itemView.context.getString(R.string.rv_next_5_days, next5Days.next5Days)
+        }
+    }
 }

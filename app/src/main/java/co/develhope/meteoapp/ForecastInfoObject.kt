@@ -1,5 +1,8 @@
 package co.develhope.meteoapp
 
+import co.develhope.meteoapp.data.domainmodel.CardInfo
+import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
+import co.develhope.meteoapp.data.domainmodel.Weather
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.threeten.bp.OffsetDateTime
@@ -7,6 +10,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ForecastInfoObject {
+
+
+
+
 
     private val weatherList: List<CardInfo> = listOf(
         CardInfo(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),

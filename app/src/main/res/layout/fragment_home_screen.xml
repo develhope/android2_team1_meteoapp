@@ -23,7 +23,7 @@
 
     <include
         android:id="@+id/include_item"
-        layout="@layout/home_screen_recycler_view"
+        layout="@layout/weekly_forecast_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_margin_layout"
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvNextDays"
-        tools:listitem="@layout/home_screen_recycler_view" />
+        tools:listitem="@layout/weekly_forecast_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
