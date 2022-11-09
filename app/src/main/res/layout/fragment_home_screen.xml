@@ -7,45 +7,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".HomeScreen">
 
-    <TextView
-        android:id="@+id/tvHomeTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_margin_layout"
-        android:layout_marginTop="@dimen/top_margin_home_screen"
-        android:text="@string/tv_home_title"
-        android:textColor="@color/white"
-        android:textSize="@dimen/title_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <include
-        android:id="@+id/include_item"
-        layout="@layout/weekly_forecast_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_margin_layout"
-        android:layout_marginEnd="@dimen/padding_margin_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHomeTitle" />
-
-    <TextView
-        android:id="@+id/tvNextDays"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_margin_layout"
-        android:layout_marginTop="@dimen/distance_cv_tv_home_screen"
-        android:text="@string/tv_next_five_days"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="@dimen/description_second_third_screen_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include_item" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weatherHomeScreenList"
         android:layout_width="match_parent"
@@ -55,7 +16,7 @@
         android:paddingBottom="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNextDays"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/weekly_forecast_item" />
 
 
