@@ -31,39 +31,34 @@ class HomeScreen : Fragment() {
         setupUi()
     }
 
-    private fun setupUi(){
-        val forecastList : List<CardInfo> = ForecastInfoObject.getWeatherList()
-        val itemsToShow : List<HomeScreenItem> = getItemsToShow(forecastList)
-        val homeScreenAdapter : HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
+    private fun setupUi() {
+        val forecastList: List<HomeScreenItem.ForecastDetails> = ForecastInfoObject.getWeatherList()
+        val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList)
+        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
         binding.weatherHomeScreenList.apply {
-            layoutManager = LinearLayoutManager(this@HomeScreen.context, LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(this@HomeScreen.context, LinearLayoutManager.VERTICAL, false)
             adapter = homeScreenAdapter
         }
     }
 
-    private fun getItemsToShow(forecastList: List<CardInfo>): List<HomeScreenItem> {
+    private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
-        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
+        homeScreenList.add(
+            HomeScreenItem.ForecastDetails(
+                OffsetDateTime.now(),
+                17,
+                24,
+                15,
+                22,
+                Weather.CLOUDY
+            )
+        )
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
-        homeScreenList.add( HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY))
-        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY))
-        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN))
-        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY))
-        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY))
-
+        homeScreenList.addAll(forecastList)
         return homeScreenList
     }
 
-//    fun getHomeScreenItem(): List<Any>{
-//        val homeScreenList = arrayListOf<Any>()
-//
-//        homeScreenList.add(HomeScreenRecyclerView.TitleHomeScreen("Rome", "Lazio"))
-//        homeScreenList.add(HomeScreenRecyclerView.CardInfo(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
-//        homeScreenList.add(HomeScreenRecyclerView.Next5DaysHomeScreen("Next 5 Days"))
-//        homeScreenList.add(getWeatherList())
-//
-//        return homeScreenList
-//    }
 }
 

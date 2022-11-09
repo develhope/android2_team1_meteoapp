@@ -3,6 +3,7 @@ package co.develhope.meteoapp
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
+import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.threeten.bp.OffsetDateTime
@@ -12,12 +13,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ForecastInfoObject {
 
 
-    private val weatherList: List<CardInfo> = listOf(
-        CardInfo(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
-        CardInfo(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
-        CardInfo(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN),
-        CardInfo(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY),
-        CardInfo(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY)
+    private val weatherList: List<HomeScreenItem.ForecastDetails> = listOf(
+        HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
+        HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
+        HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN),
+        HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY),
+        HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY)
     )
 
     private val todayWeatherList: List<TodayCardInfo> = listOf(
@@ -36,7 +37,7 @@ object ForecastInfoObject {
         TodayCardInfo(OffsetDateTime.now().plusHours(12), Weather.FOGGY, 26, 98)
     )
 
-    fun getWeatherList(): List<CardInfo> {
+    fun getWeatherList(): List<HomeScreenItem.ForecastDetails> {
         return weatherList
     }
 

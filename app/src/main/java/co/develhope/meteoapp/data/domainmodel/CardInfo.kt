@@ -2,6 +2,7 @@ package co.develhope.meteoapp.data.domainmodel
 
 import org.threeten.bp.OffsetDateTime
 
+
 data class CardInfo(
     val date: OffsetDateTime,
     val minTemperature: Int,
