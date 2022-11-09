@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/padding_margin_layout"
         android:clipToPadding="false"
-        android:paddingBottom="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

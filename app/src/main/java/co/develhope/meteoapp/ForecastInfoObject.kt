@@ -12,9 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ForecastInfoObject {
 
 
-
-
-
     private val weatherList: List<CardInfo> = listOf(
         CardInfo(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
         CardInfo(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
@@ -59,7 +56,7 @@ object ForecastInfoObject {
         }
     }
 
-    fun setDayOfWeek (dayOfWeek: String): String {
+    fun setDayOfWeek(dayOfWeek: String): String {
         return when (dayOfWeek) {
             "MONDAY" -> "Monday"
             "TUESDAY" -> "Tuesday"
@@ -72,8 +69,8 @@ object ForecastInfoObject {
         }
     }
 
-    fun setMonthName (month : String): String {
-        return when (month){
+    fun setMonthName(month: String): String {
+        return when (month) {
             "JANUARY" -> "January"
             "FEBRUARY" -> "February"
             "MARCH" -> "March"

@@ -43,10 +43,14 @@ class HomeScreen : Fragment() {
 
     private fun getItemsToShow(forecastList: List<CardInfo>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
-        //TODO La lista non è giusta, utilizzare forecastList
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
         homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
+        homeScreenList.add( HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY))
+        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY))
+        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN))
+        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(4), 22, 26, 0, 15, Weather.SUNNY))
+        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(5), 24, 32, 5, 40, Weather.WINDY))
 
         return homeScreenList
     }
