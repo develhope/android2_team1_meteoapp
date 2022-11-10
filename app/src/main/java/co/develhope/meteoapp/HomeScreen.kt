@@ -45,7 +45,7 @@ class HomeScreen : Fragment() {
     private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
-        homeScreenList.add(forecastList.get(0))
+        homeScreenList.add(forecastList.first())
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
         homeScreenList.addAll(forecastList.takeLast(5))
         return homeScreenList
