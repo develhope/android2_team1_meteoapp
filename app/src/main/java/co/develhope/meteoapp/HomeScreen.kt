@@ -45,18 +45,9 @@ class HomeScreen : Fragment() {
     private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
-        homeScreenList.add(
-            HomeScreenItem.ForecastDetails(
-                OffsetDateTime.now(),
-                17,
-                24,
-                15,
-                22,
-                Weather.CLOUDY
-            )
-        )
+        homeScreenList.add(forecastList.get(0))
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
-        homeScreenList.addAll(forecastList)
+        homeScreenList.addAll(forecastList.takeLast(5))
         return homeScreenList
     }
 

@@ -14,6 +14,7 @@ object ForecastInfoObject {
 
 
     private val weatherList: List<HomeScreenItem.ForecastDetails> = listOf(
+        HomeScreenItem.ForecastDetails(OffsetDateTime.now(),20,25,10,20, Weather.SUNNY),
         HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(1), 18, 22, 10, 20, Weather.CLOUDY),
         HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(2), 16, 21, 20, 25, Weather.RAINY),
         HomeScreenItem.ForecastDetails(OffsetDateTime.now().plusDays(3), 15, 20, 80, 24, Weather.HEAVYRAIN),
