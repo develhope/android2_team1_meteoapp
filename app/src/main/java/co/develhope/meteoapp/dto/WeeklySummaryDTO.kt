@@ -2,6 +2,7 @@ package co.develhope.meteoapp.dto
 
 
 import co.develhope.meteoapp.data.domainmodel.CardInfo
+import co.develhope.meteoapp.data.domainmodel.Weather
 import co.develhope.meteoapp.data.domainmodel.toWeather
 import com.google.gson.annotations.SerializedName
 import org.threeten.bp.OffsetDateTime
@@ -47,7 +48,7 @@ data class WeeklySummaryDTO(
         @SerializedName("weathercode")
         val weathercode: List<Int>
     ) {
-        fun toDomain(): CardInfo {
+        fun toDomainOld(): CardInfo {
             return CardInfo(
                 date = time.first(),
                 minTemperature = temperature2mMin.first().toInt(),
@@ -56,6 +57,19 @@ data class WeeklySummaryDTO(
                 wind = 0,
                 weather = weathercode.first().toWeather()
             )
+        }
+
+        fun toDomain(): List<CardInfo> {
+            return this.time.mapIndexed { index, date ->
+                CardInfo(
+                    date = date,
+                    minTemperature = this.temperature2mMin.getOrNull(index)?.toInt() ?: 0,
+                    maxTemperature = this.temperature2mMax.getOrNull(index)?.toInt() ?: 0,
+                    rainfall = this.rainSum.getOrNull(index)?.toInt() ?: 0,
+                    wind = 0,
+                    weather = this.weathercode.getOrNull(index)?.toWeather() ?: Weather.HEAVYRAIN
+                )
+            }
         }
     }
 

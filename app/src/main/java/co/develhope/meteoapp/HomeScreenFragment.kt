@@ -33,8 +33,7 @@ class HomeScreenFragment : Fragment() {
         lifecycleScope.launch{
             try {
                 val listOfForeCasts = NetworkObject.getWeeklySummary()
-                ForecastInfoObject.setWeatherList(listOf(listOfForeCasts!!))
-                setupUi()
+                setupUi(listOfForeCasts)
 
                 Log.d("ForecastLog", "weekly: $listOfForeCasts")
               //  Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
@@ -45,8 +44,7 @@ class HomeScreenFragment : Fragment() {
         }
     }
 
-    private fun setupUi() {
-        val forecastList: List<CardInfo> = ForecastInfoObject.getWeatherList()
+    private fun setupUi(forecastList: List<CardInfo>) {
         val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList.toMutableList())
         val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
         binding.weatherHomeScreenList.apply {

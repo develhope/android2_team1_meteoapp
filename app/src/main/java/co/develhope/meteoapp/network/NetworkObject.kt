@@ -54,8 +54,8 @@ object NetworkObject {
 
     private val service = retrofit.create(ForecastApiService::class.java)
 
-    suspend fun getWeeklySummary(): CardInfo? {
-        return service.getWeeklyForecast().body()?.dailyDTO?.toDomain()
+    suspend fun getWeeklySummary(): List<CardInfo> {
+        return service.getWeeklyForecast().body()?.dailyDTO?.toDomain() ?: emptyList()
     }
 
     suspend fun getHourlyForecastForASpecificDay(): TodaySummary? {
