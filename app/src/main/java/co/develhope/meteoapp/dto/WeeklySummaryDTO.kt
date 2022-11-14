@@ -1,18 +1,19 @@
 package co.develhope.meteoapp.dto
 
-import co.develhope.meteoapp.CardInfo
-import co.develhope.meteoapp.toWeather
+
+import co.develhope.meteoapp.data.domainmodel.CardInfo
+import co.develhope.meteoapp.data.domainmodel.toWeather
 import com.google.gson.annotations.SerializedName
 import org.threeten.bp.OffsetDateTime
 
 
-data class WeeklySummary(
+data class WeeklySummaryDTO(
     @SerializedName("current_weather")
     val currentWeather: CurrentWeather,
     @SerializedName("daily")
-    val daily: Daily,
+    val dailyDTO: DailyDTO,
     @SerializedName("daily_units")
-    val dailyUnits: DailyUnits,
+    val dailyUnitsDTO: DailyUnitsDTO,
     @SerializedName("elevation")
     val elevation: Double,
     @SerializedName("generationtime_ms")
@@ -28,7 +29,7 @@ data class WeeklySummary(
     @SerializedName("utc_offset_seconds")
     val utcOffsetSeconds: Int
 ) {
-    data class Daily(
+    data class DailyDTO(
         @SerializedName("precipitation_sum")
         val precipitationSum: List<Double>,
         @SerializedName("rain_sum")
@@ -58,7 +59,7 @@ data class WeeklySummary(
         }
     }
 
-    data class DailyUnits(
+    data class DailyUnitsDTO(
         @SerializedName("precipitation_sum")
         val precipitationSum: String,
         @SerializedName("rain_sum")

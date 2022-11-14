@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
@@ -29,7 +30,7 @@ class HomeScreen : Fragment() {
     }
 
     private fun setupUi() {
-        val forecastList: List<HomeScreenItem.ForecastDetails> = ForecastInfoObject.getWeatherList()
+        val forecastList: List<CardInfo> = ForecastInfoObject.getWeatherList()
         val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList)
         val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
         binding.weatherHomeScreenList.apply {
@@ -39,12 +40,16 @@ class HomeScreen : Fragment() {
         }
     }
 
-    private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
+    private fun getItemsToShow(forecastList: List<CardInfo>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
-        homeScreenList.add(forecastList.first())
+        homeScreenList.add(HomeScreenItem.ForecastDetails(forecastList.first()))
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
-        homeScreenList.addAll(forecastList.takeLast(5))
+        homeScreenList.addAll(
+            forecastList.map {
+                HomeScreenItem.ForecastDetails(it)
+            }
+        )
         return homeScreenList
     }
 }

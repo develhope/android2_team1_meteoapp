@@ -1,7 +1,7 @@
 package co.develhope.meteoapp.network
 
 import co.develhope.meteoapp.TodaySummary
-import co.develhope.meteoapp.dto.WeeklySummary
+import co.develhope.meteoapp.dto.WeeklySummaryDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -26,5 +26,5 @@ interface ForecastApiService {
         @Query("daily") daily: List<String> = listOf("weathercode", "temperature_2m_max", "temperature_2m_min", "sunrise", "sunset", "precipitation_sum", "rain_sum"),
         @Query("current_weather") current_weather: Boolean = true,
         @Query("timezone") timezone: String = "auto"
-    ) : Response<WeeklySummary>
+    ) : Response<WeeklySummaryDTO>
 }

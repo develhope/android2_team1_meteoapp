@@ -30,7 +30,10 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch{
             try {
-                Log.d("ForecastLog", "weekly: ${NetworkObject.getWeeklySummary()}")
+                val listOfForeCasts = NetworkObject.getWeeklySummary()
+                ForecastInfoObject.setWeatherList(listOf(listOfForeCasts!!))
+
+                Log.d("ForecastLog", "weekly: $listOfForeCasts")
                 Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
            } catch (e: Exception){
                 e.printStackTrace()
