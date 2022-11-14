@@ -31,35 +31,25 @@ class HomeScreen : Fragment() {
         setupUi()
     }
 
-    private fun setupUi(){
-        val forecastList : List<CardInfo> = ForecastInfoObject.getWeatherList()
-        val itemsToShow : List<HomeScreenItem> = getItemsToShow(forecastList)
-        val homeScreenAdapter : HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
+    private fun setupUi() {
+        val forecastList: List<HomeScreenItem.ForecastDetails> = ForecastInfoObject.getWeatherList()
+        val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList)
+        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
         binding.weatherHomeScreenList.apply {
-            layoutManager = LinearLayoutManager(this@HomeScreen.context, LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(this@HomeScreen.context, LinearLayoutManager.VERTICAL, false)
             adapter = homeScreenAdapter
         }
     }
 
-    private fun getItemsToShow(forecastList: List<CardInfo>): List<HomeScreenItem> {
+    private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
-        //TODO La lista non è giusta, utilizzare forecastList
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
-        homeScreenList.add(HomeScreenItem.ForecastDetails(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
+        homeScreenList.add(forecastList.first())
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
-
+        homeScreenList.addAll(forecastList.takeLast(5))
         return homeScreenList
     }
 
-//    fun getHomeScreenItem(): List<Any>{
-//        val homeScreenList = arrayListOf<Any>()
-//
-//        homeScreenList.add(HomeScreenRecyclerView.TitleHomeScreen("Rome", "Lazio"))
-//        homeScreenList.add(HomeScreenRecyclerView.CardInfo(OffsetDateTime.now(), 17, 24, 15, 22, Weather.CLOUDY))
-//        homeScreenList.add(HomeScreenRecyclerView.Next5DaysHomeScreen("Next 5 Days"))
-//        homeScreenList.add(getWeatherList())
-//
-//        return homeScreenList
-//    }
 }
 
