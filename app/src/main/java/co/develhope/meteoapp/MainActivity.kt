@@ -20,26 +20,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> replaceFragment(HomeScreen())
+                R.id.home -> replaceFragment(HomeScreenFragment())
                 R.id.today -> replaceFragment(TodayScreen())
                 R.id.tomorrow -> replaceFragment(TodayScreen())
             }
             true
         }
-        replaceFragment(HomeScreen())
+        replaceFragment(HomeScreenFragment())
 
-        lifecycleScope.launch{
-            try {
-                val listOfForeCasts = NetworkObject.getWeeklySummary()
-                ForecastInfoObject.setWeatherList(listOf(listOfForeCasts!!))
 
-                Log.d("ForecastLog", "weekly: $listOfForeCasts")
-                Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
-           } catch (e: Exception){
-                e.printStackTrace()
-                Log.d("ForecastLog", e.toString())
-            }
-        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
