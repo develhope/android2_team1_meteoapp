@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d("ForecastLog", e.toString())
             }
         }
-
     }
 
     private fun replaceFragment(fragment: Fragment) {

@@ -16,6 +16,8 @@
     <string name="rv_tv_date">%d/%d</string>
     <string name="rv_tv_precip_percentage">%d%%</string>
     <string name="rv_tv_wind">%d km/h</string>
+    <string name="rv_title">%s, %s</string>
+    <string name="rv_next_5_days">%s</string>
     <!-- Recycler View Today Screen Items -->
     <string name="rv_tv_hour">%d:00</string>
     <string name="rv_tv_day_month_date">%s, %d %s</string>

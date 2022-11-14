@@ -48,7 +48,7 @@ object ForecastInfoObject {
         }
     }
 
-    fun setDayOfWeek (dayOfWeek: String): String {
+    fun setDayOfWeek(dayOfWeek: String): String {
         return when (dayOfWeek) {
             "MONDAY" -> "Monday"
             "TUESDAY" -> "Tuesday"
@@ -61,8 +61,8 @@ object ForecastInfoObject {
         }
     }
 
-    fun setMonthName (month : String): String {
-        return when (month){
+    fun setMonthName(month: String): String {
+        return when (month) {
             "JANUARY" -> "January"
             "FEBRUARY" -> "February"
             "MARCH" -> "March"

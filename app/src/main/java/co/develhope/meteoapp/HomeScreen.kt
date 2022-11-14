@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
-import org.threeten.bp.OffsetDateTime
+import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
 class HomeScreen : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
     private val binding get() = bindingHomeScreen!!
-
-
-    val todayHomeScreenDO = CardInfo(OffsetDateTime.now(), 18, 22, 10, 20, Weather.CLOUDY)
 
 
     override fun onCreateView(
@@ -28,37 +25,27 @@ class HomeScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapterInstanceHomeScreen()
-
-        setTodayCardDetails()
+        setupUi()
     }
 
-    fun adapterInstanceHomeScreen(){
-        val adapter = HomeScreenAdapter(ForecastInfoObject.getWeatherList())
-        binding.weatherHomeScreenList.adapter = adapter
-        binding.weatherHomeScreenList.layoutManager = LinearLayoutManager(context)
+    private fun setupUi() {
+        val forecastList: List<HomeScreenItem.ForecastDetails> = ForecastInfoObject.getWeatherList()
+        val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList)
+        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
+        binding.weatherHomeScreenList.apply {
+            layoutManager =
+                LinearLayoutManager(this@HomeScreen.context, LinearLayoutManager.VERTICAL, false)
+            adapter = homeScreenAdapter
+        }
     }
 
-    private fun setTodayCardDetails(){
-        binding.includeItem.dayCard.text = getString(R.string.cv_tv_today)
-        binding.includeItem.minTempCard.text =
-            getString(R.string.rv_tv_min_temp_card, todayHomeScreenDO.minTemperature)
-        binding.includeItem.maxTempCard.text =
-            getString(R.string.rv_tv_max_temp_card, todayHomeScreenDO.maxTemperature)
-        binding.includeItem.dateHomeScreen.text = getString(
-            R.string.rv_tv_date,
-            todayHomeScreenDO.date.dayOfMonth,
-            todayHomeScreenDO.date.monthValue
-        )
-        binding.includeItem.precipitationHomeScreenRecyclerView.text =
-            getString(R.string.rv_tv_precip_percentage, todayHomeScreenDO.rainfall)
-        binding.includeItem.windHomeScreenRecyclerView.text =
-            getString(R.string.rv_tv_wind, todayHomeScreenDO.wind)
-        binding.includeItem.iconHomeScreenRecyclerView.setImageResource(
-            ForecastInfoObject.setIcon(
-                todayHomeScreenDO.weather
-            )
-        )
+    private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
+        val homeScreenList = arrayListOf<HomeScreenItem>()
+        homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
+        homeScreenList.add(forecastList.first())
+        homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
+        homeScreenList.addAll(forecastList.takeLast(5))
+        return homeScreenList
     }
 }
 
