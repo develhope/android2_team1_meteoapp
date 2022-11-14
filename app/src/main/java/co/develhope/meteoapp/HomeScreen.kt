@@ -30,7 +30,6 @@ class HomeScreen : Fragment() {
 
         adapterInstanceHomeScreen()
 
-        //TODO this should be in the adapter
         setTodayCardDetails()
     }
 
