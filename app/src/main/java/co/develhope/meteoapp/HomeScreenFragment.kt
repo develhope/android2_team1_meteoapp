@@ -36,7 +36,7 @@ class HomeScreenFragment : Fragment() {
                 setupUi(listOfForeCasts)
 
                 Log.d("ForecastLog", "weekly: $listOfForeCasts")
-              //  Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
+                Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
             } catch (e: Exception){
                 e.printStackTrace()
                 Log.d("ForecastLog", e.toString())
