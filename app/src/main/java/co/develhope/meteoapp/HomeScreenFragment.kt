@@ -1,18 +1,20 @@
 package co.develhope.meteoapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.CardInfo
-import co.develhope.meteoapp.data.domainmodel.Weather
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
+import co.develhope.meteoapp.network.NetworkObject
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
-import org.threeten.bp.OffsetDateTime
+import kotlinx.coroutines.launch
 
-class HomeScreen : Fragment() {
+class HomeScreenFragment : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
     private val binding get() = bindingHomeScreen!!
 
@@ -28,28 +30,45 @@ class HomeScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupUi()
+        lifecycleScope.launch{
+            try {
+                val listOfForeCasts = NetworkObject.getWeeklySummary()
+                setupUi(listOfForeCasts)
+
+                Log.d("ForecastLog", "weekly: $listOfForeCasts")
+                Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
+            } catch (e: Exception){
+                e.printStackTrace()
+                Log.d("ForecastLog", e.toString())
+            }
+        }
     }
 
-    private fun setupUi() {
-        val forecastList: List<HomeScreenItem.ForecastDetails> = ForecastInfoObject.getWeatherList()
-        val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList)
+    private fun setupUi(forecastList: List<CardInfo>) {
+        //TODO ordinare la lista per giorno
+        forecastList.sortedBy { it.date }
+        val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList.toMutableList())
         val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
         binding.weatherHomeScreenList.apply {
             layoutManager =
-                LinearLayoutManager(this@HomeScreen.context, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(this@HomeScreenFragment.context, LinearLayoutManager.VERTICAL, false)
             adapter = homeScreenAdapter
         }
     }
 
-    private fun getItemsToShow(forecastList: List<HomeScreenItem.ForecastDetails>): List<HomeScreenItem> {
+    private fun getItemsToShow(forecastList: MutableList<CardInfo>): List<HomeScreenItem> {
         val homeScreenList = arrayListOf<HomeScreenItem>()
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
-        homeScreenList.add(forecastList.first())
+        homeScreenList.add(HomeScreenItem.ForecastDetails(forecastList.first()))
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
-        homeScreenList.addAll(forecastList.takeLast(5))
+        forecastList.removeFirst()
+        forecastList.removeLast()
+        homeScreenList.addAll(
+            forecastList.map {
+                HomeScreenItem.ForecastDetails(it)
+            }
+        )
         return homeScreenList
     }
-
 }
 

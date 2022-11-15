@@ -73,30 +73,30 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.A
         fun bind(weeklyForecast: HomeScreenItem.ForecastDetails) {
             weeklyBinding.dateHomeScreen.text = itemView.context.getString(
                 R.string.rv_tv_date,
-                weeklyForecast.date.dayOfMonth,
-                weeklyForecast.date.monthValue
+                weeklyForecast.info.date.dayOfMonth,
+                weeklyForecast.info.date.monthValue
             )
             weeklyBinding.dayCard.text =
-                ForecastInfoObject.setDayOfWeek(weeklyForecast.date.dayOfWeek.name)
+                ForecastInfoObject.setDayOfWeek(weeklyForecast.info.date.dayOfWeek.name)
             weeklyBinding.iconHomeScreenRecyclerView.setImageResource(
                 ForecastInfoObject.setIcon(
-                    weeklyForecast.weather
+                    weeklyForecast.info.weather
                 )
             )
             weeklyBinding.maxTempCard.text = itemView.context.getString(
                 R.string.rv_tv_max_temp_card,
-                weeklyForecast.maxTemperature
+                weeklyForecast.info.maxTemperature
             )
             weeklyBinding.minTempCard.text = itemView.context.getString(
                 R.string.rv_tv_min_temp_card,
-                weeklyForecast.minTemperature
+                weeklyForecast.info.minTemperature
             )
             weeklyBinding.precipitationHomeScreenRecyclerView.text = itemView.context.getString(
                 R.string.rv_tv_precip_percentage,
-                weeklyForecast.rainfall
+                weeklyForecast.info.rainfall
             )
             weeklyBinding.windHomeScreenRecyclerView.text =
-                itemView.context.getString(R.string.rv_tv_wind, weeklyForecast.wind)
+                itemView.context.getString(R.string.rv_tv_wind, weeklyForecast.info.wind)
 
         }
     }
