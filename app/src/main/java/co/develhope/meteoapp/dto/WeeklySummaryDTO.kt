@@ -46,19 +46,10 @@ data class WeeklySummaryDTO(
         @SerializedName("time")
         val time: List<OffsetDateTime>,
         @SerializedName("weathercode")
-        val weathercode: List<Int>
+        val weathercode: List<Int>,
+        @SerializedName("windspeed_10m_max")
+        val windspeed10mmax: List<Double>
     ) {
-        fun toDomainOld(): CardInfo {
-            return CardInfo(
-                date = time.first(),
-                minTemperature = temperature2mMin.first().toInt(),
-                maxTemperature = temperature2mMax.first().toInt(),
-                rainfall = rainSum.first().toInt(),
-                wind = 0,
-                weather = weathercode.first().toWeather()
-            )
-        }
-
         fun toDomain(): List<CardInfo> {
             return this.time.mapIndexed { index, date ->
                 CardInfo(
@@ -66,7 +57,7 @@ data class WeeklySummaryDTO(
                     minTemperature = this.temperature2mMin.getOrNull(index)?.toInt() ?: 0,
                     maxTemperature = this.temperature2mMax.getOrNull(index)?.toInt() ?: 0,
                     rainfall = this.rainSum.getOrNull(index)?.toInt() ?: 0,
-                    wind = 0,
+                    wind = this.windspeed10mmax.getOrNull(index)?.toInt() ?: 0,
                     weather = this.weathercode.getOrNull(index)?.toWeather() ?: Weather.HEAVYRAIN
                 )
             }

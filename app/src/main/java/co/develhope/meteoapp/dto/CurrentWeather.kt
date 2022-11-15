@@ -13,8 +13,4 @@ data class CurrentWeather(
     val winddirection: Double,
     @SerializedName("windspeed")
     val windspeed: Double
-) {
-    fun toDomain(){
-
-    }
-}
+)

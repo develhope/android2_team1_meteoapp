@@ -52,7 +52,7 @@ object NetworkObject {
         gson = provideGson()
     )
 
-    private val service = retrofit.create(ForecastApiService::class.java)
+     val service = retrofit.create(ForecastApiService::class.java)
 
     suspend fun getWeeklySummary(): List<CardInfo> {
         return service.getWeeklyForecast().body()?.dailyDTO?.toDomain() ?: emptyList()
