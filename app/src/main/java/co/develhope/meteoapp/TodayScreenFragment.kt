@@ -52,7 +52,7 @@ class TodayScreenFragment : Fragment() {
         val todayScreenList = arrayListOf<TodayScreenItem>()
         todayScreenList.add(
             TodayScreenItem.Title(
-                OffsetDateTime.now().plusDays(1),
+                OffsetDateTime.now(),
                 "Rome",
                 "Lazio"
             )
