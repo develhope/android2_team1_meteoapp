@@ -2,12 +2,8 @@ package co.develhope.meteoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import co.develhope.meteoapp.databinding.ActivityMainBinding
-import co.develhope.meteoapp.network.NetworkObject
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeScreenFragment())
-                R.id.today -> replaceFragment(TodayScreen())
-                R.id.tomorrow -> replaceFragment(TodayScreen())
+                R.id.today -> replaceFragment(TodayScreenFragment())
+                R.id.tomorrow -> replaceFragment(TodayScreenFragment())
             }
             true
         }
