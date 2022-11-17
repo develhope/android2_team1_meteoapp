@@ -1,6 +1,6 @@
 package co.develhope.meteoapp.network
 
-import co.develhope.meteoapp.TodaySummary
+import co.develhope.meteoapp.TodaySummaryDTO
 import co.develhope.meteoapp.dto.WeeklySummaryDTO
 import retrofit2.Response
 import retrofit2.http.GET
@@ -16,7 +16,7 @@ interface ForecastApiService {
         @Query("timezone") timezone : String = "auto",
         @Query("start_date") start_date : String = "2022-10-03",
         @Query("end_date") end_date : String = "2022-10-03"
-    ): Response<TodaySummary>
+    ): Response<TodaySummaryDTO>
 
 
     @GET("v1/forecast?")
