@@ -7,7 +7,4 @@
     <item android:title="@string/navbar_today"
         android:id="@+id/today"
         android:icon="@drawable/calendar"/>
-    <item android:title="@string/navbar_tomorrow"
-        android:id="@+id/tomorrow"
-        android:icon="@drawable/calendar"/>
 </menu>
