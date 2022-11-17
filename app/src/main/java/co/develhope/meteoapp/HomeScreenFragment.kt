@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,14 +31,14 @@ class HomeScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             try {
                 val listOfForeCasts = NetworkObject.getWeeklySummary()
                 setupUi(listOfForeCasts)
 
                 Log.d("ForecastLog", "weekly: $listOfForeCasts")
                 Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
                 Log.d("ForecastLog", e.toString())
             }
@@ -48,12 +49,30 @@ class HomeScreenFragment : Fragment() {
         //TODO ordinare la lista per giorno
         forecastList.sortedBy { it.date }
         val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList.toMutableList())
-        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
+        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow,
+            clickListener = object : OnItemClickListenerInterface {
+                override fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails) {
+                    replaceFragment(TodayScreenFragment())
+                }
+
+            })
         binding.weatherHomeScreenList.apply {
             layoutManager =
-                LinearLayoutManager(this@HomeScreenFragment.context, LinearLayoutManager.VERTICAL, false)
+                LinearLayoutManager(
+                    this@HomeScreenFragment.context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
             adapter = homeScreenAdapter
         }
+    }
+
+    private fun replaceFragment(todayScreenFragment: TodayScreenFragment) {
+        val fragmentManager = activity?.supportFragmentManager
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, todayScreenFragment)
+        fragmentTransaction.commit()
+
     }
 
     private fun getItemsToShow(forecastList: MutableList<CardInfo>): List<HomeScreenItem> {

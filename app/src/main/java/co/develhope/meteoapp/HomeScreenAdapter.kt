@@ -2,13 +2,14 @@ package co.develhope.meteoapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.WeeklyForecastItemBinding
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
-class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clickListener: OnItemClickListenerInterface) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_TITLE_HOME_SCREEN = 0
     private val TYPE_WEEKLY_FORECAST_CARDVIEW = 1
@@ -44,7 +45,7 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.A
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is TitleViewHolder -> holder.bind(list[position] as HomeScreenItem.Title)
-            is WeeklyForecastViewHolder -> holder.bind(list[position] as HomeScreenItem.ForecastDetails)
+            is WeeklyForecastViewHolder -> holder.bind(list[position] as HomeScreenItem.ForecastDetails, clickListener)
             is Next5DaysViewHolder -> holder.bind(list[position] as HomeScreenItem.SubTitle)
 
         }
@@ -70,7 +71,10 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.A
 
     class WeeklyForecastViewHolder(val weeklyBinding: WeeklyForecastItemBinding) :
         RecyclerView.ViewHolder(weeklyBinding.root) {
-        fun bind(weeklyForecast: HomeScreenItem.ForecastDetails) {
+        fun bind(weeklyForecast: HomeScreenItem.ForecastDetails, clickListener: OnItemClickListenerInterface) {
+            itemView.setOnClickListener{
+                clickListener.onItemClicked(weeklyForecast)
+            }
             weeklyBinding.dateHomeScreen.text = itemView.context.getString(
                 R.string.rv_tv_date,
                 weeklyForecast.info.date.dayOfMonth,
@@ -108,4 +112,10 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>) : RecyclerView.A
                 itemView.context.getString(R.string.rv_next_5_days, next5Days.next5Days)
         }
     }
+}
+
+interface OnItemClickListenerInterface{
+
+    fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails)
+
 }
