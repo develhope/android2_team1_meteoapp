@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,7 +49,13 @@ class HomeScreenFragment : Fragment() {
         //TODO ordinare la lista per giorno
         forecastList.sortedBy { it.date }
         val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList.toMutableList())
-        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow)
+        val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow,
+            clickListener = object: OnItemClickListenerInterface{
+                override fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails) {
+                   Toast.makeText(context,"Ci siamo",Toast.LENGTH_LONG).show()
+                }
+
+            })
         binding.weatherHomeScreenList.apply {
             layoutManager =
                 LinearLayoutManager(this@HomeScreenFragment.context, LinearLayoutManager.VERTICAL, false)
