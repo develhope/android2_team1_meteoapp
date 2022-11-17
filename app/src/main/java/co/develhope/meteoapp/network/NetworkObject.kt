@@ -1,7 +1,7 @@
 package co.develhope.meteoapp.network
 
-import co.develhope.meteoapp.TodaySummary
 import co.develhope.meteoapp.data.domainmodel.CardInfo
+import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -52,13 +52,13 @@ object NetworkObject {
         gson = provideGson()
     )
 
-     val service = retrofit.create(ForecastApiService::class.java)
+    private val service = retrofit.create(ForecastApiService::class.java)
 
     suspend fun getWeeklySummary(): List<CardInfo> {
         return service.getWeeklyForecast().body()?.dailyDTO?.toDomain() ?: emptyList()
     }
 
-    suspend fun getHourlyForecastForASpecificDay(): TodaySummary? {
-        return service.getHourlyForecastForASpecificDay().body()
+    suspend fun getHourlyForecastForASpecificDay(): List<TodayCardInfo> {
+        return service.getHourlyForecastForASpecificDay().body()?.hourlyDTO?.toDomain() ?: emptyList()
     }
 }
