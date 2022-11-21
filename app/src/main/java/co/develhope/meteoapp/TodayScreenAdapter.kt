@@ -66,6 +66,11 @@ class TodayScreenAdapter(val list: List<TodayScreenItem>) :
                 title.date.monthValue,
                 title.date.year
             )
+            titleTodayScreenItemBinding.TodayLocation.text = itemView.context.getString(
+                R.string.tv_home_title,
+                title.city,
+                title.region
+            )
         }
 
     }
