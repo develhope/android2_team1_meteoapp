@@ -43,7 +43,9 @@ data class TodaySummaryDTO(
         @SerializedName("weathercode")
         val weathercode: List<Int>,
         @SerializedName("windspeed_10m")
-        val windspeed10m: List<Double>
+        val windspeed10m: List<Double>,
+        @SerializedName("relativehumidity_2m")
+        val relativeHumidity: List<Int>
     ){
         fun toDomain(): List<TodayCardInfo>{
             return this.time.mapIndexed {index, date ->
@@ -51,7 +53,13 @@ data class TodaySummaryDTO(
                     date = date,
                     weather = this.weathercode.getOrNull(index)?.toWeather() ?: Weather.CLOUDY,
                     temperature = this.temperature2m.getOrNull(index)?.toInt() ?: 0,
-                    rainfall = this.rain.getOrNull(index)?.toInt() ?: 0
+                    rainfall = this.rain.getOrNull(index)?.toInt() ?: 0,
+                    humidity = this.relativeHumidity.getOrNull(index)?.toInt() ?: 0,
+                    perceivedTemperature = 0,
+                    wind = this.windspeed10m.getOrNull(index)?.toInt() ?: 0,
+                    coverage = 0,
+                    windDirection = 0,
+                    rain = this.rain.getOrNull(index)?.toInt() ?: 0
                 )
             }
         }

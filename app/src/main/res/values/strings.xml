@@ -23,6 +23,7 @@
     <string name="rv_tv_day_month_date">%s, %d %s</string>
     <string name="cv_tv_today">Today</string>
     <string name="cv_tv_calendar_date">%d/%d/%d</string>
+    <string name="rv_cv_humidity">%d°</string>
 
 
 </resources>

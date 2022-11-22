@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.databinding.TitleTodayScreenItemBinding
 import co.develhope.meteoapp.databinding.TodayForecastItemBinding
+import co.develhope.meteoapp.network.NetworkObject
 import co.develhope.meteoapp.ui.adapter.TodayScreenItem
 
 class TodayScreenAdapter(val list: List<TodayScreenItem>) :
@@ -100,7 +101,10 @@ class TodayScreenAdapter(val list: List<TodayScreenItem>) :
                 R.string.rv_tv_precip_percentage,
                 hourlyForecastDetails.todayCardInfo.rainfall
             )
-
+            todayForecastItemBinding.humidity.text = itemView.context.getString(
+                R.string.rv_cv_humidity,
+                hourlyForecastDetails.todayCardInfo.humidity
+            )
         }
 
 
