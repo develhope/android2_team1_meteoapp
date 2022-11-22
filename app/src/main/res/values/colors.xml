@@ -10,4 +10,5 @@
     <color name="blue">#230EA5</color>
     <color name="grey">#C4C4C4</color>
     <color name="cardview_color">#948CEF</color>
+    <color name="cardview_today_color">#FFFFFF</color>
 </resources>

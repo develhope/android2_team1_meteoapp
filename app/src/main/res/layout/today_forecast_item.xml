@@ -38,17 +38,6 @@
         app:layout_constraintBottom_toBottomOf="@id/todayIcon"
         app:layout_constraintStart_toEndOf="@id/todayIcon"
         app:layout_constraintTop_toTopOf="@id/todayIcon" />
-    <!--
-    <ImageView
-        android:id="@+id/dropIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/humidity_drop"
-        app:layout_constraintEnd_toStartOf="@id/todayPercentage"
-        app:layout_constraintTop_toTopOf="@id/todayIcon"
-        app:layout_constraintBottom_toBottomOf="@id/todayIcon"
-        android:layout_marginEnd="10dp"/>
-        -->
 
     <TextView
         android:id="@+id/todayPercentage"
@@ -63,6 +52,190 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/todayIcon" />
 
+    <ImageView
+        android:id="@+id/arrowIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/up_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/todayIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintTop_toTopOf="@id/todayIcon">
+
+
+    </ImageView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/todayCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        app:cardBackgroundColor="@color/cardview_today_color"
+        app:cardCornerRadius="@dimen/corner_cardview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/todayHour">
+
+        <TextView
+            android:id="@+id/perceivedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:text="Perceived"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element" />
+
+        <TextView
+            android:id="@+id/perceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="37dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element"
+            android:textStyle="bold"
+            tools:text="10 C°" />
+
+        <TextView
+            android:id="@+id/uvIndexTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="198dp"
+            android:layout_marginTop="18dp"
+            android:text="UV Index"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element" />
+
+        <TextView
+            android:id="@+id/uvIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="198dp"
+            android:layout_marginTop="37dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element"
+            android:textStyle="bold"
+            tools:text="1/10" />
+
+        <TextView
+            android:id="@+id/windTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="198dp"
+            android:layout_marginTop="84dp"
+            android:text="Wind"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="106dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element"
+            android:textStyle="bold"
+            tools:text="80%" />
+
+        <TextView
+            android:id="@+id/humidityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="84dp"
+            android:text="Humidity"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element" />
+
+        <TextView
+            android:id="@+id/wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="198dp"
+            android:layout_marginTop="106dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element"
+            android:textStyle="bold"
+            tools:text="NNE 1km/h" />
+
+        <TextView
+            android:id="@+id/coverageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="153dp"
+            android:text="Coverage"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element" />
+
+        <TextView
+            android:id="@+id/coverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="175dp"
+            android:layout_marginBottom="19dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element"
+            android:textStyle="bold"
+            tools:text="3%" />
+
+        <TextView
+            android:id="@+id/rainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="153dp"
+            android:text="Rain"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element" />
+
+        <TextView
+            android:id="@+id/rain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="198dp"
+            android:layout_marginTop="175dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/today_card_element"
+            android:textStyle="bold"
+            tools:text="0 cm" />
+
+        <ImageView
+            android:id="@+id/lane2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="20dp"
+            app:srcCompat="@drawable/lane" />
+
+        <ImageView
+            android:id="@+id/lane3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="20dp"
+            app:srcCompat="@drawable/lane" />
+
+
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/lane"
@@ -70,8 +243,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toBottomOf="@id/todayIcon"
+        app:layout_constraintTop_toBottomOf="@id/todayCardView"
         app:srcCompat="@drawable/lane" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
