@@ -11,6 +11,6 @@ data class TodayCardInfo(
     val perceivedTemperature: Int,
     val wind: Int,
     val coverage: Int,
-    val windDirection: Int,
-    val rain : Int
+    val windDirection: WindDirection,
+    val rain: Int
 )

@@ -11,7 +11,7 @@ interface ForecastApiService {
     suspend fun getHourlyForecastForASpecificDay(
         @Query("latitude") latitude: Double = 41.8955,
         @Query("longitude") longitude: Double = 12.4823,
-        @Query("hourly") hourly: List<String> = listOf("temperature_2m", "rain", "showers", "snowfall", "weathercode", "windspeed_10m", "relativehumidity_2m"),
+        @Query("hourly") hourly: List<String> = listOf("temperature_2m", "rain", "showers", "snowfall", "weathercode", "windspeed_10m", "relativehumidity_2m", "apparent_temperature", "cloudcover", "winddirection_10m"),
         @Query("current_weather") current_weather: Boolean = true,
         @Query("timezone") timezone : String = "auto",
         @Query("start_date") start_date : String = "2022-10-03",

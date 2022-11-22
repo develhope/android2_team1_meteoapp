@@ -3,7 +3,6 @@ package co.develhope.meteoapp
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
-import org.threeten.bp.OffsetDateTime
 
 object ForecastInfoObject {
 
