@@ -3,17 +3,12 @@ package co.develhope.meteoapp
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import co.develhope.meteoapp.databinding.TitleTodayScreenItemBinding
 import co.develhope.meteoapp.databinding.TodayForecastItemBinding
-import co.develhope.meteoapp.network.NetworkObject
 import co.develhope.meteoapp.ui.adapter.TodayScreenItem
-import kotlin.coroutines.coroutineContext
 
 class TodayScreenAdapter(val list: List<TodayScreenItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
