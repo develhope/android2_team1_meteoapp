@@ -30,11 +30,11 @@ class TodayScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpUI(ForecastInfoObject.getTodayWeatherList())
+        setUpUI(ForecastInfoObject.getTodayWeatherList().toMutableList())
 
         lifecycleScope.launch{
             try {
-                val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay()
+                val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay().toMutableList()
                 setUpUI(listOfForeCasts)
             } catch (e: Exception){
                 e.printStackTrace()
@@ -44,9 +44,11 @@ class TodayScreenFragment : Fragment() {
 
     }
 
-    private fun setUpUI(hourlyForecastList: List<TodayCardInfo>) {
+    private fun setUpUI(hourlyForecastList: MutableList<TodayCardInfo>) {
+        hourlyForecastList.sortedBy { it.date.hour }
+        setHourToShow(hourlyForecastList)
 
-        val itemToShow: List<TodayScreenItem> = getItemToShow(hourlyForecastList.toMutableList())
+        val itemToShow: List<TodayScreenItem> = getItemToShow(setHourToShow(hourlyForecastList))
         val todayScreenAdapter= TodayScreenAdapter(itemToShow)
 
         binding.todayRecyclerViewItem.apply {
@@ -59,6 +61,20 @@ class TodayScreenFragment : Fragment() {
             adapter = todayScreenAdapter
         }
 
+    }
+
+    private fun setHourToShow(hourlyForecastList: MutableList<TodayCardInfo>): MutableList<TodayCardInfo> {
+        val list: MutableList<TodayCardInfo> = mutableListOf()
+        if(OffsetDateTime.now().minute <= 29){
+            list.addAll(hourlyForecastList.filter {
+                it.date.hour >= OffsetDateTime.now().hour
+            })
+        } else {
+            list.addAll(hourlyForecastList.filter {
+                it.date.hour > OffsetDateTime.now().hour
+            })
+        }
+        return list
     }
 
     private fun getItemToShow(hourlyForecastList: MutableList<TodayCardInfo>): List<TodayScreenItem> {
