@@ -32,11 +32,12 @@ class TodayScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpUI(ForecastInfoObject.getTodayWeatherList().toMutableList())
 
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             try {
-                val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay().toMutableList()
+                val listOfForeCasts =
+                    NetworkObject.getHourlyForecastForASpecificDay().toMutableList()
                 setUpUI(listOfForeCasts)
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
                 Log.d("ForecastLog", e.toString())
             }
@@ -49,7 +50,7 @@ class TodayScreenFragment : Fragment() {
         setHourToShow(hourlyForecastList)
 
         val itemToShow: List<TodayScreenItem> = getItemToShow(setHourToShow(hourlyForecastList))
-        val todayScreenAdapter= TodayScreenAdapter(itemToShow)
+        val todayScreenAdapter = TodayScreenAdapter(itemToShow)
 
         binding.todayRecyclerViewItem.apply {
             layoutManager =
@@ -65,7 +66,7 @@ class TodayScreenFragment : Fragment() {
 
     private fun setHourToShow(hourlyForecastList: MutableList<TodayCardInfo>): MutableList<TodayCardInfo> {
         val list: MutableList<TodayCardInfo> = mutableListOf()
-        if(OffsetDateTime.now().minute <= 29){
+        if (OffsetDateTime.now().minute <= 29) {
             list.addAll(hourlyForecastList.filter {
                 it.date.hour >= OffsetDateTime.now().hour
             })

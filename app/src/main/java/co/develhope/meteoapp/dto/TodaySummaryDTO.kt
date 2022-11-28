@@ -1,4 +1,5 @@
 package co.develhope.meteoapp
+
 import co.develhope.meteoapp.data.domainmodel.*
 import co.develhope.meteoapp.dto.CurrentWeather
 import com.google.gson.annotations.SerializedName
@@ -26,7 +27,7 @@ data class TodaySummaryDTO(
     val timezoneAbbreviation: String,
     @SerializedName("utc_offset_seconds")
     val utcOffsetSeconds: Int
-){
+) {
     data class HourlyDTO(
         @SerializedName("rain")
         val rain: List<Double>,
@@ -49,10 +50,10 @@ data class TodaySummaryDTO(
         @SerializedName("cloudcover")
         val cloudcover: List<Int>,
         @SerializedName("winddirection_10m")
-        val windDirection : List<Int>
-    ){
-        fun toDomain(): List<TodayCardInfo>{
-            return this.time.mapIndexed {index, date ->
+        val windDirection: List<Int>
+    ) {
+        fun toDomain(): List<TodayCardInfo> {
+            return this.time.mapIndexed { index, date ->
                 TodayCardInfo(
                     date = date,
                     weather = this.weathercode.getOrNull(index)?.toWeather() ?: Weather.CLOUDY,
@@ -62,7 +63,8 @@ data class TodaySummaryDTO(
                     perceivedTemperature = this.apparentTemperature.getOrNull(index)?.toInt() ?: 0,
                     wind = this.windspeed10m.getOrNull(index)?.toInt() ?: 0,
                     coverage = this.cloudcover.getOrNull(index)?.toInt() ?: 0,
-                    windDirection = this.windDirection.getOrNull(index)?.getWindDirection() ?: WindDirection.N,
+                    windDirection = this.windDirection.getOrNull(index)?.getWindDirection()
+                        ?: WindDirection.N,
                     rain = this.rain.getOrNull(index)?.toInt() ?: 0
                 )
             }

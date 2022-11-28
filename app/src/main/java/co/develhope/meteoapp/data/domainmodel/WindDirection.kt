@@ -4,8 +4,8 @@ enum class WindDirection {
     N, NE, E, SE, S, SW, W, NW
 }
 
-fun Int.getWindDirection(): WindDirection{
-    return when (this){
+fun Int.getWindDirection(): WindDirection {
+    return when (this) {
         in 0..29 -> WindDirection.N
         in 30..59 -> WindDirection.NE
         in 60..119 -> WindDirection.E

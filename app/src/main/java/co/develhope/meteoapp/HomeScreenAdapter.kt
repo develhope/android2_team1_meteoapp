@@ -9,7 +9,10 @@ import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.WeeklyForecastItemBinding
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 
-class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clickListener: OnItemClickListenerInterface) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeScreenAdapter(
+    private val list: List<HomeScreenItem>,
+    private val clickListener: OnItemClickListenerInterface
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_TITLE_HOME_SCREEN = 0
     private val TYPE_WEEKLY_FORECAST_CARDVIEW = 1
@@ -45,7 +48,10 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clic
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is TitleViewHolder -> holder.bind(list[position] as HomeScreenItem.Title)
-            is WeeklyForecastViewHolder -> holder.bind(list[position] as HomeScreenItem.ForecastDetails, clickListener)
+            is WeeklyForecastViewHolder -> holder.bind(
+                list[position] as HomeScreenItem.ForecastDetails,
+                clickListener
+            )
             is Next5DaysViewHolder -> holder.bind(list[position] as HomeScreenItem.SubTitle)
 
         }
@@ -71,8 +77,11 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clic
 
     class WeeklyForecastViewHolder(val weeklyBinding: WeeklyForecastItemBinding) :
         RecyclerView.ViewHolder(weeklyBinding.root) {
-        fun bind(weeklyForecast: HomeScreenItem.ForecastDetails, clickListener: OnItemClickListenerInterface) {
-            itemView.setOnClickListener{
+        fun bind(
+            weeklyForecast: HomeScreenItem.ForecastDetails,
+            clickListener: OnItemClickListenerInterface
+        ) {
+            itemView.setOnClickListener {
                 clickListener.onItemClicked(weeklyForecast)
             }
             weeklyBinding.dateHomeScreen.text = itemView.context.getString(
@@ -114,7 +123,7 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clic
     }
 }
 
-interface OnItemClickListenerInterface{
+interface OnItemClickListenerInterface {
 
     fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails)
 
