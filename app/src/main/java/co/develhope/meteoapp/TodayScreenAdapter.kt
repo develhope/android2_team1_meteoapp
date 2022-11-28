@@ -2,8 +2,10 @@ package co.develhope.meteoapp
 
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionManager
 import co.develhope.meteoapp.databinding.TitleTodayScreenItemBinding
 import co.develhope.meteoapp.databinding.TodayForecastItemBinding
 import co.develhope.meteoapp.ui.adapter.TodayScreenItem
@@ -100,9 +102,46 @@ class TodayScreenAdapter(val list: List<TodayScreenItem>) :
                 R.string.rv_tv_precip_percentage,
                 hourlyForecastDetails.todayCardInfo.rainfall
             )
+            todayForecastItemBinding.humidity.text = itemView.context.getString(
+                R.string.rv_cv_humidity,
+                hourlyForecastDetails.todayCardInfo.humidity
+            )
+            todayForecastItemBinding.perceived.text = itemView.context.getString(
+                R.string.rv_cv_perceived,
+                hourlyForecastDetails.todayCardInfo.perceivedTemperature
+            )
 
+            todayForecastItemBinding.coverage.text = itemView.context.getString(
+                R.string.rv_cv_coverage,
+                hourlyForecastDetails.todayCardInfo.coverage
+            )
+            todayForecastItemBinding.rain.text = itemView.context.getString(
+                R.string.rv_cv_rain,
+                hourlyForecastDetails.todayCardInfo.rain
+            )
+
+            todayForecastItemBinding.wind.text = itemView.context.getString(
+                R.string.rv_cv_wind,
+                hourlyForecastDetails.todayCardInfo.windDirection,
+                hourlyForecastDetails.todayCardInfo.wind
+            )
+
+            todayForecastItemBinding.uvIndex.text = itemView.context.getString(
+                //TODO aggiungere uvindex dalle api
+                R.string.rv_cv_uv_index
+            )
+            todayForecastItemBinding.arrowIcon.setOnClickListener {
+                if (todayForecastItemBinding.todayCardView.visibility == View.GONE) {
+                    todayForecastItemBinding.arrowIcon.rotation = 180.0F
+                    TransitionManager.beginDelayedTransition(todayForecastItemBinding.root)
+                    todayForecastItemBinding.todayCardView.visibility = View.VISIBLE
+
+                } else {
+                    TransitionManager.beginDelayedTransition(todayForecastItemBinding.root)
+                    todayForecastItemBinding.todayCardView.visibility = View.GONE
+                    todayForecastItemBinding.arrowIcon.rotation = 0.0F
+                }
+            }
         }
-
-
     }
 }

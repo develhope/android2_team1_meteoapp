@@ -1,7 +1,5 @@
 package co.develhope.meteoapp
-import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
-import co.develhope.meteoapp.data.domainmodel.Weather
-import co.develhope.meteoapp.data.domainmodel.toWeather
+import co.develhope.meteoapp.data.domainmodel.*
 import co.develhope.meteoapp.dto.CurrentWeather
 import com.google.gson.annotations.SerializedName
 import org.threeten.bp.OffsetDateTime
@@ -43,7 +41,15 @@ data class TodaySummaryDTO(
         @SerializedName("weathercode")
         val weathercode: List<Int>,
         @SerializedName("windspeed_10m")
-        val windspeed10m: List<Double>
+        val windspeed10m: List<Double>,
+        @SerializedName("relativehumidity_2m")
+        val relativeHumidity: List<Int>,
+        @SerializedName("apparent_temperature")
+        val apparentTemperature: List<Double>,
+        @SerializedName("cloudcover")
+        val cloudcover: List<Int>,
+        @SerializedName("winddirection_10m")
+        val windDirection : List<Int>
     ){
         fun toDomain(): List<TodayCardInfo>{
             return this.time.mapIndexed {index, date ->
@@ -51,7 +57,13 @@ data class TodaySummaryDTO(
                     date = date,
                     weather = this.weathercode.getOrNull(index)?.toWeather() ?: Weather.CLOUDY,
                     temperature = this.temperature2m.getOrNull(index)?.toInt() ?: 0,
-                    rainfall = this.rain.getOrNull(index)?.toInt() ?: 0
+                    rainfall = this.rain.getOrNull(index)?.toInt() ?: 0,
+                    humidity = this.relativeHumidity.getOrNull(index)?.toInt() ?: 0,
+                    perceivedTemperature = this.apparentTemperature.getOrNull(index)?.toInt() ?: 0,
+                    wind = this.windspeed10m.getOrNull(index)?.toInt() ?: 0,
+                    coverage = this.cloudcover.getOrNull(index)?.toInt() ?: 0,
+                    windDirection = this.windDirection.getOrNull(index)?.getWindDirection() ?: WindDirection.N,
+                    rain = this.rain.getOrNull(index)?.toInt() ?: 0
                 )
             }
         }

@@ -46,7 +46,6 @@ class HomeScreenFragment : Fragment() {
     }
 
     private fun setupUi(forecastList: List<CardInfo>) {
-        //TODO ordinare la lista per giorno
         forecastList.sortedBy { it.date }
         val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList.toMutableList())
         val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow,
@@ -54,7 +53,6 @@ class HomeScreenFragment : Fragment() {
                 override fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails) {
                     replaceFragment(TodayScreenFragment())
                 }
-
             })
         binding.weatherHomeScreenList.apply {
             layoutManager =
