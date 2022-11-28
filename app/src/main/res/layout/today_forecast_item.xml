@@ -71,12 +71,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/cardview_today_color"
         app:cardCornerRadius="@dimen/corner_cardview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/todayHour"
-        android:visibility="gone">
+        app:layout_constraintTop_toBottomOf="@id/todayHour">
 
         <TextView
             android:id="@+id/perceivedTitle"

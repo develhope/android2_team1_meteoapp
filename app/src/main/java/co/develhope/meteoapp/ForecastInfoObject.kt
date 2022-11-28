@@ -18,7 +18,7 @@ object ForecastInfoObject {
         return todayWeatherList
     }
 
-    fun setWeatherList(list: List<CardInfo>){
+    fun setWeatherList(list: List<CardInfo>) {
         weatherList.clear()
         weatherList.addAll(list)
     }
