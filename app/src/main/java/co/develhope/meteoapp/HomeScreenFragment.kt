@@ -5,8 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.CardInfo
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 class HomeScreenFragment : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
     private val binding get() = bindingHomeScreen!!
+    private val viewModel: HomeScreenViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -30,18 +32,14 @@ class HomeScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeRepo()
+        viewModel.retrieveRepos()
 
-        lifecycleScope.launch {
-            try {
-                val listOfForeCasts = NetworkObject.getWeeklySummary()
-                setupUi(listOfForeCasts)
+    }
 
-                Log.d("ForecastLog", "weekly: $listOfForeCasts")
-                Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Log.d("ForecastLog", e.toString())
-            }
+    private fun observeRepo (){
+        viewModel.listOfForeCasts.observe(viewLifecycleOwner) {
+            setupUi(it)
         }
     }
 
