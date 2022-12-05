@@ -10,21 +10,29 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+sealed class WeeklyForecastResult (){
+    data class Success (val data: List<CardInfo>): WeeklyForecastResult()
+    data class Error (val e: Exception): WeeklyForecastResult()
+    object Loading : WeeklyForecastResult()
+
+}
+
 class HomeScreenViewModel : ViewModel() {
 
-    private var _listOfForeCasts = MutableLiveData<List<CardInfo>>()
-    val listOfForeCasts: LiveData<List<CardInfo>>
-        get() = _listOfForeCasts
+    private var _weeklyForecastResult = MutableLiveData<WeeklyForecastResult>()
+    val weeklyForecastResult: LiveData<WeeklyForecastResult>
+        get() = _weeklyForecastResult
 
     fun retrieveRepos() {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             try {
-                _listOfForeCasts.value = NetworkObject.getWeeklySummary()
-
-                Log.d("ForecastLog", "weekly: $listOfForeCasts")
+                _weeklyForecastResult.value = WeeklyForecastResult.Loading
+                _weeklyForecastResult.value = WeeklyForecastResult.Success(NetworkObject.getWeeklySummary())
+                Log.d("ForecastLog", "weekly: $weeklyForecastResult")
                 Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
             } catch (e: Exception) {
                 e.printStackTrace()
+                _weeklyForecastResult.value = WeeklyForecastResult.Error(e)
                 Log.d("ForecastLog", e.toString())
             }
         }

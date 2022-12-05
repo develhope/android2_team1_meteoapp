@@ -2,12 +2,12 @@ package co.develhope.meteoapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import co.develhope.meteoapp.databinding.Next5daysHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.TitleHomeScreenItemBinding
 import co.develhope.meteoapp.databinding.WeeklyForecastItemBinding
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
+import org.threeten.bp.OffsetDateTime
 
 class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clickListener: OnItemClickListenerInterface) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -73,7 +73,7 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clic
         RecyclerView.ViewHolder(weeklyBinding.root) {
         fun bind(weeklyForecast: HomeScreenItem.ForecastDetails, clickListener: OnItemClickListenerInterface) {
             itemView.setOnClickListener{
-                clickListener.onItemClicked(weeklyForecast)
+                clickListener.onItemClicked(weeklyForecast, weeklyForecast.info.date)
             }
             weeklyBinding.dateHomeScreen.text = itemView.context.getString(
                 R.string.rv_tv_date,
@@ -116,6 +116,6 @@ class HomeScreenAdapter(private val list: List<HomeScreenItem>, private val clic
 
 interface OnItemClickListenerInterface{
 
-    fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails)
+    fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails, position: OffsetDateTime)
 
 }

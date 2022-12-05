@@ -1,20 +1,18 @@
 package co.develhope.meteoapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
-import co.develhope.meteoapp.network.NetworkObject
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
-import kotlinx.coroutines.launch
+import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 class HomeScreenFragment : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
@@ -38,8 +36,12 @@ class HomeScreenFragment : Fragment() {
     }
 
     private fun observeRepo (){
-        viewModel.listOfForeCasts.observe(viewLifecycleOwner) {
-            setupUi(it)
+        viewModel.weeklyForecastResult.observe(viewLifecycleOwner) {
+            when(it){
+                is WeeklyForecastResult.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                WeeklyForecastResult.Loading -> TODO()
+                is WeeklyForecastResult.Success -> setupUi(it.data)
+            }
         }
     }
 
@@ -48,8 +50,13 @@ class HomeScreenFragment : Fragment() {
         val itemsToShow: List<HomeScreenItem> = getItemsToShow(forecastList.toMutableList())
         val homeScreenAdapter: HomeScreenAdapter = HomeScreenAdapter(itemsToShow,
             clickListener = object : OnItemClickListenerInterface {
-                override fun onItemClicked(forecastDetails: HomeScreenItem.ForecastDetails) {
+                override fun onItemClicked(
+                    forecastDetails: HomeScreenItem.ForecastDetails,
+                    position: OffsetDateTime
+                ) {
                     replaceFragment(TodayScreenFragment())
+                    Toast.makeText(context, position.format(
+                        DateTimeFormatter.ISO_LOCAL_DATE), Toast.LENGTH_SHORT).show()
                 }
             })
         binding.weatherHomeScreenList.apply {
