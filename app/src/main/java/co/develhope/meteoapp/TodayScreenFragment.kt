@@ -14,6 +14,7 @@ import co.develhope.meteoapp.network.NetworkObject
 import co.develhope.meteoapp.ui.adapter.TodayScreenItem
 import kotlinx.coroutines.launch
 import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 
 class TodayScreenFragment : Fragment() {
@@ -36,7 +37,9 @@ class TodayScreenFragment : Fragment() {
             try {
                 val selectedInfo = ForecastInfoObject.getSelectedCardInfo()
                 if (selectedInfo != null){
-                    val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay().toMutableList()
+                    val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay(
+                        selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE),
+                        selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE)).toMutableList()
                     setUpUI(listOfForeCasts)
                 } else {
                     //TODO

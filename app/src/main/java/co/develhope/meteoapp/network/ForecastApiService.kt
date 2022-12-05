@@ -17,10 +17,9 @@ interface ForecastApiService {
         @Query("hourly") hourly: List<String> = listOf("temperature_2m", "rain", "showers", "snowfall", "weathercode", "windspeed_10m", "relativehumidity_2m", "apparent_temperature", "cloudcover", "winddirection_10m"),
         @Query("current_weather") current_weather: Boolean = true,
         @Query("timezone") timezone : String = "auto",
-        @Query("start_date") start_date : String = OffsetDateTime.now().plusDays(0).format(DateTimeFormatter.ISO_LOCAL_DATE),
-        @Query("end_date") end_date : String = OffsetDateTime.now().plusDays(0).format(DateTimeFormatter.ISO_LOCAL_DATE)
+        @Query("start_date") start_date : String,
+        @Query("end_date") end_date : String
     ): Response<TodaySummaryDTO>
-
 
     @GET("v1/forecast?")
     suspend fun getWeeklyForecast (

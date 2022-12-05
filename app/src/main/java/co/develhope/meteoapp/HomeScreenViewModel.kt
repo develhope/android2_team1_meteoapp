@@ -29,7 +29,6 @@ class HomeScreenViewModel : ViewModel() {
                 _weeklyForecastResult.value = WeeklyForecastResult.Loading
                 _weeklyForecastResult.value = WeeklyForecastResult.Success(NetworkObject.getWeeklySummary())
                 Log.d("ForecastLog", "weekly: $weeklyForecastResult")
-                Log.d("ForecastLog", "hourly: ${NetworkObject.getHourlyForecastForASpecificDay()}")
             } catch (e: Exception) {
                 e.printStackTrace()
                 _weeklyForecastResult.value = WeeklyForecastResult.Error(e)
