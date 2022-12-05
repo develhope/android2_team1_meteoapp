@@ -34,8 +34,14 @@ class TodayScreenFragment : Fragment() {
 
         lifecycleScope.launch{
             try {
-                val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay().toMutableList()
-                setUpUI(listOfForeCasts)
+                val selectedInfo = ForecastInfoObject.getSelectedCardInfo()
+                if (selectedInfo != null){
+                    val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay().toMutableList()
+                    setUpUI(listOfForeCasts)
+                } else {
+                    //TODO
+                }
+
             } catch (e: Exception){
                 e.printStackTrace()
                 Log.d("ForecastLog", e.toString())

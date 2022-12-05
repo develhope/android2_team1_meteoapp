@@ -39,7 +39,7 @@ class HomeScreenFragment : Fragment() {
         viewModel.weeklyForecastResult.observe(viewLifecycleOwner) {
             when(it){
                 is WeeklyForecastResult.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
-                WeeklyForecastResult.Loading -> TODO()
+                WeeklyForecastResult.Loading -> Unit
                 is WeeklyForecastResult.Success -> setupUi(it.data)
             }
         }
@@ -54,6 +54,7 @@ class HomeScreenFragment : Fragment() {
                     forecastDetails: HomeScreenItem.ForecastDetails,
                     position: OffsetDateTime
                 ) {
+                    ForecastInfoObject.saveSelectedCardInfo(forecastDetails.info)
                     replaceFragment(TodayScreenFragment())
                     Toast.makeText(context, position.format(
                         DateTimeFormatter.ISO_LOCAL_DATE), Toast.LENGTH_SHORT).show()

@@ -66,4 +66,11 @@ object ForecastInfoObject {
         }
     }
 
+    var selectedInfo: CardInfo? = null
+    fun saveSelectedCardInfo(info: CardInfo) {
+        selectedInfo = info
+    }
+
+    fun getSelectedCardInfo(): CardInfo? = selectedInfo
+
 }
