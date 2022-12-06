@@ -5,6 +5,7 @@
     <string name="navbar_home">Home</string>
     <string name="navbar_today">Today</string>
     <string name="navbar_tomorrow">Tomorrow</string>
+    <string name="navbar_search">Search</string>
     <!-- Home Screen -->
     <string name="tv_home_title">%s, %s</string>
     <string name="tv_next_five_days">Next 5 days</string>
@@ -29,6 +30,8 @@
     <string name="rv_cv_rain">%dmm</string>
     <string name="rv_cv_wind">%s %dKm/h</string>
     <string name="rv_cv_uv_index">5/10</string>
+    <!-- Static Title Search Page -->
+    <string name="static_recent_search">Recent search</string>
 
 
 </resources>

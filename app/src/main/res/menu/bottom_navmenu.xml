@@ -9,4 +9,13 @@
         android:id="@+id/today"
         android:icon="@drawable/calendar"
         android:title="@string/navbar_today" />
+    <item
+        android:id="@+id/tomorrow"
+        android:icon="@drawable/calendar"
+        android:title="@string/navbar_tomorrow" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@android:drawable/ic_search_category_default"
+        android:title="@string/navbar_search" />
 </menu>

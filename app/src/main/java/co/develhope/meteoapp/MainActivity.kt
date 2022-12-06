@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeScreenFragment())
                 R.id.today -> replaceFragment(TodayScreenFragment())
+                R.id.search -> replaceFragment(SearchPageFragment())
             }
             true
         }

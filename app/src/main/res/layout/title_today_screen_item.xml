@@ -37,6 +37,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TodayDate"
-        tools:text="16 - 11 - 2022" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
