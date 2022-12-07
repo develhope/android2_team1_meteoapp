@@ -1,5 +1,6 @@
 package co.develhope.meteoapp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeScreenFragment())
+                R.id.search -> replaceFragment(SearchPageFragment())
                 R.id.today -> {
                     ForecastInfoObject.getSelectedTodayInfo()
                         ?.let { it -> ForecastInfoObject.saveSelectedCardInfo(it) }
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
         replaceFragment(HomeScreenFragment())
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
