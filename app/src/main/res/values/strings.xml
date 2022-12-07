@@ -29,6 +29,7 @@
     <string name="rv_cv_rain">%dmm</string>
     <string name="rv_cv_wind">%s %dKm/h</string>
     <string name="rv_cv_uv_index">5/10</string>
+    <string name="date">%d-%d-%d</string>
 
 
 </resources>
