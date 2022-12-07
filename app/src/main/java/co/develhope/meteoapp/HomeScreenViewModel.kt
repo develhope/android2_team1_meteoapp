@@ -10,9 +10,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-sealed class WeeklyForecastResult (){
-    data class Success (val data: List<CardInfo>): WeeklyForecastResult()
-    data class Error (val e: Exception): WeeklyForecastResult()
+sealed class WeeklyForecastResult() {
+    data class Success(val data: List<CardInfo>) : WeeklyForecastResult()
+    data class Error(val e: Exception) : WeeklyForecastResult()
     object Loading : WeeklyForecastResult()
 }
 
@@ -26,7 +26,8 @@ class HomeScreenViewModel : ViewModel() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 _weeklyForecastResult.value = WeeklyForecastResult.Loading
-                _weeklyForecastResult.value = WeeklyForecastResult.Success(NetworkObject.getWeeklySummary())
+                _weeklyForecastResult.value =
+                    WeeklyForecastResult.Success(NetworkObject.getWeeklySummary())
                 Log.d("ForecastLog", "weekly: $weeklyForecastResult")
             } catch (e: Exception) {
                 e.printStackTrace()

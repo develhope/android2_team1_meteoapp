@@ -78,8 +78,11 @@ class HomeScreenAdapter(
     class WeeklyForecastViewHolder(val weeklyBinding: WeeklyForecastItemBinding) :
         RecyclerView.ViewHolder(weeklyBinding.root) {
 
-        fun bind(weeklyForecast: HomeScreenItem.ForecastDetails, clickListener: OnItemClickListenerInterface) {
-            itemView.setOnClickListener{
+        fun bind(
+            weeklyForecast: HomeScreenItem.ForecastDetails,
+            clickListener: OnItemClickListenerInterface
+        ) {
+            itemView.setOnClickListener {
                 clickListener.onItemClicked(weeklyForecast, weeklyForecast.info.date)
 
             }
