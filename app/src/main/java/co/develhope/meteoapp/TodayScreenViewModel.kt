@@ -12,17 +12,16 @@ import kotlinx.coroutines.launch
 import org.threeten.bp.format.DateTimeFormatter
 
 sealed class HourlyForecastResult() {
-    data class Success (val data: MutableList<TodayCardInfo>): HourlyForecastResult()
-    data class Error (val e: Exception): HourlyForecastResult()
+    data class Success(val data: MutableList<TodayCardInfo>) : HourlyForecastResult()
+    data class Error(val e: Exception) : HourlyForecastResult()
     object Loading : HourlyForecastResult()
 }
 
-class TodayScreenViewModel: ViewModel() {
+class TodayScreenViewModel : ViewModel() {
 
     private var _hourlyForecastResult = MutableLiveData<HourlyForecastResult>()
     val hourlyForecastResult: LiveData<HourlyForecastResult>
         get() = _hourlyForecastResult
-
 
 
     fun retrieveRepos() {
@@ -30,10 +29,12 @@ class TodayScreenViewModel: ViewModel() {
             try {
                 val selectedInfo = ForecastInfoObject.getSelectedCardInfo()
                 if (selectedInfo != null) {
-                    _hourlyForecastResult.value = HourlyForecastResult.Success(NetworkObject.getHourlyForecastForASpecificDay(
-                        selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE),
-                        selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE)
-                    ).toMutableList())
+                    _hourlyForecastResult.value = HourlyForecastResult.Success(
+                        NetworkObject.getHourlyForecastForASpecificDay(
+                            selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE),
+                            selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE)
+                        ).toMutableList()
+                    )
                 } else {
                     //TODO
                 }

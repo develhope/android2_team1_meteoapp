@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +12,6 @@ import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import co.develhope.meteoapp.ui.adapter.HomeScreenItem
 import org.threeten.bp.OffsetDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 class HomeScreenFragment : Fragment() {
     private var bindingHomeScreen: FragmentHomeScreenBinding? = null
