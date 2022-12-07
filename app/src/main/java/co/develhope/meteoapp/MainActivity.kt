@@ -19,7 +19,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(HomeScreenFragment())
                 R.id.search -> replaceFragment(SearchPageFragment())
                 R.id.today -> {
-                    ForecastInfoObject.getSelectedTodayInfo()
+                    ForecastInfoObject.getSelectedTodayInfo(0)
+                        ?.let { it -> ForecastInfoObject.saveSelectedCardInfo(it) }
+                    replaceFragment(TodayScreenFragment())
+                }
+                R.id.tomorrow -> {
+                    ForecastInfoObject.getSelectedTodayInfo(1)
                         ?.let { it -> ForecastInfoObject.saveSelectedCardInfo(it) }
                     replaceFragment(TodayScreenFragment())
                 }
