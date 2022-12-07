@@ -1,5 +1,6 @@
 package co.develhope.meteoapp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
         replaceFragment(HomeScreenFragment())
-
 
     }
 
