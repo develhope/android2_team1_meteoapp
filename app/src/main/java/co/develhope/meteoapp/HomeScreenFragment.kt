@@ -56,8 +56,6 @@ class HomeScreenFragment : Fragment() {
                 ) {
                     ForecastInfoObject.saveSelectedCardInfo(forecastDetails.info)
                     replaceFragment(TodayScreenFragment())
-                    Toast.makeText(context, position.format(
-                        DateTimeFormatter.ISO_LOCAL_DATE), Toast.LENGTH_SHORT).show()
                 }
             })
         binding.weatherHomeScreenList.apply {
@@ -83,6 +81,7 @@ class HomeScreenFragment : Fragment() {
         val homeScreenList = arrayListOf<HomeScreenItem>()
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
         homeScreenList.add(HomeScreenItem.ForecastDetails(forecastList.first()))
+        ForecastInfoObject.saveSelectedTodayInfo(forecastList.first())
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
         forecastList.removeFirst()
         forecastList.removeLast()

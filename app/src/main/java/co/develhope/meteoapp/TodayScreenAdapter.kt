@@ -62,6 +62,7 @@ class TodayScreenAdapter(val list: List<TodayScreenItem>) :
     class TitleViewHolder(val titleTodayScreenItemBinding: TitleTodayScreenItemBinding) :
         RecyclerView.ViewHolder(titleTodayScreenItemBinding.root) {
         fun bind(title: TodayScreenItem.Title) {
+            titleTodayScreenItemBinding.TodayDate.text = ForecastInfoObject.setDayOfWeek(title.date.dayOfWeek.toString())
             titleTodayScreenItemBinding.TodayFullDate.text = itemView.context.getString(
                 R.string.cv_tv_calendar_date,
                 title.date.dayOfMonth,

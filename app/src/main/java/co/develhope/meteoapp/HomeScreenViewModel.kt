@@ -14,7 +14,6 @@ sealed class WeeklyForecastResult (){
     data class Success (val data: List<CardInfo>): WeeklyForecastResult()
     data class Error (val e: Exception): WeeklyForecastResult()
     object Loading : WeeklyForecastResult()
-
 }
 
 class HomeScreenViewModel : ViewModel() {

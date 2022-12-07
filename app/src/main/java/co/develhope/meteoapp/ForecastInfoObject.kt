@@ -66,11 +66,17 @@ object ForecastInfoObject {
         }
     }
 
-    var selectedInfo: CardInfo? = null
+    private var selectedInfo: CardInfo? = null
     fun saveSelectedCardInfo(info: CardInfo) {
         selectedInfo = info
     }
-
     fun getSelectedCardInfo(): CardInfo? = selectedInfo
+
+
+    private var selectedTodayInfo: CardInfo? = null
+    fun saveSelectedTodayInfo(todayInfo: CardInfo){
+        selectedTodayInfo = todayInfo
+    }
+    fun getSelectedTodayInfo(): CardInfo? = selectedTodayInfo
 
 }

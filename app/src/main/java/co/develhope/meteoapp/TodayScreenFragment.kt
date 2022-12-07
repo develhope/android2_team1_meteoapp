@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
@@ -20,6 +22,7 @@ import org.threeten.bp.format.DateTimeFormatter
 class TodayScreenFragment : Fragment() {
     private var bindingTodayScreen: FragmentTodayScreenBinding? = null
     private val binding get() = bindingTodayScreen!!
+    private val viewModel: TodayScreenViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,26 +34,22 @@ class TodayScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpUI(ForecastInfoObject.getTodayWeatherList().toMutableList())
+        observeRepo()
+        viewModel.retrieveRepos()
+    }
 
-        lifecycleScope.launch{
-            try {
-                val selectedInfo = ForecastInfoObject.getSelectedCardInfo()
-                if (selectedInfo != null){
-                    val listOfForeCasts = NetworkObject.getHourlyForecastForASpecificDay(
-                        selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE),
-                        selectedInfo.date.format(DateTimeFormatter.ISO_LOCAL_DATE)).toMutableList()
-                    setUpUI(listOfForeCasts)
-                } else {
-                    //TODO
-                }
-
-            } catch (e: Exception){
-                e.printStackTrace()
-                Log.d("ForecastLog", e.toString())
+    private fun observeRepo() {
+        viewModel.hourlyForecastResult.observe(viewLifecycleOwner) {
+            when (it) {
+                is HourlyForecastResult.Error -> Toast.makeText(
+                    context,
+                    "Error",
+                    Toast.LENGTH_SHORT
+                ).show()
+                HourlyForecastResult.Loading -> Unit
+                is HourlyForecastResult.Success -> setUpUI(it.data)
             }
         }
-
     }
 
     private fun setUpUI(hourlyForecastList: MutableList<TodayCardInfo>) {
@@ -58,7 +57,7 @@ class TodayScreenFragment : Fragment() {
         setHourToShow(hourlyForecastList)
 
         val itemToShow: List<TodayScreenItem> = getItemToShow(setHourToShow(hourlyForecastList))
-        val todayScreenAdapter= TodayScreenAdapter(itemToShow)
+        val todayScreenAdapter = TodayScreenAdapter(itemToShow)
 
         binding.todayRecyclerViewItem.apply {
             layoutManager =
@@ -74,7 +73,7 @@ class TodayScreenFragment : Fragment() {
 
     private fun setHourToShow(hourlyForecastList: MutableList<TodayCardInfo>): MutableList<TodayCardInfo> {
         val list: MutableList<TodayCardInfo> = mutableListOf()
-        if(OffsetDateTime.now().minute <= 29){
+        if (OffsetDateTime.now().minute <= 29) {
             list.addAll(hourlyForecastList.filter {
                 it.date.hour >= OffsetDateTime.now().hour
             })
@@ -90,7 +89,7 @@ class TodayScreenFragment : Fragment() {
         val todayScreenList = arrayListOf<TodayScreenItem>()
         todayScreenList.add(
             TodayScreenItem.Title(
-                OffsetDateTime.now(),
+                ForecastInfoObject.getSelectedCardInfo()?.date ?: OffsetDateTime.now(),
                 "Rome",
                 "Lazio"
             )
