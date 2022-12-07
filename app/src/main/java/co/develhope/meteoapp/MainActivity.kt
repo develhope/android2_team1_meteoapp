@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
         replaceFragment(HomeScreenFragment())
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
