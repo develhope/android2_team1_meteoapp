@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_cardview_recycler_view"
-        app:cardCornerRadius="@dimen/corner_cardview"
         app:cardBackgroundColor="@color/cardview_color"
+        app:cardCornerRadius="@dimen/corner_cardview"
         app:cardElevation="@dimen/cv_elevation">
 
         <RelativeLayout
@@ -25,70 +25,70 @@
                 android:id="@+id/dayCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tomorrow"
                 android:layout_alignParentStart="true"
+                android:text="Tomorrow"
+                android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/minTempCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="10 C°"
                 android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                tools:text="10 C°" />
 
             <TextView
                 android:id="@+id/maxTempCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="20 C°"
                 android:layout_alignParentEnd="true"
+                android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                tools:text="20 C°" />
 
             <TextView
                 android:id="@+id/dateHomeScreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="22-10-2022"
                 android:layout_below="@id/dayCard"
                 android:layout_alignParentStart="true"
+                android:textColor="@color/white"
                 android:textSize="@dimen/hour_second_third_screen_text_size"
-                android:textColor="@color/white" />
+                tools:text="22-10-2022" />
 
             <TextView
                 android:id="@+id/minCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="min"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/minTempCard"
-                android:textSize="@dimen/hour_second_third_screen_text_size"
-                android:textColor="@color/white"/>
+                android:layout_centerHorizontal="true"
+                android:text="min"
+                android:textColor="@color/white"
+                android:textSize="@dimen/hour_second_third_screen_text_size" />
 
 
             <TextView
                 android:id="@+id/maxCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="max"
-                android:layout_alignParentEnd="true"
                 android:layout_below="@id/maxTempCard"
-                android:textSize="@dimen/hour_second_third_screen_text_size"
-                android:textColor="@color/white"/>
+                android:layout_alignParentEnd="true"
+                android:text="max"
+                android:textColor="@color/white"
+                android:textSize="@dimen/hour_second_third_screen_text_size" />
 
             <ImageView
                 android:id="@+id/iconHomeScreenRecyclerView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                tools:srcCompat="@drawable/sun_cloud"
                 android:layout_below="@id/dateHomeScreen"
-                android:layout_marginTop="@dimen/padding_margin_layout"/>
+                android:layout_marginTop="@dimen/padding_margin_layout"
+                tools:srcCompat="@drawable/sun_cloud" />
 
             <TextView
                 android:id="@+id/precipitationHomeScreenRecyclerView"
@@ -109,10 +109,10 @@
                 android:layout_below="@id/maxCard"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/padding_margin_layout"
-                tools:text="20 Km/h"
                 android:textColor="@color/white"
                 android:textSize="@dimen/list_day_home_screen_text_size"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="20 Km/h" />
 
             <TextView
                 android:id="@+id/precipitationTextHomeScreenRecyclerView"
@@ -121,8 +121,8 @@
                 android:layout_below="@id/precipitationHomeScreenRecyclerView"
                 android:layout_centerHorizontal="true"
                 android:text="precip."
-                android:textSize="@dimen/hour_second_third_screen_text_size"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/hour_second_third_screen_text_size" />
 
             <TextView
                 android:id="@+id/windTextHomeScreenRecyclerView"
@@ -131,8 +131,8 @@
                 android:layout_below="@id/windHomeScreenRecyclerView"
                 android:layout_alignParentEnd="true"
                 android:text="wind"
-                android:textSize="@dimen/hour_second_third_screen_text_size"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/hour_second_third_screen_text_size" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

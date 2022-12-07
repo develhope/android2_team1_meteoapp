@@ -16,7 +16,6 @@ import org.threeten.bp.format.DateTimeFormatter
 import java.lang.reflect.Type
 
 
-
 class OffsetDateTimeTypeAdapter : JsonSerializer<OffsetDateTime>, JsonDeserializer<OffsetDateTime> {
 
     override fun serialize(
@@ -34,11 +33,11 @@ class OffsetDateTimeTypeAdapter : JsonSerializer<OffsetDateTime>, JsonDeserializ
         val string = json.asString
         Log.d("TypeAdapter", "$string")
 
-        return if(string.contains("T")){
+        return if (string.contains("T")) {
             val date = LocalDateTime.parse(string).atZone(ZoneOffset.UTC)
             Log.d("TypeAdapter with Time", "$date")
             date.toOffsetDateTime()
-        }else{
+        } else {
             val date = LocalDate.parse(string)
                 .atStartOfDay(ZoneOffset.UTC)
 

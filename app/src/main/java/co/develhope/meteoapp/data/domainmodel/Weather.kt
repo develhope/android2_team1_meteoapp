@@ -6,7 +6,7 @@ enum class Weather {
 
 }
 
-fun Int.toWeather(): Weather{
+fun Int.toWeather(): Weather {
     return when (this) {
         1 -> Weather.SUNNY
         else -> Weather.HEAVYRAIN

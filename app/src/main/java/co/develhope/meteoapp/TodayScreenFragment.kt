@@ -38,6 +38,7 @@ class TodayScreenFragment : Fragment() {
         viewModel.retrieveRepos()
     }
 
+
     private fun observeRepo() {
         viewModel.hourlyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
@@ -48,6 +49,7 @@ class TodayScreenFragment : Fragment() {
                 ).show()
                 HourlyForecastResult.Loading -> Unit
                 is HourlyForecastResult.Success -> setUpUI(it.data)
+
             }
         }
     }

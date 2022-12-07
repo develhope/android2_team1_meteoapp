@@ -58,7 +58,9 @@ object NetworkObject {
         return service.getWeeklyForecast().body()?.dailyDTO?.toDomain() ?: emptyList()
     }
 
+
     suspend fun getHourlyForecastForASpecificDay(start_date: String, end_date: String): List<TodayCardInfo> {
         return service.getHourlyForecastForASpecificDay(start_date = start_date, end_date = end_date).body()?.hourlyDTO?.toDomain() ?: emptyList()
+
     }
 }
