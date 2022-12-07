@@ -30,11 +30,14 @@
     <string name="rv_cv_rain">%dmm</string>
     <string name="rv_cv_wind">%s %dKm/h</string>
     <string name="rv_cv_uv_index">5/10</string>
+    <string name="date">%d-%d-%d</string>
     <!-- Static Title Search Page -->
     <string name="static_recent_search">Recent search</string>
     <!-- Error Page Static Text -->
     <string name="error_page_static_text">There was an error retrieving data. Check your internet connection and try again.</string>
     <string name="btn_text_error_page">Try again</string>
+    
+
 
 
 </resources>

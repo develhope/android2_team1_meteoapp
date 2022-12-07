@@ -18,8 +18,12 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeScreenFragment())
-                R.id.today -> replaceFragment(TodayScreenFragment())
                 R.id.search -> replaceFragment(SearchPageFragment())
+                R.id.today -> {
+                    ForecastInfoObject.getSelectedTodayInfo()
+                        ?.let { it -> ForecastInfoObject.saveSelectedCardInfo(it) }
+                    replaceFragment(TodayScreenFragment())
+                }
             }
             true
         }

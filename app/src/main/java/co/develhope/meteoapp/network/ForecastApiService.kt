@@ -1,7 +1,10 @@
 package co.develhope.meteoapp.network
 
+import co.develhope.meteoapp.ForecastInfoObject
 import co.develhope.meteoapp.TodaySummaryDTO
 import co.develhope.meteoapp.dto.WeeklySummaryDTO
+import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -24,11 +27,12 @@ interface ForecastApiService {
             "winddirection_10m"
         ),
         @Query("current_weather") current_weather: Boolean = true,
-        @Query("timezone") timezone: String = "auto",
-        @Query("start_date") start_date: String = "2022-10-03",
-        @Query("end_date") end_date: String = "2022-10-03"
-    ): Response<TodaySummaryDTO>
 
+        @Query("timezone") timezone : String = "auto",
+        @Query("start_date") start_date : String,
+        @Query("end_date") end_date : String
+
+    ): Response<TodaySummaryDTO>
 
     @GET("v1/forecast?")
     suspend fun getWeeklyForecast(
