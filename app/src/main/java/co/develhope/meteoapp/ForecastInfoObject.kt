@@ -1,8 +1,11 @@
 package co.develhope.meteoapp
 
+import android.content.Context
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 object ForecastInfoObject {
 
@@ -70,13 +73,15 @@ object ForecastInfoObject {
     fun saveSelectedCardInfo(info: CardInfo) {
         selectedInfo = info
     }
+
     fun getSelectedCardInfo(): CardInfo? = selectedInfo
 
 
     private var selectedTodayInfo: CardInfo? = null
-    fun saveSelectedTodayInfo(todayInfo: CardInfo){
+    fun saveSelectedTodayInfo(todayInfo: CardInfo) {
         selectedTodayInfo = todayInfo
     }
+
     fun getSelectedTodayInfo(): CardInfo? = selectedTodayInfo
 
 }

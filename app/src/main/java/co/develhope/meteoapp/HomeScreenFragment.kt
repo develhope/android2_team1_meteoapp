@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,12 +33,18 @@ class HomeScreenFragment : Fragment() {
 
     }
 
-    private fun observeRepo (){
+    private fun observeRepo() {
         viewModel.weeklyForecastResult.observe(viewLifecycleOwner) {
-            when(it){
-                is WeeklyForecastResult.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            when (it) {
+                is WeeklyForecastResult.Error -> ErrorPageFragment().show(
+                    childFragmentManager,
+                    "Error"
+                )
                 WeeklyForecastResult.Loading -> Unit
-                is WeeklyForecastResult.Success -> setupUi(it.data)
+                is WeeklyForecastResult.Success -> {
+                    setupUi(it.data)
+                    //ErrorPageFragment().dismiss()
+                }
             }
         }
     }
@@ -92,4 +97,5 @@ class HomeScreenFragment : Fragment() {
         return homeScreenList
     }
 }
+
 
