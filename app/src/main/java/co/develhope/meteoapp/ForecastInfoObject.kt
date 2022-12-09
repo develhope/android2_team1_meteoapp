@@ -6,7 +6,6 @@ import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-
 object ForecastInfoObject {
 
     private val weatherList: MutableList<CardInfo> = mutableListOf()
@@ -82,6 +81,18 @@ object ForecastInfoObject {
         selectedTodayInfo = todayInfo
     }
 
-    fun getSelectedTodayInfo(): CardInfo? = selectedTodayInfo
+    fun getSelectedTodayInfo(position: Int): CardInfo? {
+        return when(position){
+            0 -> selectedTodayInfo
+            1 -> selectedTomorrowInfo
+            else -> selectedTodayInfo
+        }
+    }
+
+
+    private var selectedTomorrowInfo: CardInfo? = null
+    fun saveSelectedTomorrowInfo(tomorrowInfo: CardInfo){
+        selectedTomorrowInfo = tomorrowInfo
+    }
 
 }

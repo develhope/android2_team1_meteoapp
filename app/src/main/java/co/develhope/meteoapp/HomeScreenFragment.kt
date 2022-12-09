@@ -86,6 +86,7 @@ class HomeScreenFragment : Fragment() {
         homeScreenList.add(HomeScreenItem.Title("Rome", "Lazio"))
         homeScreenList.add(HomeScreenItem.ForecastDetails(forecastList.first()))
         ForecastInfoObject.saveSelectedTodayInfo(forecastList.first())
+        ForecastInfoObject.saveSelectedTomorrowInfo(forecastList[1])
         homeScreenList.add(HomeScreenItem.SubTitle("Next 5 Days"))
         forecastList.removeFirst()
         forecastList.removeLast()
