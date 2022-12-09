@@ -1,22 +1,17 @@
 package co.develhope.meteoapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.databinding.FragmentTodayScreenBinding
-import co.develhope.meteoapp.network.NetworkObject
 import co.develhope.meteoapp.ui.adapter.TodayScreenItem
-import kotlinx.coroutines.launch
 import org.threeten.bp.OffsetDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 
 class TodayScreenFragment : Fragment() {
