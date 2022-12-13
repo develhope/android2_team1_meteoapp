@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/errorLayout"
@@ -7,34 +7,59 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:gravity="center"
-    android:orientation="vertical"
     tools:context=".ErrorPageFragmentDialog">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_quit_app"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:src="@drawable/close_icon"
+        android:text="@string/btn_quit_app_error_page"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/errorImageWoman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/sorry_image_error_page" />
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/sorry_image_error_page"
+        app:layout_constraintBottom_toTopOf="@id/errorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/errorText"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
         android:gravity="center"
         android:text="@string/error_page_static_text"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_error_page"
+        android:id="@+id/btn_try_again"
         android:layout_width="307dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:height="43dp"
         android:background="@drawable/button_error_background"
-        android:text="@string/btn_text_error_page"
+        android:text="@string/btn_try_again_error_page"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/errorText" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
