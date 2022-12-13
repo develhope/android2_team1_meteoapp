@@ -10,10 +10,10 @@ class QuitAppFragmentDialog: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(activity)
         builder
-            .setTitle("Exit")
-            .setMessage("Are you sure to quit MeteoApp?")
-            .setPositiveButton("ok"){_, _ -> activity?.finish()}
-            .setNegativeButton("dismiss"){dialog, _ -> dialog.dismiss()}
+            .setTitle(getString(R.string.title_dialog_quit))
+            .setMessage(getString(R.string.alert_dialog_message))
+            .setPositiveButton(getString(R.string.alert_dialog_positive)){_, _ -> activity?.finish()}
+            .setNegativeButton(getString(R.string.alert_dialog_negative)){dialog, _ -> dialog.dismiss()}
         return builder.create()
 
     }
