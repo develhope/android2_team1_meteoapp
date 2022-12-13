@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ErrorPageFragment">
+    tools:context=".ErrorPageFragmentDialog">
 
 
     <androidx.constraintlayout.utils.widget.ImageFilterView

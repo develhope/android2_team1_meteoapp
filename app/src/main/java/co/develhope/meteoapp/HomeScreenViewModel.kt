@@ -32,7 +32,7 @@ class HomeScreenViewModel : ViewModel() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 _weeklyForecastResult.value = WeeklyForecastResult.Error(e)
-                Log.d("ForecastLog", e.toString())
+                Log.e("ForecastLog", e.toString())
             }
         }
     }

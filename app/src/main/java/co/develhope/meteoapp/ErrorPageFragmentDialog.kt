@@ -1,36 +1,45 @@
 package co.develhope.meteoapp
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import co.develhope.meteoapp.databinding.FragmentErrorPageBinding
-import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
-class ErrorPageFragment : DialogFragment() {
+class ErrorPageFragmentDialog : DialogFragment() {
+    private var performAction: (() -> Unit)? = null
+
     companion object {
         private const val FRAGMENT_TAG = "gift_dialog"
 
-        fun newInstance() = ErrorPageFragment()
-
-        fun show(fragmentManager: FragmentManager): ErrorPageFragment {
-            val dialog = newInstance()
+        fun show(fragmentManager: FragmentManager, performAction: () -> Unit): ErrorPageFragmentDialog {
+            val dialog = ErrorPageFragmentDialog()
+            dialog.performAction = performAction
             dialog.show(fragmentManager, FRAGMENT_TAG)
             return dialog
         }
     }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return object : Dialog(requireActivity(), theme) {
+            override fun onBackPressed() {
+
+            }
+
+            override fun setCancelable(flag: Boolean) {
+                super.setCancelable(false)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return requireActivity().layoutInflater.inflate(R.layout.fragment_error_page,container)
+        return requireActivity().layoutInflater.inflate(R.layout.fragment_error_page, container)
 
     }
 

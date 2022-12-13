@@ -29,17 +29,21 @@ class HomeScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeRepo()
-        viewModel.retrieveRepos()
 
+
+    }
+
+    override fun onResume() {
+        viewModel.retrieveRepos()
+        super.onResume()
     }
 
     private fun observeRepo() {
         viewModel.weeklyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
-                is WeeklyForecastResult.Error -> ErrorPageFragment().show(
+                is WeeklyForecastResult.Error -> ErrorPageFragmentDialog.show(
                     childFragmentManager,
-                    "Error"
-                )
+                ){viewModel.retrieveRepos()}
                 WeeklyForecastResult.Loading -> Unit
                 is WeeklyForecastResult.Success -> {
                     setupUi(it.data)
