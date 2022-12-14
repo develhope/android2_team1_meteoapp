@@ -1,7 +1,8 @@
 package co.develhope.meteoapp
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,6 +61,8 @@ class HomeScreenFragment : Fragment() {
             this,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
+                    val vibrator: Vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                    vibrator.vibrate(80)
                     val exit = QuitAppFragmentDialog()
                     exit.show(childFragmentManager, null)
                 }
@@ -78,6 +81,8 @@ class HomeScreenFragment : Fragment() {
                 ) {
                     ForecastInfoObject.saveSelectedCardInfo(forecastDetails.info)
                     replaceFragment(TodayScreenFragment())
+                    val vibrator: Vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                    vibrator.vibrate(80)
                 }
             })
         binding.weatherHomeScreenList.apply {

@@ -137,6 +137,7 @@ class TodayScreenAdapter(val list: List<TodayScreenItem>) :
                     TransitionManager.beginDelayedTransition(todayForecastItemBinding.root)
                     todayForecastItemBinding.todayCardView.visibility = View.VISIBLE
 
+
                 } else {
                     TransitionManager.beginDelayedTransition(todayForecastItemBinding.root)
                     todayForecastItemBinding.todayCardView.visibility = View.GONE
