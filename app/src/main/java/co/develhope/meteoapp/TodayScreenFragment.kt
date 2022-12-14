@@ -1,7 +1,9 @@
 package co.develhope.meteoapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -108,12 +110,14 @@ class TodayScreenFragment : Fragment() {
             this,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
+                    val vibrator: Vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                    vibrator.vibrate(80)
                     val intent = Intent(context,MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     (activity as MainActivity).startActivity(intent)
+                    (activity as MainActivity).overridePendingTransition(com.google.android.material.R.anim.abc_popup_enter, com.google.android.material.R.anim.abc_popup_exit)
                 }
-
             })
     }
 }
