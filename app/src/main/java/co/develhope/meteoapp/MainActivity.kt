@@ -47,10 +47,11 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
+    /*
     override fun onBackPressed() {
         val exit = QuitAppFragmentDialog()
         exit.show(supportFragmentManager, null)
     }
 
-
+     */
 }

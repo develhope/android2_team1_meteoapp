@@ -1,11 +1,14 @@
 package co.develhope.meteoapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.app.NavUtils
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
@@ -96,5 +99,21 @@ class TodayScreenFragment : Fragment() {
         )
 
         return todayScreenList
+    }
+
+    //BETA TEST
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val intent = Intent(context,MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    (activity as MainActivity).startActivity(intent)
+                }
+
+            })
     }
 }
