@@ -118,7 +118,6 @@ class TodayScreenFragment : Fragment() {
                     (activity as MainActivity).startActivity(intent)
                     (activity as MainActivity).overridePendingTransition(com.google.android.material.R.anim.abc_popup_enter, com.google.android.material.R.anim.abc_popup_exit)
                 }
-
             })
     }
 }
