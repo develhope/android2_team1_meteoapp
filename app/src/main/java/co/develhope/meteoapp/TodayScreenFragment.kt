@@ -112,6 +112,7 @@ class TodayScreenFragment : Fragment() {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     (activity as MainActivity).startActivity(intent)
+                    (activity as MainActivity).overridePendingTransition(com.google.android.material.R.anim.abc_popup_enter, com.google.android.material.R.anim.abc_popup_exit)
                 }
 
             })
