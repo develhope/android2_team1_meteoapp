@@ -1,9 +1,11 @@
 package co.develhope.meteoapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,10 +49,22 @@ class HomeScreenFragment : Fragment() {
                 WeeklyForecastResult.Loading -> Unit
                 is WeeklyForecastResult.Success -> {
                     setupUi(it.data)
-                    //ErrorPageFragment().dismiss()
                 }
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val exit = QuitAppFragmentDialog()
+                    exit.show(childFragmentManager, null)
+                }
+
+            })
     }
 
     private fun setupUi(forecastList: List<CardInfo>) {
