@@ -47,7 +47,11 @@ class ErrorPageFragmentDialog : DialogFragment() {
     ): View {
         bindingErrorPage = FragmentErrorPageBinding.inflate(inflater, container, false)
         binding.btnTryAgain.setOnClickListener{
-            Toast.makeText(context, "gnjanfuoseo", Toast.LENGTH_SHORT).show()
+            performAction?.invoke()
+            dismiss()
+        }
+        binding.btnQuitApp.setOnClickListener {
+            dismiss()
         }
         return binding.root
     }
