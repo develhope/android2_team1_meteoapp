@@ -36,19 +36,36 @@ class TodayScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeRepo()
         viewModel.retrieveRepos()
+        setPullToRefresh()
+    }
+
+    private fun setPullToRefresh(){
+        binding.swipeRefreshTodayscreen.setOnRefreshListener {
+            viewModel.retrieveRepos()
+        }
     }
 
 
     private fun observeRepo() {
         viewModel.hourlyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
-                is HourlyForecastResult.Error -> Toast.makeText(
-                    context,
-                    "Error",
-                    Toast.LENGTH_SHORT
-                ).show()
+                is HourlyForecastResult.Error -> {
+                    Toast.makeText(
+                        context,
+                        "Error",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if(binding.swipeRefreshTodayscreen.isRefreshing){
+                        binding.swipeRefreshTodayscreen.isRefreshing = false
+                    }
+                }
                 HourlyForecastResult.Loading -> Unit
-                is HourlyForecastResult.Success -> setUpUI(it.data)
+                is HourlyForecastResult.Success -> {
+                    setUpUI(it.data)
+                    if(binding.swipeRefreshTodayscreen.isRefreshing){
+                        binding.swipeRefreshTodayscreen.isRefreshing = false
+                    }
+                }
 
             }
         }

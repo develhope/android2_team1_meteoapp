@@ -32,8 +32,13 @@ class HomeScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeRepo()
+        setPullToRefresh()
+    }
 
-
+    private fun setPullToRefresh(){
+        binding.swipeRefreshHomescreen.setOnRefreshListener {
+            viewModel.retrieveRepos()
+        }
     }
 
     override fun onResume() {
@@ -44,12 +49,20 @@ class HomeScreenFragment : Fragment() {
     private fun observeRepo() {
         viewModel.weeklyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
-                is WeeklyForecastResult.Error -> ErrorPageFragmentDialog.show(
-                    childFragmentManager,
-                ){viewModel.retrieveRepos()}
+                is WeeklyForecastResult.Error -> {
+                    ErrorPageFragmentDialog.show(
+                        childFragmentManager,
+                    ){viewModel.retrieveRepos()}
+                    if(binding.swipeRefreshHomescreen.isRefreshing){
+                        binding.swipeRefreshHomescreen.isRefreshing = false
+                    }
+                }
                 WeeklyForecastResult.Loading -> Unit
                 is WeeklyForecastResult.Success -> {
                     setupUi(it.data)
+                    if(binding.swipeRefreshHomescreen.isRefreshing){
+                        binding.swipeRefreshHomescreen.isRefreshing = false
+                    }
                 }
             }
         }
