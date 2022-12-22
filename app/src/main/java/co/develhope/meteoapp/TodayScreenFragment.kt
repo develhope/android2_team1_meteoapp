@@ -42,11 +42,13 @@ class TodayScreenFragment : Fragment() {
     private fun observeRepo() {
         viewModel.hourlyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
-                is HourlyForecastResult.Error -> Toast.makeText(
-                    context,
-                    "Error",
-                    Toast.LENGTH_SHORT
-                ).show()
+                is HourlyForecastResult.Error -> {
+                    Toast.makeText(context, "Rete non trovata", Toast.LENGTH_SHORT).show()
+
+                    ErrorPageFragmentDialog.show(
+                        childFragmentManager,
+                    ){viewModel.retrieveRepos()}
+                }
                 HourlyForecastResult.Loading -> Unit
                 is HourlyForecastResult.Success -> setUpUI(it.data)
 

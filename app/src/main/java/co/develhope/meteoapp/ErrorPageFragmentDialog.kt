@@ -9,8 +9,12 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import co.develhope.meteoapp.databinding.FragmentErrorPageBinding
+import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 
 class ErrorPageFragmentDialog : DialogFragment() {
+    private var bindingErrorPage: FragmentErrorPageBinding? = null
+    private val binding get() = bindingErrorPage!!
     private var performAction: (() -> Unit)? = null
 
     companion object {
@@ -41,8 +45,15 @@ class ErrorPageFragmentDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return requireActivity().layoutInflater.inflate(R.layout.fragment_error_page, container)
-
+        bindingErrorPage = FragmentErrorPageBinding.inflate(inflater, container, false)
+        binding.btnTryAgain.setOnClickListener{
+            performAction?.invoke()
+            dismiss()
+        }
+        binding.btnQuitApp.setOnClickListener {
+            dismiss()
+        }
+        return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
