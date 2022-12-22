@@ -36,6 +36,13 @@ class TodayScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeRepo()
         viewModel.retrieveRepos()
+        setPullToRefresh()
+    }
+
+    private fun setPullToRefresh(){
+        binding.swipeRefreshTodayscreen.setOnRefreshListener {
+            viewModel.retrieveRepos()
+        }
     }
 
 
@@ -43,14 +50,30 @@ class TodayScreenFragment : Fragment() {
         viewModel.hourlyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
                 is HourlyForecastResult.Error -> {
-                    Toast.makeText(context, "Rete non trovata", Toast.LENGTH_SHORT).show()
+
+                    Toast.makeText(
+                        context,
+                        "Error",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    if(binding.swipeRefreshTodayscreen.isRefreshing){
+                        binding.swipeRefreshTodayscreen.isRefreshing = false
+                    }
+
+                    
 
                     ErrorPageFragmentDialog.show(
                         childFragmentManager,
                     ){viewModel.retrieveRepos()}
+
                 }
                 HourlyForecastResult.Loading -> Unit
-                is HourlyForecastResult.Success -> setUpUI(it.data)
+                is HourlyForecastResult.Success -> {
+                    setUpUI(it.data)
+                    if(binding.swipeRefreshTodayscreen.isRefreshing){
+                        binding.swipeRefreshTodayscreen.isRefreshing = false
+                    }
+                }
 
             }
         }

@@ -60,4 +60,5 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.5.5'
     //LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }

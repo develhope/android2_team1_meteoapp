@@ -7,17 +7,29 @@
     android:background="@drawable/gradient_background"
     tools:context=".HomeScreenFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weatherHomeScreenList"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_homescreen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_margin_layout"
-        android:clipToPadding="false"
-        android:paddingBottom="5dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/weekly_forecast_item" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="@dimen/padding_margin_layout"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weatherHomeScreenList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/weekly_forecast_item" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
