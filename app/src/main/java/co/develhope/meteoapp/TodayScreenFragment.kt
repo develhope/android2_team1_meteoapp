@@ -59,9 +59,6 @@ class TodayScreenFragment : Fragment() {
                     if(binding.swipeRefreshTodayscreen.isRefreshing){
                         binding.swipeRefreshTodayscreen.isRefreshing = false
                     }
-
-                    
-
                     ErrorPageFragmentDialog.show(
                         childFragmentManager,
                     ){viewModel.retrieveRepos()}

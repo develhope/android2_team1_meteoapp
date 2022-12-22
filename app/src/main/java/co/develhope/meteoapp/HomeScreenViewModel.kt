@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import co.develhope.meteoapp.data.domainmodel.CardInfo
+import co.develhope.meteoapp.network.GeocodingNetworkObject
 import co.develhope.meteoapp.network.NetworkObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,9 @@ class HomeScreenViewModel : ViewModel() {
                 _weeklyForecastResult.value =
                     WeeklyForecastResult.Success(NetworkObject.getWeeklySummary())
                 Log.d("ForecastLog", "weekly: $weeklyForecastResult")
+                Log.d("GeocodingLog", "${GeocodingNetworkObject.getLocationInfo().getOrNull(0)}")
+                Log.d("GeocodingLog", "${GeocodingNetworkObject.getLocationInfo().getOrNull(1)}")
+                Log.d("GeocodingLog", "${GeocodingNetworkObject.getLocationInfo().getOrNull(2)}")
             } catch (e: Exception) {
                 e.printStackTrace()
                 _weeklyForecastResult.value = WeeklyForecastResult.Error(e)
