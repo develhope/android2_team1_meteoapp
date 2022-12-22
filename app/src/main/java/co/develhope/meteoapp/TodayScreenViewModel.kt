@@ -1,6 +1,7 @@
 package co.develhope.meteoapp
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 import co.develhope.meteoapp.network.NetworkObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.launch
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -36,11 +38,12 @@ class TodayScreenViewModel : ViewModel() {
                         ).toMutableList()
                     )
                 } else {
-                    //TODO
+                    _hourlyForecastResult.value = HourlyForecastResult.Error(java.lang.Exception())
                 }
 
             } catch (e: Exception) {
                 e.printStackTrace()
+                _hourlyForecastResult.value = HourlyForecastResult.Error(e)
                 Log.d("ForecastLog", e.toString())
             }
         }

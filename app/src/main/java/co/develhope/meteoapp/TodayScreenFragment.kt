@@ -50,6 +50,7 @@ class TodayScreenFragment : Fragment() {
         viewModel.hourlyForecastResult.observe(viewLifecycleOwner) {
             when (it) {
                 is HourlyForecastResult.Error -> {
+
                     Toast.makeText(
                         context,
                         "Error",
@@ -58,6 +59,13 @@ class TodayScreenFragment : Fragment() {
                     if(binding.swipeRefreshTodayscreen.isRefreshing){
                         binding.swipeRefreshTodayscreen.isRefreshing = false
                     }
+
+                    
+
+                    ErrorPageFragmentDialog.show(
+                        childFragmentManager,
+                    ){viewModel.retrieveRepos()}
+
                 }
                 HourlyForecastResult.Loading -> Unit
                 is HourlyForecastResult.Success -> {
