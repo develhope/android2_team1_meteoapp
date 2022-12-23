@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private fun setBottomBarClick(it: MenuItem): Boolean {
         when (it.itemId) {
             R.id.home -> replaceFragment(HomeScreenFragment())
-            R.id.search -> replaceFragment(SearchPageFragment())
+            R.id.search -> replaceFragment(SearchScreenFragment())
             R.id.today -> {
                 ForecastInfoObject.getSelectedTodayInfo(0)
                     ?.let { it -> ForecastInfoObject.saveSelectedCardInfo(it) }

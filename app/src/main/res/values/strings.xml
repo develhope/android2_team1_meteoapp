@@ -42,6 +42,7 @@
     <string name="alert_dialog_positive">ok</string>
     <string name="alert_dialog_negative">dismiss</string>
     <string name="title_dialog_quit">Exit</string>
+    <string name="friday">Friday</string>
 
 
 </resources>
