@@ -81,10 +81,14 @@ class TodayScreenFragment : Fragment() {
 
     private fun setUpUI(hourlyForecastList: MutableList<TodayCardInfo>) {
         hourlyForecastList.sortedBy { it.date.hour }
-        setHourToShow(hourlyForecastList)
-
-        val itemToShow: List<TodayScreenItem> = getItemToShow(setHourToShow(hourlyForecastList))
-        val todayScreenAdapter = TodayScreenAdapter(itemToShow)
+        val todayScreenAdapter = if (hourlyForecastList[0].date.dayOfYear == OffsetDateTime.now().dayOfYear){
+            setHourToShow(hourlyForecastList)
+            val itemToShow: List<TodayScreenItem> = getItemToShow(setHourToShow(hourlyForecastList))
+            TodayScreenAdapter(itemToShow)
+        } else {
+            val itemToShow: List<TodayScreenItem> = getItemToShow(hourlyForecastList)
+            TodayScreenAdapter(itemToShow)
+        }
 
         binding.todayRecyclerViewItem.apply {
             layoutManager =
