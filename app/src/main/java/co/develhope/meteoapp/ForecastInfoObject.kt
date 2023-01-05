@@ -28,12 +28,12 @@ object ForecastInfoObject {
     fun setIcon(weather: Weather): Int {
         return when (weather) {
             Weather.SUNNY -> R.drawable.sun
-            Weather.FOGGY -> R.drawable.sun
+            Weather.FOGGY -> R.drawable.cloud
             Weather.TEMPEST -> R.drawable.rain_cloud_sun
             Weather.RAINY -> R.drawable.rain_cloud_sun
             Weather.HEAVYRAIN -> R.drawable.rain_cloud_sun
             Weather.WINDY -> R.drawable.sun_cloud
-            Weather.CLOUDY -> R.drawable.sun_cloud
+            Weather.CLOUDY -> R.drawable.cloud
         }
     }
 
