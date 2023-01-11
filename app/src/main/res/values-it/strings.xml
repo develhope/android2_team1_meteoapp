@@ -21,6 +21,7 @@
     <string name="rv_next_5_days">%s</string>
     <string name="precip">precip.</string>
     <string name="wind">vento</string>
+    <string name="error">errore</string>
     <!-- Recycler View Today Screen Items -->
     <string name="rv_tv_hour">%d:00</string>
     <string name="rv_tv_day_month_date">%s, %d %s</string>
@@ -46,4 +47,12 @@
     <string name="title_dialog_quit">Esci</string>
     <!-- Week -->
     <string name="monday">Lunedì</string>
+    <string name="tuesday">Martedì</string>
+    <string name="wednesday">Mercoledì</string>
+    <string name="thursday">Giovedì</string>
+    <string name="friday">Venerdì</string>
+    <string name="saturday">Sabato</string>
+    <string name="sunday">Domenica</string>
+    <string name="recent_city">%s, %s</string>
+
 </resources>
