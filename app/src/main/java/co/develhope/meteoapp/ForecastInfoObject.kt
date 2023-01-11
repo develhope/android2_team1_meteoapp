@@ -2,6 +2,7 @@ package co.develhope.meteoapp
 
 
 import android.content.Context
+import android.content.res.Resources
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
 

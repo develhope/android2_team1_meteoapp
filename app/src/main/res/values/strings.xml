@@ -45,7 +45,9 @@
     <string name="alert_dialog_positive">ok</string>
     <string name="alert_dialog_negative">dismiss</string>
     <string name="title_dialog_quit">Exit</string>
-    <!-- Week -->
+    <string name="friday">Friday</string>
+    <string name="recent_city">%s, %s</string>
     <string name="monday">Monday</string>
+
 
 </resources>
