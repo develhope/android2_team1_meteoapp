@@ -27,7 +27,8 @@
         android:layout_marginTop="22dp"
         android:text="@string/static_recent_search"
         android:textColor="@color/blue"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_location_list"

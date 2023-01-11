@@ -35,7 +35,7 @@ class SearchScreenFragment : Fragment() {
 
     private fun research() {
 
-        binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewModel.send(LocationSearchEvent.SearchCity(query.toString()))
                 observeRepo()
@@ -52,9 +52,10 @@ class SearchScreenFragment : Fragment() {
     }
 
     private fun observeRepo() {
-        viewModel.locationResult.observe(viewLifecycleOwner){
-            when(it){
-                is LocationResult.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show() //TODO Replace this Toast
+        viewModel.locationResult.observe(viewLifecycleOwner) {
+            when (it) {
+                is LocationResult.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT)
+                    .show() //TODO Replace this Toast
                 is LocationResult.Success -> {
                     setupUi(it.data)
                 }
@@ -63,7 +64,8 @@ class SearchScreenFragment : Fragment() {
     }
 
     private fun setupUi(it: List<LocationInfo>) {
-        val searchScreenAdapter = SearchScreenAdapter(it, resources){
+        hideSearchText(it)
+        val searchScreenAdapter = SearchScreenAdapter(it, resources) {
             Toast.makeText(context, "City name: ${it}", Toast.LENGTH_SHORT).show()
         }
         Log.d("GeocodingLog", "${it.size}")
@@ -76,6 +78,22 @@ class SearchScreenFragment : Fragment() {
                 )
             adapter = searchScreenAdapter
         }
+
+
+    }
+
+    private fun hideSearchText(cityList: List<LocationInfo>) {
+
+        if (cityList.isEmpty()) {
+
+            binding.tvRecentSearch.visibility = View.GONE
+
+        } else {
+
+            binding.tvRecentSearch.visibility = View.VISIBLE
+        }
+
+
     }
 
 
