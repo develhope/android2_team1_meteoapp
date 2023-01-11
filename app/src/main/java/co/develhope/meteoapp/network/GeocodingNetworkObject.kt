@@ -50,8 +50,8 @@ object GeocodingNetworkObject {
 
     private val service = retrofit.create(GeocodingApiService::class.java)
 
-    suspend fun getLocationInfo(): List<LocationInfo> {
-        return service.getLocation()
+    suspend fun getLocationInfo(city: String): List<LocationInfo> {
+        return service.getLocation(city)
             .body()?.resultsDTO?.map { resultDTO ->
                 resultDTO.toDomain()
             }

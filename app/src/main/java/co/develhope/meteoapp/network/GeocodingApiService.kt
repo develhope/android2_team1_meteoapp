@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface GeocodingApiService {
     @GET("v1/search?")
     suspend fun getLocation(
-        @Query("name") name: String = "Roc",
+        @Query("name") name: String? = null,
         //@Query("count") count: Int = 5
     ): Response<GeocodingDTO>
 }

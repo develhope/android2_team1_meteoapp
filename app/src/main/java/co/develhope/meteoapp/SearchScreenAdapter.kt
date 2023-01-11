@@ -8,7 +8,7 @@ import co.develhope.meteoapp.data.domainmodel.LocationInfo
 import co.develhope.meteoapp.databinding.LocationSearchpageItemBinding
 
 class SearchScreenAdapter(
-    private val listLocation: List<LocationInfo>, val resources: Resources
+    private val listLocation: List<LocationInfo>, val resources: Resources, private val onItemClicked: (LocationInfo) -> Unit
 ) : RecyclerView.Adapter<SearchScreenAdapter.LocationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
@@ -24,6 +24,7 @@ class SearchScreenAdapter(
         with(holder) {
             with(listLocation[position]) {
                 holder.binding.recentCity.text = resources.getString(R.string.recent_city, this.city, this.country)
+                holder.itemView.setOnClickListener { onItemClicked(this) }
             }
         }
     }

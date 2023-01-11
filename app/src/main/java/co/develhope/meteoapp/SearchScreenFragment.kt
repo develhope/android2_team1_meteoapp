@@ -2,18 +2,16 @@ package co.develhope.meteoapp
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.view.isEmpty
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.develhope.meteoapp.data.domainmodel.LocationInfo
-import co.develhope.meteoapp.databinding.FragmentHomeScreenBinding
 import co.develhope.meteoapp.databinding.SearchPageScreenBinding
-import co.develhope.meteoapp.ui.adapter.SearchScreenItem
 
 class SearchScreenFragment : Fragment() {
 
@@ -35,18 +33,28 @@ class SearchScreenFragment : Fragment() {
         observeRepo()
     }
 
-    private fun research(locationInfo: LocationInfo) {
+    private fun research() {
 
-        if (locationInfo.city != binding.searchBar.){
+        binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.send(LocationSearchEvent.SearchCity(query.toString()))
+                observeRepo()
+                return false
+            }
 
-        }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.send(LocationSearchEvent.SearchCity(newText.toString()))
+                observeRepo()
+                return false
+            }
+
+        })
     }
 
     private fun observeRepo() {
-        viewModel.getLocationResultData()
         viewModel.locationResult.observe(viewLifecycleOwner){
             when(it){
-                is LocationResult.Error -> Toast.makeText(context, "ERROREEE", Toast.LENGTH_SHORT).show()
+                is LocationResult.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show() //TODO Replace this Toast
                 is LocationResult.Success -> {
                     setupUi(it.data)
                 }
@@ -55,7 +63,9 @@ class SearchScreenFragment : Fragment() {
     }
 
     private fun setupUi(it: List<LocationInfo>) {
-        val searchScreenAdapter = SearchScreenAdapter(it, resources)
+        val searchScreenAdapter = SearchScreenAdapter(it, resources){
+            Toast.makeText(context, "City name: ${it}", Toast.LENGTH_SHORT).show()
+        }
         Log.d("GeocodingLog", "${it.size}")
         binding.rvLocationList.apply {
             layoutManager =

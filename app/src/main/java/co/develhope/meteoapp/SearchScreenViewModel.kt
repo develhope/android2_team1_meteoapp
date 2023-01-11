@@ -9,6 +9,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+sealed class LocationSearchEvent {
+    data class SearchCity(val city: String) : LocationSearchEvent()
+}
+
 sealed class LocationResult{
     data class Success (val data: List<LocationInfo>): LocationResult()
     data class Error (val e: Exception): LocationResult()
@@ -19,10 +23,15 @@ class SearchScreenViewModel: ViewModel() {
     val locationResult: LiveData<LocationResult>
         get() = _locationResult
 
-    fun getLocationResultData(){
+    fun send(event: LocationSearchEvent) =
+        when (event) {
+            is LocationSearchEvent.SearchCity -> getLocationResultData(event.city)
+        }
+
+    fun getLocationResultData(city: String){
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                _locationResult.value = LocationResult.Success(GeocodingNetworkObject.getLocationInfo())
+                _locationResult.value = LocationResult.Success(GeocodingNetworkObject.getLocationInfo(city = city))
             } catch (e: Exception){
                 _locationResult.value = LocationResult.Error(e)
             }
