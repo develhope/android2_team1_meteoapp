@@ -49,18 +49,13 @@ data class GeocodingDTO(
     ) {
         fun toDomain(): LocationInfo {
             return LocationInfo(
-                city = this.name?.toString() ?: "null",
-                region = this.admin1?.toString() ?: "null",
-                country = this.country?.toString() ?: "null",
-                population = this.population?.toInt() ?: 0,
-                latitude = this.latitude?.toDouble() ?: 0.0,
-                longitude = this.longitude?.toDouble() ?: 0.0
+                city = this.name.toString(),
+                region = this.admin1.toString(),
+                country = this.country.toString(),
+                population = this.population ?: 0,
+                latitude = this.latitude ?: 0.0,
+                longitude = this.longitude ?: 0.0
             )
         }
     }
 }
-
-
-
-
-

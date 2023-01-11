@@ -43,6 +43,7 @@
     <string name="alert_dialog_negative">dismiss</string>
     <string name="title_dialog_quit">Exit</string>
     <string name="friday">Friday</string>
+    <string name="recent_city">%s, %s</string>
 
 
 </resources>

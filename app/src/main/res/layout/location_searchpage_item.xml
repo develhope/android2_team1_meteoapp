@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Palermo" />
 
-
+            <!--
             <TextView
                 android:id="@+id/recentCityTemperature"
                 android:layout_width="wrap_content"
@@ -57,6 +57,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/recentCity"
                 android:layout_marginEnd="16dp"
                 tools:text="soleggiato" />
+
+                -->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

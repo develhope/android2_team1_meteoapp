@@ -1,7 +1,7 @@
 package co.develhope.meteoapp.ui.adapter
 
-import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.LocationInfo
+import co.develhope.meteoapp.data.domainmodel.TodayCardInfo
 
 sealed class SearchScreenItem{
     data class SearchBar(
@@ -10,6 +10,6 @@ sealed class SearchScreenItem{
 
     data class LocationCardview(
         val locationInfo: LocationInfo,
-        val cardInfo: CardInfo
+        val cardInfo: TodayCardInfo? = null
     ): SearchScreenItem()
 }

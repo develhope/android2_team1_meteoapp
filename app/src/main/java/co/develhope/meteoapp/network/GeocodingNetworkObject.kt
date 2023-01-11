@@ -52,7 +52,9 @@ object GeocodingNetworkObject {
 
     suspend fun getLocationInfo(): List<LocationInfo> {
         return service.getLocation()
-            .body()?.resultsDTO?.map { resultDTO -> resultDTO.toDomain() }
+            .body()?.resultsDTO?.map { resultDTO ->
+                resultDTO.toDomain()
+            }
             ?: emptyList()
     }
 }
