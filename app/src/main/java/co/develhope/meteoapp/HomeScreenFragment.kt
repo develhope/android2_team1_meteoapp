@@ -35,7 +35,7 @@ class HomeScreenFragment : Fragment() {
         setPullToRefresh()
     }
 
-    private fun setPullToRefresh(){
+    private fun setPullToRefresh() {
         binding.swipeRefreshHomescreen.setOnRefreshListener {
             viewModel.retrieveRepos()
         }
@@ -52,15 +52,15 @@ class HomeScreenFragment : Fragment() {
                 is WeeklyForecastResult.Error -> {
                     ErrorPageFragmentDialog.show(
                         childFragmentManager,
-                    ){viewModel.retrieveRepos()}
-                    if(binding.swipeRefreshHomescreen.isRefreshing){
+                    ) { viewModel.retrieveRepos() }
+                    if (binding.swipeRefreshHomescreen.isRefreshing) {
                         binding.swipeRefreshHomescreen.isRefreshing = false
                     }
                 }
                 WeeklyForecastResult.Loading -> Unit
                 is WeeklyForecastResult.Success -> {
                     setupUi(it.data)
-                    if(binding.swipeRefreshHomescreen.isRefreshing){
+                    if (binding.swipeRefreshHomescreen.isRefreshing) {
                         binding.swipeRefreshHomescreen.isRefreshing = false
                     }
                 }
@@ -74,7 +74,8 @@ class HomeScreenFragment : Fragment() {
             this,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    val vibrator: Vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                    val vibrator: Vibrator =
+                        context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
                     vibrator.vibrate(80)
                     val exit = QuitAppFragmentDialog()
                     exit.show(childFragmentManager, null)
@@ -94,7 +95,8 @@ class HomeScreenFragment : Fragment() {
                 ) {
                     ForecastInfoObject.saveSelectedCardInfo(forecastDetails.info)
                     replaceFragment(TodayScreenFragment())
-                    val vibrator: Vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                    val vibrator: Vibrator =
+                        context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
                     vibrator.vibrate(80)
                 }
             })
