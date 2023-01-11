@@ -1,33 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Develhope Meteo App</string>
 
     <!-- Navigation Bar -->
     <string name="navbar_home">Home</string>
-    <string name="navbar_today">Today</string>
-    <string name="navbar_tomorrow">Tomorrow</string>
-    <string name="navbar_search">Search</string>
+    <string name="navbar_today">Oggi</string>
+    <string name="navbar_tomorrow">Domani</string>
+    <string name="navbar_search">Cerca</string>
     <!-- Home Screen -->
     <string name="tv_home_title">%s, %s</string>
-    <string name="tv_next_five_days">Next 5 days</string>
+    <string name="tv_next_five_days">Prossimi 5 giorni</string>
     <!-- Today Screen -->
-    <string name="tv_today">Today,</string>
+    <string name="tv_today">Oggi,</string>
     <!-- Recycler View Home Screen Items -->
-    <string name="rv_tv_min_temp_card">%d°C</string>
-    <string name="rv_tv_max_temp_card">%d°C</string>
+    <string name="rv_tv_min_temp_card">%d°</string>
+    <string name="rv_tv_max_temp_card">%d°</string>
     <string name="rv_tv_date">%d/%d</string>
-    <string name="rv_tv_precip_percentage">%d mm</string>
+    <string name="rv_tv_precip_percentage">%d%%</string>
     <string name="rv_tv_wind">%d km/h</string>
     <string name="rv_title">%s, %s</string>
     <string name="rv_next_5_days">%s</string>
     <string name="precip">precip.</string>
-    <string name="wind">wind</string>
-
+    <string name="wind">vento</string>
     <!-- Recycler View Today Screen Items -->
     <string name="rv_tv_hour">%d:00</string>
     <string name="rv_tv_day_month_date">%s, %d %s</string>
-    <string name="cv_tv_today">Today</string>
+    <string name="cv_tv_today">Oggi</string>
     <string name="cv_tv_calendar_date">%d/%d/%d</string>
-    <string name="rv_cv_humidity">%d%%</string>
+    <string name="rv_cv_humidity">%d°</string>
     <string name="rv_cv_perceived">%d°C</string>
     <string name="rv_cv_coverage">%d%%</string>
     <string name="rv_cv_rain">%dmm</string>
@@ -35,17 +34,16 @@
     <string name="rv_cv_uv_index">5/10</string>
     <string name="date">%d-%d-%d</string>
     <!-- Static Title Search Page -->
-    <string name="static_recent_search">Recent search</string>
+    <string name="static_recent_search">Ricerche recenti</string>
     <!-- Error Page Static Text -->
-    <string name="error_page_static_text">There was an error retrieving data. Check your internet connection and try again.</string>
-    <string name="btn_try_again_error_page">Try again</string>
+    <string name="error_page_static_text">C\'è stato un errore nell\'acquisizione dei dati. Controlla la tua connessione e riprova.</string>
+    <string name="btn_try_again_error_page">Riprova</string>
     <string name="btn_quit_app_error_page">X</string>
     <!-- Quit Dialog Text -->
-    <string name="alert_dialog_message">Are you sure you want to exit?</string>
+    <string name="alert_dialog_message">Sei sicuro di voler uscire?</string>
     <string name="alert_dialog_positive">ok</string>
-    <string name="alert_dialog_negative">dismiss</string>
-    <string name="title_dialog_quit">Exit</string>
+    <string name="alert_dialog_negative">annulla</string>
+    <string name="title_dialog_quit">Esci</string>
     <!-- Week -->
-    <string name="monday">Monday</string>
-
+    <string name="monday">Lunedì</string>
 </resources>

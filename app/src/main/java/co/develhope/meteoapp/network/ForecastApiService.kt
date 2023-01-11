@@ -1,10 +1,7 @@
 package co.develhope.meteoapp.network
 
-import co.develhope.meteoapp.ForecastInfoObject
 import co.develhope.meteoapp.TodaySummaryDTO
 import co.develhope.meteoapp.dto.WeeklySummaryDTO
-import org.threeten.bp.OffsetDateTime
-import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

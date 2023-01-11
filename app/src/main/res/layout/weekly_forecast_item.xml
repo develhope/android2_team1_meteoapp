@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/precipitationHomeScreenRecyclerView"
                 android:layout_centerHorizontal="true"
-                android:text="precip."
+                android:text="@string/precip"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hour_second_third_screen_text_size" />
 
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/windHomeScreenRecyclerView"
                 android:layout_alignParentEnd="true"
-                android:text="wind"
+                android:text="@string/wind"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hour_second_third_screen_text_size" />
         </RelativeLayout>
