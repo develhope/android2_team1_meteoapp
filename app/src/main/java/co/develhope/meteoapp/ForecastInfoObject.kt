@@ -1,8 +1,6 @@
 package co.develhope.meteoapp
 
 
-import android.content.Context
-import android.content.res.Resources
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
 
@@ -22,16 +20,16 @@ object ForecastInfoObject {
         }
     }
 
-    fun setDayOfWeek(dayOfWeek: String): String {
+    fun setDayOfWeek(dayOfWeek: String): Int {
         return when (dayOfWeek) {
-            "MONDAY" -> "Monday"
-            "TUESDAY" -> "Tuesday"
-            "WEDNESDAY" -> "Wednesday"
-            "THURSDAY" -> "Thursday"
-            "FRIDAY" -> "Friday"
-            "SATURDAY" -> "Saturday"
-            "SUNDAY" -> "Sunday"
-            else -> "error"
+            "MONDAY" -> R.string.monday
+            "TUESDAY" -> R.string.tuesday
+            "WEDNESDAY" -> R.string.wednesday
+            "THURSDAY" -> R.string.thursday
+            "FRIDAY" -> R.string.friday
+            "SATURDAY" -> R.string.saturday
+            "SUNDAY" -> R.string.sunday
+            else -> R.string.error
         }
     }
 

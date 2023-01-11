@@ -91,8 +91,7 @@ class HomeScreenAdapter(
                 weeklyForecast.info.date.dayOfMonth,
                 weeklyForecast.info.date.monthValue
             )
-            weeklyBinding.dayCard.text =
-                ForecastInfoObject.setDayOfWeek(weeklyForecast.info.date.dayOfWeek.name)
+            weeklyBinding.dayCard.text = itemView.context.getString(ForecastInfoObject.setDayOfWeek(weeklyForecast.info.date.dayOfWeek.name))
             weeklyBinding.iconHomeScreenRecyclerView.setImageResource(
                 ForecastInfoObject.setIcon(
                     weeklyForecast.info.weather
