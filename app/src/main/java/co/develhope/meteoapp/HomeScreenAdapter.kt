@@ -119,8 +119,6 @@ class HomeScreenAdapter(
     class Next5DaysViewHolder(val next5DaysBinding: Next5daysHomeScreenItemBinding) :
         RecyclerView.ViewHolder(next5DaysBinding.root) {
         fun bind(next5Days: HomeScreenItem.SubTitle) {
-            next5DaysBinding.tvNextDays.text =
-                itemView.context.getString(R.string.rv_next_5_days, next5Days.next5Days)
         }
     }
 }

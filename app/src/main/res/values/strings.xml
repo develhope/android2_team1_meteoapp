@@ -12,19 +12,22 @@
     <!-- Today Screen -->
     <string name="tv_today">Today,</string>
     <!-- Recycler View Home Screen Items -->
-    <string name="rv_tv_min_temp_card">%d°</string>
-    <string name="rv_tv_max_temp_card">%d°</string>
+    <string name="rv_tv_min_temp_card">%d°C</string>
+    <string name="rv_tv_max_temp_card">%d°C</string>
     <string name="rv_tv_date">%d/%d</string>
-    <string name="rv_tv_precip_percentage">%d%%</string>
+    <string name="rv_tv_precip_percentage">%d mm</string>
     <string name="rv_tv_wind">%d km/h</string>
     <string name="rv_title">%s, %s</string>
     <string name="rv_next_5_days">%s</string>
+    <string name="precip">precip.</string>
+    <string name="wind">wind</string>
+
     <!-- Recycler View Today Screen Items -->
     <string name="rv_tv_hour">%d:00</string>
     <string name="rv_tv_day_month_date">%s, %d %s</string>
     <string name="cv_tv_today">Today</string>
     <string name="cv_tv_calendar_date">%d/%d/%d</string>
-    <string name="rv_cv_humidity">%d°</string>
+    <string name="rv_cv_humidity">%d%%</string>
     <string name="rv_cv_perceived">%d°C</string>
     <string name="rv_cv_coverage">%d%%</string>
     <string name="rv_cv_rain">%dmm</string>
@@ -44,6 +47,7 @@
     <string name="title_dialog_quit">Exit</string>
     <string name="friday">Friday</string>
     <string name="recent_city">%s, %s</string>
+    <string name="monday">Monday</string>
 
 
 </resources>
