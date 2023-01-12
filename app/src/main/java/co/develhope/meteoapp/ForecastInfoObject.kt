@@ -3,7 +3,7 @@ package co.develhope.meteoapp
 
 import co.develhope.meteoapp.data.domainmodel.CardInfo
 import co.develhope.meteoapp.data.domainmodel.Weather
-
+import java.util.Locale
 
 
 object ForecastInfoObject {
@@ -55,10 +55,17 @@ object ForecastInfoObject {
         }
     }
 
-
     private var selectedTomorrowInfo: CardInfo? = null
     fun saveSelectedTomorrowInfo(tomorrowInfo: CardInfo) {
         selectedTomorrowInfo = tomorrowInfo
+    }
+
+    fun changeGeocodingSearchLanguage(): String{
+        return when (Locale.getDefault().displayLanguage.lowercase()){
+            "english" -> "en"
+            "italian" -> "it"
+            else -> "en"
+        }
     }
 
 }
