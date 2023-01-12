@@ -2,6 +2,7 @@ package co.develhope.meteoapp.network
 
 import co.develhope.meteoapp.TodaySummaryDTO
 import co.develhope.meteoapp.dto.WeeklySummaryDTO
+import co.develhope.meteoapp.prefs
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,8 +10,8 @@ import retrofit2.http.Query
 interface ForecastApiService {
     @GET("v1/forecast?")
     suspend fun getHourlyForecastForASpecificDay(
-        @Query("latitude") latitude: Double = 41.8955,
-        @Query("longitude") longitude: Double = 12.4823,
+        @Query("latitude") latitude: Double = prefs.latidudePref.toDouble(),
+        @Query("longitude") longitude: Double = prefs.longitudePref.toDouble(),
         @Query("hourly") hourly: List<String> = listOf(
             "temperature_2m",
             "rain",
@@ -33,8 +34,8 @@ interface ForecastApiService {
 
     @GET("v1/forecast?")
     suspend fun getWeeklyForecast(
-        @Query("latitude") latitude: Double = 41.8955,
-        @Query("longitude") longitude: Double = 12.4823,
+        @Query("latitude") latitude: Double = prefs.latidudePref.toDouble(),
+        @Query("longitude") longitude: Double = prefs.longitudePref.toDouble(),
         @Query("daily") daily: List<String> = listOf(
             "weathercode",
             "temperature_2m_max",

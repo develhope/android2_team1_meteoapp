@@ -1,5 +1,6 @@
 package co.develhope.meteoapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,7 +67,15 @@ class SearchScreenFragment : Fragment() {
     private fun setupUi(it: List<LocationInfo>) {
         hideSearchText(it)
         val searchScreenAdapter = SearchScreenAdapter(it, resources) {
-            Toast.makeText(context, "City name: ${it}", Toast.LENGTH_SHORT).show()
+            prefs.longitudePref = it.longitude.toFloat()
+            prefs.latidudePref = it.latitude.toFloat()
+            prefs.cityPref = it.city
+            prefs.countryPref = it.country
+            val intent = Intent(context,MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            (activity as MainActivity).startActivity(intent)
+            (activity as MainActivity).overridePendingTransition(com.google.android.material.R.anim.abc_popup_enter, com.google.android.material.R.anim.abc_popup_exit)
         }
         Log.d("GeocodingLog", "${it.size}")
         binding.rvLocationList.apply {
@@ -78,23 +87,14 @@ class SearchScreenFragment : Fragment() {
                 )
             adapter = searchScreenAdapter
         }
-
-
     }
 
     private fun hideSearchText(cityList: List<LocationInfo>) {
-
         if (cityList.isEmpty()) {
-
             binding.tvRecentSearch.visibility = View.GONE
-
         } else {
-
             binding.tvRecentSearch.visibility = View.VISIBLE
         }
-
-
     }
-
 
 }
