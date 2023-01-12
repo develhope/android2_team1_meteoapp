@@ -71,7 +71,7 @@ class HomeScreenAdapter(
         RecyclerView.ViewHolder(titleBinding.root) {
         fun bind(title: HomeScreenItem.Title) {
             titleBinding.tvHomeTitle.text =
-                itemView.context.getString(R.string.rv_title, title.city, title.region)
+                itemView.context.getString(R.string.rv_title, prefs.cityPref, prefs.countryPref)
         }
     }
 
